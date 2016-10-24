@@ -331,9 +331,9 @@ header{
 }
 /*///////////////////////////////////Admin form*/
 .admin-form{
-	position: relative;
+	float: left;
 	margin-top: 50px;
-	width: 90%;
+	width: 100%;
 	float: right;
 }
 .admin-form h1{
@@ -357,12 +357,14 @@ header{
 	float: left;
 	text-align: left;
 	font-size: 16px;
-	font-weight: bold;
+	font-weight: normal;
 	margin-bottom: 10px;
+	text-transform: uppercase;
+	color: #74D6F8;
 }
 .admin-form input{
 	padding: 6px 0px;
-	width: 50%;
+	width: 100%;
 	float: left;
 }
 .admin-form button{

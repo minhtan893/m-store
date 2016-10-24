@@ -35,8 +35,8 @@
 				<ul id="menu">
 					<li><a href="http://localhost/m-store/admin" class="active-menu menu-link">Home</a></li>
 					<li><a href="admin/Category" class="menu-link">Danh mục</a></li>
-					<li><a href="admin/Products" class="menu-link">Sản phẩm</a></li>
-					<li><a href="Contact/Text" class="menu-link">Contact</a></li>
+					<li><a href="admin/Products" class="menu-link">Giỏ hàng</a></li>
+					<li><a href="admin/Contact" class="menu-link">Contact</a></li>
 				</ul>
 				
 			</nav>

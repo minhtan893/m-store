@@ -42,6 +42,10 @@ function Call($ctr, $act , $tmp = null){
 			}
 			break;
 		//Hết Product	
+		//Liên hệ
+		case 'Contact':
+			$tmp = $class::$act();
+			break;	
 			default:
 			$tmp = $class::$act();
 			break;
@@ -57,7 +61,8 @@ function Call($ctr, $act , $tmp = null){
 	"Home" => ["Index", "NotFound"],
 	"User"=>['SignOut'],
 	"Category"=>['Index',"GetCate","Add","CheckName","Save","Name","GetAll","Update","Del"],
-	"Product"=>['GetLimitByCate',"GetProduct","Add","Check","Save","Update","DelOne"]
+	"Product"=>['GetLimitByCate',"GetProduct","Add","Check","Save","Update","DelOne"],
+	"Contact"=>['Index',"Update"]
 	];
 // Loc thong tin tu bien $ctr, $action khoi tao tai index.php
 if(array_key_exists($ctr ,$listCtr)){ // Check gia tri cua $ctr co trong tap key cua listCtr hay khong

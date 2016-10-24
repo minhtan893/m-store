@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/css" href="../apps/public/css/main.css" ?>
+	<contact>
+		<company>M-store</company>
+		<address>12-hanoi</address>
+		<phone>+84 123 456 </phone>
+		<facebook>facebook.com/m-store</facebook>
+		<email>m-store123@mstore.company</email>
+	</contact>
