@@ -11,6 +11,7 @@
 	<script type="text/javascript" src="apps/public/js/slide.js"></script>
 	<script type="text/javascript" src="apps/public/js/jquery.zoom.min.js"></script>
 	<script type="text/javascript" src="apps/public/js/main.js"></script>
+	<script type="text/javascript" src="apps/public/js/client.js"></script>
 </head>
 <body>
 	<?php 

@@ -22,10 +22,11 @@ class CategoryModel{
 	public function GetCate($startIndex){
 		$db = Db::GetDb();
 		if($startIndex==-1){//lấy ra tất cả
-			$stmt= $db->prepare('select id ,name from categories');
+			$stmt= $db->prepare('select id ,name from categories order by id DESC');
 		}
 		else{
 			$stmt= $db->prepare('select id,name from categories
+				order by id DESC
 			limit :startIndex,8');
 			$stmt->bindParam(':startIndex',$startIndex,PDO::PARAM_INT);
 		}

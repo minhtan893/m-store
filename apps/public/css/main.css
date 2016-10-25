@@ -279,7 +279,60 @@ header{
 	width: 100%;
 	float: left;
 }
-
+.home-index{
+	width: 100%;
+	float: left;
+	margin-top: 40px;
+}
+.home-category{
+	width: 100%;
+	float: left;
+	padding: 0px 0px 20px 0px;
+	margin-top: 20px;
+	margin-bottom: 35px;	
+	border:1px solid #DEDEDE;
+}
+.category-name{
+	background-color: grey;
+	width: 100%;
+	padding: 5px 0px;
+}
+.category-name a{
+	text-transform: uppercase;
+	font-size: 25px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-decoration: none;	
+}
+.category-name a:hover{
+	color: #73D6E4;
+}
+.category-product{
+	width: 100%;
+	float: left;
+}
+.add-more-cate{
+	display: none;
+	text-align: center;
+	width: 100%;
+	float: left;
+	margin-top: 40px;
+}
+.add-more-cate button{
+	width: 40%;
+	margin:auto;
+	padding: 10px 0px;
+	border:0px;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 0.5px;
+	font-family: arial;
+	box-sizing: border-box;
+	border: 1px solid #FFFFFF;
+}
+.add-more-cate button:hover{
+	border: 1px solid #73D6E4;
+}
 /*Start USER*/
 .user-form{
 	position: relative;
@@ -382,37 +435,7 @@ header{
 }
 
 
-/*///////////////////*?
-#product-add{
-	border-top: 1px solid #DEDEDE;
-	padding-top: 50px;
-	width: 30%;
-	float: left;
-	box-sizing: border-box;
-}
-#product-add table{
-	width: 100%;
-	float: left;
-}
-#product-add th{
-	text-align: left;
-}
-#product-add th {
-	font-weight: bold;
-	text-transform: uppercase;
-	padding: 5px 0px 5px 0px;
-}
-#product-add td {
-	text-transform: uppercase;
-	padding: 5px 0px 5px 10px;
-}
-#user-form{
-	box-sizing: border-box;
-	border-top: 1px solid #DEDEDE;
-	border-left: 1px solid #DEDEDE;
-	width: 70%;
-	float: right;
-}
+
 /*END USER*/
 /*Start Footer*/
 
@@ -506,12 +529,14 @@ footer form a{
 	float: left;
 	box-sizing: border-box;
 	text-align: center;
+	border: 1px solid #FFFFFF;
+	padding: 0px 0px 40px 0px;	
 }
 .product-detail{
-	float: left;
-	width: 90%;
-	border: 1px solid #fff;
-	padding: 10px 0px 30px 0px;
+	margin:auto;
+	width: 80%;
+	border: 1px solid #FFFFFF;
+	padding: 0px 0px 0px 0px;
 }
 .img-product{
 	text-align: center;	
@@ -521,12 +546,13 @@ footer form a{
 	padding: 20px 0px;
 }
 .price{
+	margin-top: 25px;
 	width: 95%;
 	float: right;
 	text-align: left;
 	font-size: 16px;
-	color:red;
-	font-weight: bold;
+	color: grey;
+	font-weight: normal;
 }
 .product-name{
 	text-align: left;
@@ -535,15 +561,30 @@ footer form a{
 	font-size: 14px;
 	text-transform: uppercase;
 	margin-top: 5px;
-}
-.product-name a{
-	text-decoration: none;
 	color:grey;
+}
+.cart{
+	width: 100%;
+	float: left;
+	margin-top: 20px;
+	text-align: center;
+}
+.add-cart{
+	margin: auto;
+	text-align: center;
+	display: block;
+	width: 80%;
+	padding: 8px 8px;
+	text-decoration: none;
+	text-transform: uppercase;
+	background-color: #73D6E4;
+	font-size: 16px;
+	color:#FFFFFF;	
 }
 .product-name a:hover{
 	color:#73D6E4;
 }
-.product-detail:hover{
+.home-product:hover{
 	border: 1px solid #73D6E4;
 }
 /*end products*/
@@ -1046,9 +1087,9 @@ textarea{
 	}
 	/*End Category Index*/
 	/*Admin Category Index*/
-		.admin-content{
-			width: 100%;
-		}
+	.admin-content{
+		width: 100%;
+	}
 	/*End  Admin Category Index*/
 }
 /*======================840px Sreen End========================*/
@@ -1114,6 +1155,33 @@ textarea{
 	}
 	.product-detail{
 		width: 100%;
+	}
+	.home-category{
+		width: 100%;
+		float: left;
+		padding: 0px 0px 20px 0px;
+		margin-top: 20px;
+		margin-bottom: 35px;	
+		border:1px solid #DEDEDE;
+	}
+	.category-name{
+		background-color: grey;
+		width: 100%;
+		padding: 2px 0px;
+	}
+	.category-name a{
+		text-transform: uppercase;
+		font-size: 16px;
+		font-weight: normal;
+		color: #FFFFFF;
+		text-decoration: none;	
+	}
+	.category-name a:hover{
+		color: #73D6E4;
+	}
+	.category-product{
+		width: 100%;
+		float: left;
 	}
 	/*End Home Index*/
 	/*End Home info*/

@@ -18,7 +18,7 @@ class CategoryController{
 		$cate = CategoryModel::GetCate(-1);
 		$cateList = $cate->cateList;
 		$cateLimit = $cate->cateLimit;
-		require_once('../apps/views/admin/product/add-product.php');
+		require_once('../apps/views/admin/add-product.php');
 	}	
 		//Phân trang 
 	public static function GetCate(){
