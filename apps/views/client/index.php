@@ -8,15 +8,16 @@
 </section>
 <script>
 	$(document).ready(function(){
-		var pageLimit  =$('#pageLimit').val();
+		var pageLimit  =$('#pageLimit').val();//Lấy số trang sản phẩm
 		var page =1;
-		if(pageLimit>=2){
 			Home.Index(page,pageLimit);
+		
+		if(pageLimit>=2){//nếu số trang lớn hơn 1 thì hiện thị nút load more
 			$('.add-more-cate').css({
 				display: 'block'
 			});
 		}
-		$('#load-more').on('click',function(){
+		$('#load-more').on('click',function(){//xủ lý hiện thêm trang khi ấn vào phiến load more
 			page++;
 			Home.Index(page,pageLimit);
 			if(page==pageLimit){

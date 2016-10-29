@@ -38,9 +38,7 @@
 				<input type="file" id="<?=$img; ?>" name="<?=$img;?>" accept="image/*"  >
 				<?php } ?>
 			<label>Mô tả</label></br>
-			<input type="text" name="des" id="des" placeholder="Mô tả" required value="<?=$product['des']; ?>"></br>
-			<label>Chi Tiết</label></br>
-			<textarea name="detail"  id="detail" cols="100" rows="10" required value="<?=$product['detail']; ?>"></textarea></br>
+			<textarea name="des" rows="10"><?=$product['des']; ?></textarea>
 			<label>Giá tiền</label></br>
 			<input type="number" id ="price" name="price" placeholder="Giá tiền" required value="<?=$product['price']; ?>"></br>
 			<label>Số Lượng</label></br>

@@ -4,16 +4,14 @@
 		public $name;
 		public $num;
 		public $des;
-		public $detail;
 		public $price;
 		public $cateId;
 
-		function __construct($id=null,$name=null,$num=null,$des=null,$detail=null,$price=null,$cateId=null){
+		function __construct($id=null,$name=null,$num=null,$des=null,$price=null,$cateId=null){
 			$this->id = $id;
 			$this->name = $name;
 			$this->num = $num;
 			$this->des = $des;
-			$this->detail = $detail;
 			$this->price = $price;
 			$this->cateId = $cateId;
 		}
@@ -61,13 +59,13 @@
 			$db = Db::GetDb();
 			if($ProductModel->id==null){//them moi
 				$stmt = $db->prepare('insert into products
-						(id,name,num,price,cate_id,des,detail)
-						values(:id,:name,:num,:price,:cateId,:des,:detail)				
+						(id,name,num,price,cate_id,des)
+						values(:id,:name,:num,:price,:cateId,:des)				
 					');
 			}
 			else{
 				$stmt = $db->prepare('update products
-						set name = :name,num=:num,price=:price,detail=:detail,des=:des,cate_id=:cateId
+						set name = :name,num=:num,price=:price,des=:des,cate_id=:cateId
 						where id = :id				
 					');
 			}
@@ -77,7 +75,6 @@
 			$stmt->bindParam(':price',$ProductModel->price,PDO::PARAM_INT);
 			$stmt->bindParam(':cateId',$ProductModel->cateId,PDO::PARAM_INT);
 			$stmt->bindParam(':des',$ProductModel->des,PDO::PARAM_STR);
-			$stmt->bindParam(':detail',$ProductModel->detail,PDO::PARAM_STR);
 			if($stmt->execute()){
 				if($ProductModel->id==null){
 					return $db->lastInsertId();
@@ -129,7 +126,7 @@
 		public static function GetAll($id){
 			$db = Db::GetDb();
 			$stmt = $db->prepare('select p.id as id , p.name as name , p.price as price,
-									p.des as des,p.num, p.detail as detail, c.name as cateName ,c.id as cateId  from categories as c
+									p.des as des,p.num, c.name as cateName ,c.id as cateId  from categories as c
 									left join products as p 
 									on p.cate_id=c.id
 									where p.id = :id');

@@ -16,9 +16,8 @@ body{
 	width: 80%;
 	margin: auto;
 }
-img{
-	max-width:100%;
-	height: auto; 
+.img{
+	max-width: 100%;
 }
 @font-face {
 	font-family: 'Lora-Regular';
@@ -125,24 +124,29 @@ header{
 #menu a:hover{
 	color:#73B6E4;
 }
+
 .dropdown-menu{
+	max-height: 400px;
 	border-top:1px solid #DEDEDE;
 	display: none;
 	width: 100%;
 	background:#ffffff;
 	left: 0px;
+	margin-top: 30px;
 	position: absolute;
-	display:;
-	top:63px;
 	z-index: 100;
+	padding-top: 20px;
 }
+
 .dropdown-menu>li{
-	padding: 10px 0px 20px 20px;
+	float: left;
+	padding: 10px 20px 10px 20px;
 	list-style: none;
 	display: list-item;
 }
-.dropdown-menu li:first-child{
-	padding-top: 30px;
+.dropdown-menu>li>a{
+	text-decoration: none;
+	color: grey;
 }
 .dropdown-link{
 	text-decoration: none;
@@ -182,6 +186,7 @@ header{
 /*end navigation*/
 
 /*End Header*/
+/**/
 #product-page{
 
 	width: 100%;
@@ -201,6 +206,11 @@ header{
 	width: 100%;
 	float: left;
 }
+
+#zoomclass{
+	height: 380px;
+	width: 100%;
+}
 #zoom-array{
 	width: 100%;
 	float: left;
@@ -214,6 +224,10 @@ header{
 	width: 32.5%;
 	float: left;
 }
+.product-img img{
+	height: 120px;
+	max-width: 100%;
+}
 #product-info{
 	width: 50%;
 	float: right;
@@ -226,20 +240,25 @@ header{
 	float: left;
 }
 #product-price{
-	color:red;
+	color:grey;
 	margin-top: 20px;
 	width: 100%;
 	float: left;
 	text-align: left;
-	font-size: 20px;
+	font-size: 18px;
 }
 #product-review{
 	width: 100%;
 	float: left;
+	color: grey;
 	margin-top: 30px;
 	text-align: left;
 	font-size: 20px;
 	font-weight: normal;	
+}
+#cart-info{
+	width: 30%;
+	float: left;
 }
 #add-cart{
 	margin-top: 30px;
@@ -247,19 +266,8 @@ header{
 	float: left;
 	text-align: left;
 }
-.select{
-	width: 100%;
-	float: left;
-	margin-bottom: 10px;
-}
-.select label{
-	width: 20%;
-	float: left;
-}
-.select select{
-	background: #DEDEDE;
-	padding: 4px 0px;
-	width: 80%;
+#cart-info img{
+	max-width: 100%;
 }
 #Add{
 	display: block;	
@@ -269,10 +277,10 @@ header{
 #Add button{
 	border: 0px;	
 	padding: 10px 5px;
-	background: green;
+	background: #73D6E4;
 }
 #Add button:hover{
-	background: yellow;
+	background: grey;
 }
 #product-detail{
 	float: left;
@@ -318,6 +326,18 @@ header{
 	float: left;
 	margin-top: 40px;
 }
+.open-cate{
+	display: block;
+	padding:4px 0px;
+	width: 90%;
+	float: left;
+	text-align: right;
+	text-decoration: none;
+	color: grey;
+}
+.open-cate:hover{
+	color: #73D6E4
+}
 .add-more-cate button{
 	width: 40%;
 	margin:auto;
@@ -332,6 +352,14 @@ header{
 }
 .add-more-cate button:hover{
 	border: 1px solid #73D6E4;
+}
+.one-category{
+	width: 100%;
+	float: left;
+	padding-top: 100px;
+}
+.one-category .home-product{
+	margin-bottom: 20px;
 }
 /*Start USER*/
 .user-form{
@@ -382,6 +410,69 @@ header{
 	margin-top: 10px;
 	padding: 5px 0px;
 }
+
+.cart-list{
+	width:100%;
+	float: left;
+}
+.cart-detail{
+	border: 1px solid #DEDEDE;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 100%;
+	float: left;
+	padding: 20px 0px;
+}
+.cart-img{
+	height: 280px;
+	width: 20%;
+	float: left;
+}
+.cart-img img{
+	max-width: 100%;
+}
+.cart-info{
+	width: 60%;
+	float: right;
+}
+.cart-info label{
+	text-transform: uppercase;
+	font-weight: normal;
+	font-size: 16px;
+	color: grey;
+}
+.cart-info span{
+	text-transform: uppercase;
+	font-weight: normal;
+	font-size: 16px;
+}
+/*============================================*/
+/* ĐƠN HANG */
+.user{
+	width: 100%;
+	float: left;
+	margin-top: 20px;
+}
+.user h2{
+	width: 20%;
+	text-align: left;
+	font-size: 20px;
+	color: grey;
+}
+#password-change{
+	display: block;
+	width: 50%;
+	text-align: right;
+	font-size: 20px;
+	color: grey;
+	text-decoration: none;
+}
+.cart-list{
+	width: 100%;
+	float: left;
+	margin-top: 20px;
+}
+/*============================================*/
 /*///////////////////////////////////Admin form*/
 .admin-form{
 	float: left;
@@ -483,39 +574,7 @@ footer form a{
 	width: 100%;	
 	float: left;
 }
-#slide{
-	width: 100%;
-	float: left;
-}
 
-#slide:hover{
-	opacity: 0.8;
-}
-#slide-display{
-	width: 100%;
-	float: left;
-}
-#silde-display li{
-	-webkit-backface-visibility: hidden;
-	position: absolute;
-	display: none;
-	width: 100%;
-	left: 0;
-	top: 0;
-}
-#silde li:first-child {
-	position: relative;
-	display: block;
-	float: left;
-}
-#slide img {
-	display: block;
-	height: auto;
-	float: left;
-	width: 100%;
-	border: 0;
-}
-/*end-slide*/
 /*start products*/
 #products{
 	margin-top: 100px;
@@ -532,6 +591,13 @@ footer form a{
 	border: 1px solid #FFFFFF;
 	padding: 0px 0px 40px 0px;	
 }
+#product-add{
+	width: 30%;
+	float: left;
+}
+#product-add img{
+	max-width: 100%;
+}
 .product-detail{
 	margin:auto;
 	width: 80%;
@@ -539,6 +605,7 @@ footer form a{
 	padding: 0px 0px 0px 0px;
 }
 .img-product{
+	height: 220px;
 	text-align: center;	
 	float: left;
 	display: block;
@@ -580,6 +647,25 @@ footer form a{
 	background-color: #73D6E4;
 	font-size: 16px;
 	color:#FFFFFF;	
+	margin-top: 20px;
+	font-weight: normal;
+}
+.cart-action{
+	margin: auto;
+	text-align: center;
+	display: block;
+	width: 100%;
+	padding: 20px 8px;
+	text-decoration: none;
+	text-transform: uppercase;
+	background-color: #73D6E4;
+	font-size: 16px;
+	color:#FFFFFF;	
+	margin-top: 20px;
+	font-weight: normal;
+}
+.no-register{
+	background-color: red;
 }
 .product-name a:hover{
 	color:#73D6E4;
@@ -641,12 +727,16 @@ footer form a{
 	padding: 10px 10px;
 }
 .category-dir a{
+	text-transform: uppercase;
+	font-weight: normal;
 	text-decoration: none;
 	font-family: 'Lora-Regular';
 	font-size: 14px;
 	color: #000;
 }
 .category-dir span{
+	text-transform: uppercase;
+	font-weight: normal;
 	font-family: 'Lora-Regular';
 	color: grey;
 	font-size: 14px;
@@ -666,7 +756,6 @@ footer form a{
 }
 .sidebar{
 	margin-top: 80px;
-	padding-left: 25px;
 	width: 20%;
 	float: right;	
 }
@@ -675,7 +764,7 @@ footer form a{
 	float: left;
 	border: 1px solid #DEDEDE;
 }
-.sidebar-content h1{
+.sidebar-content h4{
 	width: 96%;
 	float: left;
 	padding: 5px 0px 5px 10px;
@@ -684,8 +773,9 @@ footer form a{
 	font-weight: normal;
 	background: #ECECEC;
 }
+
 .sidebar-content>li{
-	padding: 5px 0px 10px 10px;
+	padding: 5px 0px 10px 0px;
 	width: 100%;
 	float: left;
 	list-style: none;
@@ -896,6 +986,10 @@ textarea{
 }
 .product-option img{
 	max-width: 30%;
+	float: left;
+}
+#cart-form{
+	width: 70%;
 	float: left;
 }
 /*End-Admin*/
@@ -1117,6 +1211,9 @@ textarea{
 		width: 100%;
 		float: left;
 	}
+	.dropdown-menu>li{
+		float: none;
+	}
 	#responsive-menu{
 		width: 100%;
 		float: left;
@@ -1216,6 +1313,19 @@ textarea{
 	.pagination li{
 		padding: 4px 4px;
 	}
+	.cart-img{
+		width: 100%;
+		float: left;
+		text-align: center;
+		height: auto;
+	}
+	.cart-info{
+		width: 100%;
+	}
+	.cart-info label span{
+		font-size: 16px;
+	}
+
 } 
 
 /*======================480px Screen end=======================*/

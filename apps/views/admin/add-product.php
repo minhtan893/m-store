@@ -32,9 +32,7 @@
 		<?php }
 		?>
 		<label>Mô tả</label></br>
-		<input type="text" name="des" id="des" placeholder="Mô tả" required ></br>
-		<label>Chi Tiết</label></br>
-		<textarea name="detail"  id="detail" cols="100" rows="10" required></textarea></br>
+		<textarea name="des"  id="des" cols="100" rows="10" required></textarea></br>
 		<label>Giá tiền</label></br>
 		<input type="number" id ="price" name="price" placeholder="Giá tiền" required></br>
 		<label>Số Lượng</label></br>

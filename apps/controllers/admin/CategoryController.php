@@ -99,10 +99,10 @@ class CategoryController{
 				$productLimit = self::ProductLimit($cate['id']);
 				//Trả về số trang sản phẩm
 				if($productLimit % 8==0){
-					$prodcutPage = $productLimit/8;
+					$productPage = $productLimit/8;
 				}
 				else{
-					$productPage = (int)($productLimit/8);
+					$productPage = (int)$productLimit/8;
 					$productPage++;
 				}
 				$_SESSION['Cate'] = $cateName;

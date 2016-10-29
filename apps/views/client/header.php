@@ -6,8 +6,8 @@
 			<section class="user-action">
 				<?php 
 				if(isset($_SESSION['userName'])) { ?>
-					<a href="User/Name" class="user-action-link"><?php echo $_SESSION['userName'];?></a>
-					<a href="User/SignOut" class="user-action-link">Đăng Xuất</a>			
+				<a href="User/Id/<?=$_SESSION['userId']; ?>" class="user-action-link"><?php echo $_SESSION['userName'];?></a>
+				<a href="User/SignOut" class="user-action-link">Đăng Xuất</a>			
 				<?php }
 				else{ ?>
 				<a href="User/Login" class="user-action-link">Đăng nhập</a>
@@ -33,8 +33,19 @@
 			<nav>
 				<button id="responsive-menu">Menu</button>
 				<ul id="menu">
-					<li><a href="#" class="active-menu menu-link">Home</a></li>
-					<li><a href="#" class="menu-link">Danh mục</a></li>
+					<li><a href="./" class="active-menu menu-link">Home</a></li>
+					<li><a href="javascript:void(0)" class="menu-link navr">Danh mục</a>
+						<ul class="dropdown-menu">
+							<?php 
+							require_once("./apps/models/client/CategoryModel.php");
+							require_once("./apps/controllers/client/CategoryController.php");
+								$cateList = CategoryController::GetCateMenu();
+							foreach ($cateList as $key ) { ?>
+								<li><a href="Category/Name/<?=$key['name'];?>"><?=$key['name']; ?></a></li>
+							<?php }
+							?>
+						</ul>
+					</li>
 					<li><a href="#" class="menu-link">Contact</a></li>
 				</ul>
 				

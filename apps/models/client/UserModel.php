@@ -18,13 +18,13 @@
 		//Kiểm tra tài khoản Login
 		public static function CheckUser($UserModel){
 			$db = Db::GetDb();
-			$stmt = $db->prepare('select id,password ,username from users
+			$stmt = $db->prepare('select id,password ,username ,level from users
 									where email = :email ');
 			$stmt->bindParam(':email',$UserModel->email, PDO::PARAM_STR);
 			$stmt->execute();
 			$rs = $stmt->fetch();
 			if($stmt->rowCount()>0){
-				return new UserModel($rs['id'],$rs['username'],null,$rs['password'],null);
+				return new UserModel($rs['id'],$rs['username'],null,$rs['password'],$rs['level']);
 			}
 			else {
 				return false;
@@ -82,5 +82,6 @@
 				return false;
 			}
 		}
+
 	}
 ?>

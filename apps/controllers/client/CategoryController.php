@@ -36,5 +36,25 @@
 				echo json_encode($cate);	
 			}
 		}
+		//Lấy dữ liệu để show menu
+		public static function GetCateMenu(){
+			 return CategoryModel::GetAllName();
+		}
+
+		//Show dữ liệu một danh mục
+		public static function Name($name){
+			//kiểm trâ name có tồn tại không
+			$check = CategoryModel::CheckName($name);
+			if($check!=false){
+				$id = $check['id'];
+				//Lấy số trang sản phẩm
+				$pageLimit = Call('Product','GetLimit',$id);
+				//Gọi view hiển thị
+				require_once('./apps/views/client/onecate.php');
+			}
+			else{
+				Call("Home","Index");
+			}
+		}
 	}
 ?>

@@ -79,6 +79,7 @@
 			
 			$thumbFileType = pathinfo($_FILES['thumb']['name'],PATHINFO_EXTENSION);
 			$_FILES['thumb']['name'] = $productId."-thumb.".$thumbFileType;
+		
 			move_uploaded_file($_FILES['thumb']['tmp_name'],$folderThumb.$_FILES['thumb']['name']);	
 			}
 			

@@ -3,7 +3,7 @@
 		<section class="admin-cate">
 			<h2><?=$cateName;?></h2>
 			<input id = "cateId" type="hidden" value='<?=$cate['id'];?>'>
-			<input id = "proPage" type="hidden" value='<?=$productPage;?>'>
+			<input id = "proPage" type="hidden" value='<?=(int)($productPage);?>'>
 			<h5>tổng số : <?=$productLimit; ?></h5>
 			<a href="admin/Product/Add" class="AddProduct">Thêm sản phẩm</a>
 			<table class='admin-table'>
@@ -36,6 +36,8 @@
 	$(document).ready(function(){
 		var cateId = $('#cateId').val();
 		var productLimit = $('#proPage').val();
+		console.log(cateId);
+		console.log(productLimit);
 		Category.ProductLimit(productLimit);
 		Category.GetProduct(cateId);
 

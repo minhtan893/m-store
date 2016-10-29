@@ -3,7 +3,7 @@
 
 		//Lấy ra số lượng sản phẩm
 		public static function GetLimitByCate($cateId){
-			$product = new ProductModel(null,null,null,null,null,null,$cateId);
+			$product = new ProductModel(null,null,null,null,null,$cateId);
 			$productLimit = ProductModel::GetCount($product);
 			return $productLimit;
 		}
@@ -52,7 +52,6 @@
 				$name = $_POST['name'];
 				$des = $_POST['des'];
 				$num = $_POST['num'];
-				$detail = $_POST['detail'];
 				$price = $_POST['price'];
 				$cateId = $_POST['cateId'];
 				if(isset($_POST['id'])){
@@ -60,7 +59,7 @@
 				}
 				//Kiểm tra 
 					//session_destroy($_SESSION['form-error']);
-					$product = new ProductModel($id,$name,$num,$des,$detail,$price,$cateId);
+					$product = new ProductModel($id,$name,$num,$des,$price,$cateId);
 					$productId = $product->Save($product);
 						//lưu ảnh
 					if($id!=null){//update

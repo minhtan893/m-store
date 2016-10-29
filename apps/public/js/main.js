@@ -16,6 +16,9 @@ window.Menu = {
 			$('a',this).removeClass('#menu-link').addClass('active-menu');
 			$(this).siblings('li').children('a').removeClass('active-menu').addClass('Home-Nav-Link');
 		});
+		$('.navr').on('click',function(){
+			$('.dropdown-menu').stop().slideToggle();
+		})
 	}
 };
 /////////////////////////////////////////////////////////////////////////////////////////////
