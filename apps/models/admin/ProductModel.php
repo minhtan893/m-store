@@ -148,6 +148,64 @@
 				return false;
 			}
 		}
-		//
+		//Lấy ra tên danh mục và tên sản phẩm
+		public static function GetCart($productId){
+			$db = Db::GetDb();
+			$stmt = $db->prepare('select p.name as name, c.name as cateName from categories as c
+									left join products as p 
+									on p.cate_id=c.id
+									where p.id = :id');
+			$stmt->bindParam(':id',$productId,PDO::PARAM_INT);
+			$stmt->execute();
+			return $stmt->fetch();
+		}
+
+			//search
+	public static function Search($cateId=null,$query){
+		$db = Db::GetDb();
+		if($cateId==null){
+			$stmt = $db->prepare('select id from products
+									where name like :query');
+			$stmt->bindParam(":query",$query,PDO::PARAM_STR);
+			$stmt->execute();
+			if($stmt->rowCount()>0){
+				return $stmt->fetchAll();
+			}
+			else{
+				return null;
+			}
+		}
+		else{
+			$stmt = $db->prepare('select id from products
+									where cate_id=:cateId and name like :query ');
+			$stmt->bindParam(":cateId",$cateId,PDO::PARAM_INT);
+			$stmt->bindParam(":query",$query,PDO::PARAM_STR);
+			$stmt->execute();
+			if($stmt->rowCount()>0){
+				return $stmt->fetch();
+			}
+			else{
+				return null;
+			}
+		}
+	}
+
+
+	//GEt name
+	public static function GetResult($id){
+		$db = Db::GetDb();
+			$stmt = $db->prepare('select p.name as name , c.name as cateName from products as p
+									inner join categories as c
+									on p.cate_id = c.id
+									where p.id =:id');
+			$stmt->bindParam(":id",$id,PDO::PARAM_STR);
+			$stmt->execute();
+			if($stmt->rowCount()>0){
+				return $stmt->fetch();
+			}
+			else{
+				return null;
+			}
+	}
 	}
 ?>

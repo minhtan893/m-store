@@ -41,20 +41,20 @@
 							require_once("./apps/controllers/client/CategoryController.php");
 								$cateList = CategoryController::GetCateMenu();
 							foreach ($cateList as $key ) { ?>
-								<li><a href="Category/Name/<?=$key['name'];?>"><?=$key['name']; ?></a></li>
+								<li><a href="Category/Id/<?=$key['id'];?>"><?=$key['name']; ?></a></li>
 							<?php }
 							?>
 						</ul>
 					</li>
-					<li><a href="#" class="menu-link">Contact</a></li>
+					<li><a href="Contact/Index" class="menu-link">Contact</a></li>
 				</ul>
 				
 			</nav>
 			<!--end-nav-->
 			<section id="search-bar">
-				<form action="#">
-					<input type="text" placeholder="Search" id="search-bar-text" />
-					<a href="#" id="search-bar-button"><img src="apps/public/images/search.png" alt=""></a>
+				<form action="Search/Query" method="POST" class="search-form">
+					<input type="text" placeholder="Search" id="search-bar-text" name="query"/>
+					<button id="search-bar-button" type="submit"><img src="apps/public/images/search.png" alt=""></button>
 				</form>
 			</section>
 			<section class="container">

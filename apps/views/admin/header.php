@@ -35,16 +35,16 @@
 				<ul id="menu">
 					<li><a href="http://localhost/m-store/admin" class="active-menu menu-link">Home</a></li>
 					<li><a href="admin/Category" class="menu-link">Danh mục</a></li>
-					<li><a href="admin/Products" class="menu-link">Giỏ hàng</a></li>
+					<li><a href="admin/Cart" class="menu-link">Giỏ hàng</a></li>
 					<li><a href="admin/Contact" class="menu-link">Contact</a></li>
 				</ul>
 				
 			</nav>
 			<!--end-nav-->
 			<section id="search-bar">
-				<form action="#">
-					<input type="text" placeholder="Search" id="search-bar-text" />
-					<a href="#" id="search-bar-button"><img src="apps/public/images/search.png" alt=""></a>
+				<form action="admin/Search/Query" method="post">
+					<input type="text" placeholder="Search" id="search-bar-text" name="query"/>
+					<button id="search-bar-button" type="submit"><img src="apps/public/images/search.png" alt=""></button>
 				</form>
 			</section>
 			<section class="container">

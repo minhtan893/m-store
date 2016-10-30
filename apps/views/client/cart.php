@@ -4,15 +4,14 @@
 					<a href="" class="img-product">
 					<img src="./apps/public/upload/thumb/<?=$product[14]['url']; ?>" alt="">
 					</a>
-					<p class="price">2000<span>$</span></p>
-					<p class="product-name"><a href="#">
-						rolex daytona
-					</a></p>
+					<p class="product-name"><?=$product[2]; ?></p>
+					<p class="price"><?=$product[4]; ?><span> $</span></p>
 				</article>
 		</section>
 
 		<section id="cart-form">
 			<form action="Cart/Buy" class='user-form' method="POST">
+					<input type="hidden" value="<?=$product[4]; ?>" id="price" name="price">
 			<input type="hidden" value="<?=$productId; ?>" name="productId">
 				<h1>Khách hàng</h1>
 				<label>Họ Tên</label><br/>

@@ -44,11 +44,11 @@ class CategoryModel{
 		}
 	}
 	//Lấy ra 1 danh mục
-	public static function GetOne($cateName){
+	public static function GetOne($cateId){
 		$db = Db::GetDb();
-		$stmt= $db->prepare('select id  from categories
-							where name=:cateName');
-		$stmt->bindParam(':cateName',$cateName,PDO::PARAM_STR);
+		$stmt= $db->prepare('select id ,name  from categories
+							where id =:cateId');
+		$stmt->bindParam(':cateId',$cateId,PDO::PARAM_STR);
 		$stmt->execute();
 		if($stmt->rowCount()>0){
 			return $stmt->fetch();
@@ -78,6 +78,12 @@ class CategoryModel{
 		if($cateId==null){//thực hiện thêm mới
 			$stmt = $db->prepare('insert into categories (name) values(:cateName)');
 			$stmt->bindParam(':cateName',$cateName,PDO::PARAM_STR);
+			if($stmt->execute()){
+			return $db->lastInsertId();
+		}
+		else{
+			print_r($db->errorInfo()) ;
+		}
 		}
 		else{//update
 			$stmt= $db->prepare('update  categories
@@ -85,13 +91,14 @@ class CategoryModel{
 							where id=:cateId');
 		$stmt->bindParam(':cateName',$cateName,PDO::PARAM_STR);
 		$stmt->bindParam(':cateId',$cateId,PDO::PARAM_INT);
-		}
 		if($stmt->execute()){
 			return true;
 		}
 		else{
 			print_r($db->errorInfo()) ;
 		}
+		}
+		
 	}
 	//Kiểm trâ Id
 
@@ -118,5 +125,35 @@ class CategoryModel{
 				return true;
 			}
 		}
+
+		//search
+	public static function Search($query){
+		$db = Db::GetDb();
+			$stmt = $db->prepare('select id from categories
+									where name like :query');
+			$stmt->bindParam(":query",$query,PDO::PARAM_STR);
+			$stmt->execute();
+			if($stmt->rowCount()>0){
+				return $stmt->fetch();
+			}
+			else{
+				return null;
+			}
+	}
+
+	//GEt name
+	public static function GetName($id){
+		$db = Db::GetDb();
+			$stmt = $db->prepare('select name from categories
+									where id =:id');
+			$stmt->bindParam(":id",$id,PDO::PARAM_STR);
+			$stmt->execute();
+			if($stmt->rowCount()>0){
+				return $stmt->fetch();
+			}
+			else{
+				return null;
+			}
+	}
 }
 ?>

@@ -13,6 +13,10 @@ function Call($ctr, $act ,$act1=null){
 	require_once("./apps/controllers/client/UserController.php");	
 	require_once("./apps/models/client/CartModel.php");
 	require_once("./apps/controllers/client/CartController.php");
+	require_once("./apps/models/client/ContactModel.php");
+	require_once("./apps/controllers/client/ContactController.php");
+	require_once("./apps/models/client/SearchModel.php");
+	require_once("./apps/controllers/client/SearchController.php");
 	$class = $ctr.'Controller';
 	if($act1!=null){
 		return $tmp = $class::$act($act1);
@@ -27,9 +31,11 @@ function Call($ctr, $act ,$act1=null){
 $listCtr = [
 	"Home" => ["Index", "NotFound"],
 	"User" => ["Login", "Register","SignOut","EmailExist","AddNew","CartLogin","Id"],
-	"Category"=>["GetPageLimit","GetHomeCate","GetCateMenu","Name"],
+	"Category"=>["GetPageLimit","GetHomeCate","GetCateMenu","Id"],
 	"Product"=>['GetLimit',"GetOneCate","Id","GetSame","Cart","UpdateNum"],
-	"Cart"=>['Id',"Login","Buy","CartNoRegister","BuySuccess","GetCart","Del"]
+	"Cart"=>['Id',"Login","Buy","CartNoRegister","BuySuccess","GetCart","Del"],
+	"Contact"=>['Index'],
+	"Search"=>['Query',"Result"]
 ];
 
 // Loc thong tin tu bien $ctr, $action khoi tao tai index.php

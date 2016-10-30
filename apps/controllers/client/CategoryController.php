@@ -42,9 +42,9 @@
 		}
 
 		//Show dữ liệu một danh mục
-		public static function Name($name){
+		public static function Id($id){
 			//kiểm trâ name có tồn tại không
-			$check = CategoryModel::CheckName($name);
+			$check = CategoryModel::CheckName($id);
 			if($check!=false){
 				$id = $check['id'];
 				//Lấy số trang sản phẩm
@@ -56,5 +56,22 @@
 				Call("Home","Index");
 			}
 		}
+
+		//search
+	public static function Search($query){
+		$id = CategoryModel::Search($query);
+		if($id!=null){
+			return $id['id'];
+		}
+		else{P
+			return null;
+		}
+	}
+
+	//GEt name
+	public static function GetName($id){
+		$name = CategoryModel::GetName($id);
+		return $name;
+	}
 	}
 ?>

@@ -2,38 +2,32 @@
 	class CartModel{
 		public $id;
 		public $customer;
-		public $city;
-		public $district;
-		public $town;
-		public $home;
+		public $address;
+		public $price;
 		public $num;
 		public $productId;
 		public $userId;
 
-		function __construct($id=null,$customer=null,$city=null,$district=null,$town=null,$home=null,$num=null,$productId=null,$userId=null){
+		function __construct($id=null,$customer=null,$address=null,$price=null,$num=null,$productId=null,$userId=null){
 			$this->id = $id;
 			$this->customer = $customer;
-			$this->city = $city;
-			$this->district = $district;
-			$this->town = $town;
-			$this->home = $home;
+			$this->address = $address;
+			$this->price = $price;
 			$this->num = $num;
 			$this->productId = $productId;
 			$this->userId = $userId;
+			$this->productId = $productId;
 		}
 
 		//Lưu Đơn hàng
 		public function Save($CartModel){
 			$db =Db::GetDb();
-			$date = date('Y:m:d');
 			$stmt = $db->prepare('insert into carts
-									(customer_name,city,district,town,home,num,product_id,user_id,time) 
-									values(:customer,:city,:district,:town,:home,:num,:productId,:userId,now())');
+									(customer_name,address,price,num,product_id,user_id,time) 
+									values(:customer,:address,:price,:num,:productId,:userId,now())');
 			$stmt->bindParam(':customer',$CartModel->customer,PDO::PARAM_STR);
-			$stmt->bindParam(':city',$CartModel->city,PDO::PARAM_STR);
-			$stmt->bindParam(':district',$CartModel->district,PDO::PARAM_STR);
-			$stmt->bindParam(':town',$CartModel->town,PDO::PARAM_STR);
-			$stmt->bindParam(':home',$CartModel->home,PDO::PARAM_STR);
+			$stmt->bindParam(':address',$CartModel->address,PDO::PARAM_STR);
+			$stmt->bindParam(':price',$CartModel->price,PDO::PARAM_INT);
 			$stmt->bindParam(':num',$CartModel->num,PDO::PARAM_INT);
 			$stmt->bindParam(':productId',$CartModel->productId,PDO::PARAM_INT);
 			$stmt->bindParam(':userId',$CartModel->userId,PDO::PARAM_INT);
@@ -45,7 +39,7 @@
 		//Lấy ra tổng số đơn hàng của 1 khách hàng
 		public function GetLimit($CartModel){
 			$db = Db::GetDb();
-			$stmt=$db->prepare('select id from carts	where user_id =:userId');
+			$stmt=$db->prepare('select id from carts where user_id =:userId');
 			$stmt->bindParam(':userId',$CartModel->userId,PDO::PARAM_INT);
 			$stmt->execute();
 			return $stmt->rowCount();
@@ -54,7 +48,8 @@
 		//Lấy ra  đơn hàng của 1 khách hàng
 		public function GetCart($CartModel,$page){
 			$db = Db::GetDb();
-			$stmt=$db->prepare('select id,customer_name ,product_id,num ,district,city,town,home,time ,status from carts where user_id =:userId');
+			$stmt=$db->prepare('select id,customer_name ,product_id,num ,price,address,time ,status 
+				from carts where user_id =:userId');
 			$stmt->bindParam(':userId',$CartModel->userId,PDO::PARAM_INT);
 			$stmt->execute();
 			return array_values($stmt->fetchAll());

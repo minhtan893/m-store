@@ -221,9 +221,9 @@ window.Category={
 		function CateAction(){
 			//Gọi link đến từng category
 			$('.admin-cate-name').on('click',function(){
-				var cateName = $(this).text();
-				var url = 'http://localhost/m-store/admin/Category/Name/';
-				url +=cateName; 
+				var cateId = $(this).attr('cateId');
+				var url = 'http://localhost/m-store/admin/Category/Id/';
+				url +=cateId; 
 				window.location.href=url;
 			});
 			//Xóa Categories
@@ -295,9 +295,17 @@ window.Category={
 				if(rs['status']==false){
 					$('#cateName-error').text('Đã xảy ra lỗi, mời nhập lại!');
 				}else{
-					var url ="http://localhost/m-store/admin/Category/Name/";
-					url+= cateName;
+					if(rs['status']==false){
+						if(rs['status']==true)
+					var url ="http://localhost/m-store/admin/Category/Id/";
+					url+= cateId;
 					window.location.href= url;
+					}
+					else{
+					var url ="http://localhost/m-store/admin/Category/Id/";
+					url+= rs['status'];
+					window.location.href= url;
+					}
 				}
 			}
 		});
@@ -544,7 +552,7 @@ window.Category={
 //Xử Lý phần PRODUCT
 window.Product={
 
-	AddProduct: function(data,cateName){
+	AddProduct: function(data,cateName,cateId){
 		$.ajax({
 				url : 'http://localhost/m-store/admin/Product/Check',
 				type : 'POST',
@@ -569,7 +577,7 @@ window.Product={
 							processData:false,
 							success : function(rs){
 								if(rs['status']==true){
-									var url = 'http://localhost/m-store/admin/Category/Name/'+cateName;
+									var url = 'http://localhost/m-store/admin/Category/Id/'+cateId;
 									window.location.href=url;
 								}
 								else{
@@ -651,7 +659,11 @@ window.Product={
 		}
 		
 	},
-}
+};
 
 //////////////////////////////////////////////////////////////////////////////////////////////
+//Xử lý trang CATEGORY
+
+	//Lưu Danh mục/////////////////////////
+	
 })

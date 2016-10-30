@@ -1,7 +1,7 @@
 <section class="container">
 	<section class="category-dir">
 		<a href="#">Home/</a>
-		<span><a href="Category/Name/<?=$product[10]; ?>"><?=$product[10];?> </a></span>
+		<span><a href="Category/Id/<?=$product[12]; ?>"><?=$product[10];?> </a></span>
 		<span>/<?=$product[3];?></span>
 	</section>	
 	<input type="hidden" id='cateId' value='<?=$product[12]; ?>'>

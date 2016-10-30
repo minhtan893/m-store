@@ -22,8 +22,9 @@ Home = {
 	},
 		//Đổ dữ liệu ra html danh mục
 		ShowCate : function(cate){
+			console.log(cate);
 			var html = "<section class='home-category'>";
-			html+="<h2 class='category-name'><a href='#''>";
+			html+="<h2 class='category-name'><a href='#'>";
 			html+=cate[1];
 			html+="</a></h2>";
 			html+="<section class='category-product'>";
@@ -33,17 +34,18 @@ Home = {
 				html+="<article class='product-detail'>";
 				html+="<img class='img-product' src='apps/public/upload/thumb/";
 				html+=cate[2][j][3]+"'></a>";
+				html+="<p class='product-name'>";
+				html+=cate[2][j][1];
+				html+="</p>";
 				html+="<p class='price'>";
 				html+=cate[2][j][2];
 				html+="<span>$</span></p>";
-				html+="<p class='product-name'>";
-				html+=cate[2][j][1];
-				html+="</p><section class='cart'><a href='Product/Id/"+cate[2][j][0]+"' class='add-cart'>mua</a></section>";
+				html+="<section class='cart'><a href='Product/Id/"+cate[2][j][0]+"' class='add-cart'>mua</a></section>";
 				html+="</article>";
 				html+="</section>";
 			}
-			html+="<a class='open-cate' href ='Category/Name/";
-			html+=cate[1]+"'>Xem Thêm</a>";	
+			html+="<a class='open-cate' href ='Category/Id/";
+			html+=cate[0]+"'>Xem Thêm</a>";	
 			html+="</section>";
 			$('.home-index').append(html);	
 		},
@@ -165,16 +167,16 @@ User={
 			var html="";
 			html+="<article class='cart-detail'>";
 			html+="<img class='cart-img' src='apps/public/upload/thumb/";
-			html+=cartList[10][14]+"'></a>";
+			html+=cartList[8][14]+"'></a>";
 			html+="<section class='cart-info'>";
 			html+="<label>Tên sản phẩm:</label><span>";
-			html+=cartList[10][2];
+			html+=cartList[8][10]+" "+cartList[8][2];
 			html+="</span><br/>";
-			html+="<label>Giá:&#36; </label><span>";
-			html+=cartList[10][4];
+			html+="<label>Tổng tiền:&#36; </label><span>";
+			html+=cartList[4];
 			html+="</span><br/>";
 			html+="<label>Mua lúc:  </label><span>";
-			html+=cartList[8];
+			html+=cartList[6];
 			html+="</span><br/>";
 			html+="<label>Số lượng:  </label><span>";
 			html+=cartList[3];
@@ -182,11 +184,11 @@ User={
 			html+="<label>Tên người mua:  </label><span>";
 			html+=cartList[1];
 			html+="</span><br/>";
-			html+="<label>Địa chỉ::  </label><span>";
-			html+=cartList[7]+"-"+cartList[6]+"-"+cartList[4]+"-"+cartList[5];
+			html+="<label>Địa chỉ:  </label><span>";
+			html+=cartList[5];
 			html+="</span><br/>";
 			html+="<label>Trạng thái:  </label><span>";
-			if(cartList[9]!=0){
+			if(cartList[7]!=0){
 				html+="Đã giao";
 			}
 			else{

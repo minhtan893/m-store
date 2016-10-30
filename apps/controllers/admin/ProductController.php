@@ -1,15 +1,15 @@
 <?php
-	class ProductController{
+class ProductController{
 
 		//Lấy ra số lượng sản phẩm
-		public static function GetLimitByCate($cateId){
-			$product = new ProductModel(null,null,null,null,null,$cateId);
-			$productLimit = ProductModel::GetCount($product);
-			return $productLimit;
-		}
+	public static function GetLimitByCate($cateId){
+		$product = new ProductModel(null,null,null,null,null,$cateId);
+		$productLimit = ProductModel::GetCount($product);
+		return $productLimit;
+	}
 
 		//Lấy ra tất cả sản phẩm trong 1 danh mục
-		public static function GetProduct(){
+	public static function GetProduct(){
 			if(isset($_POST['productPage']) && isset($_POST['cateId'])){//Kiểm tra biến post gửi bằng ajax để lây số trang
 				$productPage = $_POST['productPage'];
 				$cateId = $_POST['cateId'];
@@ -48,39 +48,39 @@
 		//Lưu SẢn phẩm
 		public static function Save(){
 			//Lưu thông tin sản phẩm
-				$id = null;
-				$name = $_POST['name'];
-				$des = $_POST['des'];
-				$num = $_POST['num'];
-				$price = $_POST['price'];
-				$cateId = $_POST['cateId'];
-				if(isset($_POST['id'])){
-					$id = $_POST['id'];
-				}
+			$id = null;
+			$name = $_POST['name'];
+			$des = $_POST['des'];
+			$num = $_POST['num'];
+			$price = $_POST['price'];
+			$cateId = $_POST['cateId'];
+			if(isset($_POST['id'])){
+				$id = $_POST['id'];
+			}
 				//Kiểm tra 
 					//session_destroy($_SESSION['form-error']);
-					$product = new ProductModel($id,$name,$num,$des,$price,$cateId);
-					$productId = $product->Save($product);
+			$product = new ProductModel($id,$name,$num,$des,$price,$cateId);
+			$productId = $product->Save($product);
 						//lưu ảnh
 					if($id!=null){//update
-							ImageController::Update($id);
-							echo json_encode(['status'=>true]);
+						ImageController::Update($id);
+						echo json_encode(['status'=>true]);
 
-						}
-						else{
-							if($upload = ImageController::Upload((int)$productId)){
+					}
+					else{
+						if($upload = ImageController::Upload((int)$productId)){
 							echo json_encode(['status'=>true]);
 						}	
 						else{
-						echo json_encode(['status'=>false]);
-					}
+							echo json_encode(['status'=>false]);
 						}
-		
+					}
+					
 					
 
 				}
 		//Xóa Sản phẩm theo danh muc
-		public static function Del($cateId){
+				public static function Del($cateId){
 					//Lấy danh sách các sản phẩm trong danh mục
 					$idList = ProductModel::GetId($cateId);
 					//duyệt qua từng Id xóa ảnh
@@ -91,35 +91,35 @@
 					if(ProductModel::Del($cateId)){
 						return true;
 					}
-		}
+				}
 
 		//Xóa một sản phẩm
-		public static function DelOne(){
-			if(isset($_POST['id'])){
-				$id = $_POST['id'];
+				public static function DelOne(){
+					if(isset($_POST['id'])){
+						$id = $_POST['id'];
 				//Kiểm tra id sản phẩm có tồn tại hay không
-			if(ProductModel::IdExist($id)){
+						if(ProductModel::IdExist($id)){
 				//Nếu tồn tại
-				if(ImageController::Del($id)){
-					if(ProductModel::DelOne($id)){
-						echo json_encode(['status'=>true]);
-					}
-					else{
-						echo json_encode(['status'=>false]);
+							if(ImageController::Del($id)){
+								if(ProductModel::DelOne($id)){
+									echo json_encode(['status'=>true]);
+								}
+								else{
+									echo json_encode(['status'=>false]);
+								}
+							}
+							else{
+								echo json_encode(['status'=>false]);
+							}				
+						}
+						else{
+							echo json_encode(['status'=>false]);
+						}
 					}
 				}
-				else{
-					echo json_encode(['status'=>false]);
-				}				
-			}
-			else{
-				echo json_encode(['status'=>false]);
-				}
-			}
-		}
 
 		//Cập nhật sản phẩm
-		public static function Update($id){
+				public static function Update($id){
 					if(isset($id)){
 						//kIểm tra id có tồn tại không
 						if(ProductModel::IdExist($id)){
@@ -132,6 +132,31 @@
 							header('location: http://localhost/m-store/admin');
 						}
 					}
-		}
-		}
-?>
+				}
+        //Lấy ra tên sản phẩm và tên danh mục
+				public static function GetCart($productId){
+					$product = array_values(ProductModel::GetCart($productId));
+					return $product;
+				}
+
+        //search
+				public static function Search($cateId=null,$query){
+					$id = ProductModel::Search($cateId,$query);
+					if($id!=null){
+						return $id;
+					}
+					else{
+						return null;
+					}
+				}
+
+	//GEtName
+	//GEt name
+				public static function GetName($id){
+					$product =  array_values(ProductModel::GetResult($id));
+					$image = ImageController::Show($id,1);
+					array_push($product, $image);
+					return $product;
+				}
+			}
+			?>

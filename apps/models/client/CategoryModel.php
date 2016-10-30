@@ -27,11 +27,11 @@
 			return $stmt->fetchAll();
 		}
 		//kiểm trâ id có tồn tại không
-		public static function CheckName($name){
+		public static function CheckName($id){
 			$db = Db::GetDb();
 			$stmt = $db->prepare('select id ,name from categories 
-								where name= :name');
-			$stmt->bindParam(':name',$name,PDO::PARAM_STR);
+								where id= :id');
+			$stmt->bindParam(':id',$id,PDO::PARAM_STR);
 			$stmt->execute();
 			if($stmt->rowCount()>0){
 				return $stmt->fetch();
@@ -40,5 +40,34 @@
 				return false;
 			}
 		}
+	//search
+	public static function Search($query){
+		$db = Db::GetDb();
+			$stmt = $db->prepare('select id from categories
+									where name like :query');
+			$stmt->bindParam(":query",$query,PDO::PARAM_STR);
+			$stmt->execute();
+			if($stmt->rowCount()>0){
+				return $stmt->fetch();
+			}
+			else{
+				return null;
+			}
+	}
+
+	//GEt name
+	public static function GetName($id){
+		$db = Db::GetDb();
+			$stmt = $db->prepare('select name from categories
+									where id =:id');
+			$stmt->bindParam(":id",$id,PDO::PARAM_STR);
+			$stmt->execute();
+			if($stmt->rowCount()>0){
+				return $stmt->fetch();
+			}
+			else{
+				return null;
+			}
+	}
 	}
 ?>

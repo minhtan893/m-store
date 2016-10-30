@@ -14,19 +14,21 @@
 
 		//Lưu giỏ hàng
 		public static function Buy(){
-			if(isset($_POST['customer']) && isset($_POST['city']) && isset($_POST['district']) && isset($_POST['town']) && isset($_POST['home']) ){
-				$user = null;
+			if(isset($_POST['customer']) && isset($_POST['city']) && isset($_POST['district']) && isset($_POST['town']) && isset($_POST['home']) && isset($_POST['price'])){
+				$userId = null;
 				$customer = $_POST['customer'];
 				$city = $_POST['city'];
 				$district = $_POST['district'];
 				$town = $_POST['town'];
 				$home = $_POST['home'];
+				$address = $home.'-'.$town."-".$district."-".$city;
 				$productId = $_POST['productId'];
 				$num = $_POST['num'];
+				$price= $num * $_POST['price'];
 				if(isset($_SESSION['userId'])){
-					$user = $_SESSION['userId'];
+					$userId = $_SESSION['userId'];
 				}
-				$cart = new CartModel(null,$customer,$city,$district,$town,$home,$num,$productId,$user);
+				$cart = new CartModel(null,$customer,$address,$price,$num,$productId,$userId);
 				if($cart->Save($cart)){
 					//Cập nhật số lượng trong bảng product
 					ProductController::UpdateNum($num,$productId,1);//1 giảm
@@ -52,29 +54,25 @@
 			if(isset($_POST['userId']) && $_POST['page']){
 				$userId = $_POST['userId'];
 				$page = $_POST['page'];
-				//Cập nhật status cho đơn hàng
-				$cart = new CartModel(null,null,null,null,null,null,null,null,$userId);
+				$cart = new CartModel(null,null,null,null,null,null,$userId);
 				//lấy ra danh sách đơn hàng
-				$cart = new CartModel(null,null,null,null,null,null,null,null,$userId);
 				$cartList = $cart->GetCart($cart,$page);
 				$count = count($cartList);
 				for ($i=0; $i <$count ; $i++) { 
 					array_values($cartList[$i]);
 				}
-				//print_r($cartList);die();
 				//duyệt qua từng product_Id để lấy ra hình ảnh và giá
 				for ($i=0; $i <$count ; $i++) { 
 					$product = ProductController::GetCart($cartList[$i][2]);
 					array_push($cartList[$i], $product);
 				}
-				//print_r($cartList);
 				echo json_encode($cartList);	
 			}
 		} 
 		//Số trang đơn hàng
 		public static function Page($userId){
 			//Lấy vè tổng số đơ hàng
-			$cart = new CartModel(null,null,null,null,null,null,null,null,$userId);
+			$cart = new CartModel(null,null,null,null,null,null,$userId);
 			$cartList = $cart->GetLimit($cart);
 			if($cartList>0){
 				if($cartList%8==0){
@@ -91,7 +89,7 @@
 			$id = $_POST['id'];
 			//Kiểm tra status
 			//Lấy ra status
-			$cart = new CartModel($id,null,null,null,null,null,null,null);
+			$cart = new CartModel($id,null,null,null,null,null,null);
 			$cartCheck = $cart->GetStatus($cart);
 			if($cartCheck['status']=='0'){//Chưa giao
 				//Cập nhật lại product

@@ -20,7 +20,7 @@ class CategoryController{
 		$cateLimit = $cate->cateLimit;
 		require_once('../apps/views/admin/add-product.php');
 	}	
-		//Phân trang 
+	//Phân trang 
 	public static function GetCate(){
 			//Tổng số trang
 		$cateLimit = CategoryModel::GetLimit();
@@ -80,20 +80,30 @@ class CategoryController{
 		if(isset($_POST['cateName']) && isset($_POST['cateId'])){
 			$cateName = strtolower($_POST['cateName']);
 			$cateId = $_POST['cateId'];
-			if(CategoryModel::Save($cateName,$cateId)){
+			if($cateId==null){
+				$save = CategoryModel::Save($cateName,$cateId);
+				if($save!=false){
+					echo json_encode(['status'=>$save]);
+			}
+			else{
+				echo json_encode(['status'=>false]);
+			}
+			}
+			else{
+				if(CategoryModel::Save($cateName,$cateId)){
 				echo json_encode(['status'=>true]);
 			}
 			else{
 				echo json_encode(['status'=>false]);
 			}
+			}
 		}
 	}
 
 		//Lấy ra 1 Danh Mục
-		public static function Name($act1){//$act1 : tên danh mục
-			$cateName = strtolower($act1);
+		public static function Id($id){//$act1 : tên danh mục
 			//lấy ra thông tin 1 danh mục
-			$cate = CategoryModel::GetOne($cateName);
+			$cate = CategoryModel::GetOne($id);
 			//Lấy ra số sản phẩm trên 1 danh mục
 			if($cate!=null){
 				$productLimit = self::ProductLimit($cate['id']);
@@ -105,7 +115,7 @@ class CategoryController{
 					$productPage = (int)$productLimit/8;
 					$productPage++;
 				}
-				$_SESSION['Cate'] = $cateName;
+				$_SESSION['Cate'] = $cate['name'];
 				require_once('../apps/views/admin/one-cate.php');
 			}
 			
@@ -148,5 +158,22 @@ class CategoryController{
 			}
 			
 		}
+
+	//search
+	public static function Search($query){
+		$id = CategoryModel::Search($query);
+		if($id!=null){
+			return $id['id'];
+		}
+		else{
+			return null;
+		}
+	}
+
+	//Get name
+	public static function GetName($id){
+		$name = CategoryModel::GetName($id);
+		return $name;
+	}
 	}
 	?>

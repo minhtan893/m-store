@@ -1,7 +1,7 @@
 <section class="container">
 	<section class="admin-content">
 		<section class="admin-cate">
-			<h2><?=$cateName;?></h2>
+			<h2><?=$_SESSION['Cate'];?></h2>
 			<input id = "cateId" type="hidden" value='<?=$cate['id'];?>'>
 			<input id = "proPage" type="hidden" value='<?=(int)($productPage);?>'>
 			<h5>tổng số : <?=$productLimit; ?></h5>

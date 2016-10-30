@@ -48,7 +48,7 @@
 			var cateId = $('#cateId option:selected').val();
 			var cateName = $('#cateId option:selected').text();
 			var data = new FormData(this);
-			Product.AddProduct(data,cateName);
+			Product.AddProduct(data,cateName,cateId);
 			return false;
 		});
 		

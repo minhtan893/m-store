@@ -121,9 +121,7 @@ class UserController{
 			//Lấy dữ liệu các đơn hàng đã đặt
 			$page = CartController::Page($userId);
 			$cart = new CartModel(null,null,null,null,null,null,null,null,$userId);
-		
-			//Cập nhật đơn hàng
-		require_once('./apps/views/client/user.php');
+	require_once('./apps/views/client/user.php');
 	}
 			else{
 		header('location: http://localhost/m-store/');

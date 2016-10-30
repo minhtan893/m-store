@@ -139,5 +139,24 @@ class ProductController{
 			return $product;
 		}
 	}
+	//search
+	public static function Search($cateId=null,$query){
+		$id = ProductModel::Search($cateId,$query);
+		if($id!=null){
+			return $id;
+		}
+		else{
+			return null;
+		}
+	}
+
+	//GEtName
+	//GEt name
+	public static function GetName($id){
+		$product =  array_values(ProductModel::GetResult($id));
+		$image = ImageController::Show($id,1);
+		array_push($product, $image);
+		return $product;
+	}
 }
 ?>

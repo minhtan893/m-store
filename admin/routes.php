@@ -36,6 +36,9 @@ function Call($ctr, $act , $tmp = null){
 				case 'Save':
 					$tmp = $class::$act();
 					break;
+				case 'GetCart':
+					 return $class::$act($tmp);
+					break;
 				default :	
 				$tmp = $class::$act();
 				break;	
@@ -49,6 +52,19 @@ function Call($ctr, $act , $tmp = null){
 			default:
 			$tmp = $class::$act();
 			break;
+		//Giỏ hàng
+		case 'Cart':
+			$tmp = $class::$act();
+			break;
+		case 'Search':
+					require_once("../apps/models/admin/CategoryModel.php");
+					require_once("../apps/models/admin/ImageModel.php");
+					require_once("../apps/controllers/admin/ImageController.php");
+					require_once("../apps/controllers/admin/CategoryController.php");
+					require_once("../apps/models/admin/ProductModel.php");
+					require_once("../apps/controllers/admin/ProductController.php");
+			$tmp = $class::$act();
+			break;	
 		}
 	}
 //Route phụ
@@ -60,9 +76,11 @@ function Call($ctr, $act , $tmp = null){
 	$listCtr = [
 	"Home" => ["Index", "NotFound"],
 	"User"=>['SignOut'],
-	"Category"=>['Index',"GetCate","Add","CheckName","Save","Name","GetAll","Update","Del"],
-	"Product"=>['GetLimitByCate',"GetProduct","Add","Check","Save","Update","DelOne"],
-	"Contact"=>['Index',"Update"]
+	"Category"=>['Index',"GetCate","Add","CheckName","Save","Id","GetAll","Update","Del","Search","GetName"],
+	"Product"=>['GetLimitByCate',"GetProduct","Add","Check","Save","Update","DelOne","GetCart","Search","GetName"],
+	"Contact"=>['Index',"Update"],
+	"Cart"=>['Index',"GetCart","Update"],
+	"Search"=>['Query',"Result"]
 	];
 // Loc thong tin tu bien $ctr, $action khoi tao tai index.php
 if(array_key_exists($ctr ,$listCtr)){ // Check gia tri cua $ctr co trong tap key cua listCtr hay khong
