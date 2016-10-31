@@ -42,7 +42,7 @@
 		}
 	//search
 	public static function Search($query){
-		$db = Db::GetDb();
+			$db = Db::GetDb();
 			$stmt = $db->prepare('select id from categories
 									where name like :query');
 			$stmt->bindParam(":query",$query,PDO::PARAM_STR);
@@ -57,7 +57,7 @@
 
 	//GEt name
 	public static function GetName($id){
-		$db = Db::GetDb();
+			$db = Db::GetDb();
 			$stmt = $db->prepare('select name from categories
 									where id =:id');
 			$stmt->bindParam(":id",$id,PDO::PARAM_STR);

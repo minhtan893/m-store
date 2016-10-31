@@ -63,7 +63,7 @@
 		if($id!=null){
 			return $id['id'];
 		}
-		else{P
+		else{
 			return null;
 		}
 	}

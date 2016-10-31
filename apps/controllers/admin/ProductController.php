@@ -143,7 +143,7 @@ class ProductController{
 				public static function Search($cateId=null,$query){
 					$id = ProductModel::Search($cateId,$query);
 					if($id!=null){
-						return $id;
+						return array_values($id);
 					}
 					else{
 						return null;
