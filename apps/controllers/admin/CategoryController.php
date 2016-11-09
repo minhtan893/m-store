@@ -75,7 +75,7 @@ class CategoryController{
 		}
 	}
 
-		//Lưu Danh Mục
+	//Lưu Danh Mục
 	public static function Save(){
 		if(isset($_POST['cateName']) && isset($_POST['cateId'])){
 			$cateName = strtolower($_POST['cateName']);

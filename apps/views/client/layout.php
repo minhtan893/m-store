@@ -6,9 +6,10 @@
 	<title>M-Store</title>
 	<base href="http://localhost/m-store/" />
 	<link rel="stylesheet" href="apps/public/css/main.css">
-	
+	<!-- <link href="https://fonts.googleapis.com/css?family=Trirong|Open+Sans" rel="stylesheet"> -->
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="./apps/public/js/jquery.zoom.min.js"></script>
+	<script src="./apps/public/js/responsiveslides.min.js"></script>
 	<script type="text/javascript" src="apps/public/js/main.js"></script>
 	<script type="text/javascript" src="apps/public/js/client.js"></script>
 </head>

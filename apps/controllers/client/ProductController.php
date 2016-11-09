@@ -1,8 +1,30 @@
-<?php 
+	<?php 
 class ProductController{
-	public static function HomeShow($cateId){
-			//lấy ra 4 sản phẩm mới nhất trong danh mục
-		$product = array_values(ProductModel::Get($cateId,4,null));
+//lấy ra so trang chu
+		public static function GetPageLimit(){
+			//lấy ra tất cả id;
+			$idArray = ProductModel::GetLimit();
+			if($idArray % 16 ==0){
+				$page = $idArray/16;
+				return (int)$page;
+			}else{
+				$page = $idArray/16;
+				return ((int)$page)+1;
+			}
+
+		}
+		//lấy dữ liệu các category để show trang chủ
+		public static function GetHomeProduct(){
+			if(isset($_POST['page'])){
+				$page = $_POST['page'];
+				$startIndex = ((int)$page*16)-16;
+				$product = self::HomeShow($startIndex);
+				echo json_encode($product);	
+			}
+		}
+
+	public static function HomeShow($startIndex){
+		$product = array_values(ProductModel::GetProduct($startIndex));
 		$count = count($product);
 		for ($i=0; $i < $count; $i++) { 
 			array_values($product[$i]);
@@ -31,14 +53,17 @@ class ProductController{
 			}
 		}
 	}
-		//Trả về sản phẩm của 1 danh mục dựa trên số trang
+
+	//Trả về sản phẩm của 1 danh mục dựa trên số trang
 	public static function GetOneCate(){
 		if(isset($_POST['id']) && isset($_POST['page']) ){
 			$id = $_POST['id']; 
 			$page = $_POST['page']; 
 			$startIndex = $page*8-8;
-				//lấy ra 4 sản phẩm mới nhất trong danh mục
-			$product = array_values(ProductModel::Get($id,8));
+
+			//lấy ra 8 sản phẩm mới nhất trong danh mục
+			$product = array_values(ProductModel::Get($id,8,$startIndex));
+
 			$count = count($product);
 			for ($i=0; $i < $count; $i++) { 
 				array_values($product[$i]);
@@ -58,36 +83,29 @@ class ProductController{
 		if(ProductModel::CheckId($id)){
 				//Lấy ra thông tin sản phẩm
 			$product =  array_values(ProductModel::GetOne($id));
+			$color = ColorController::GetAll($id);
+			$size = SizeController::GetAll($id);
 			$image = ImageController::Show($id,0);
-				//Thêm mảng image vào mảng product
-				/*
-					mảng product có key: 0 : id
-										1 : name
-										2 : price
-										3 :des
-										4:cateName
-										5 : mảng hình ảnh
-				*/
 				//Đổ ra views
-										$fisrtImage = $image;
-										array_values($fisrtImage);
-										$productEmpty =null;
-										if($product[8]==0){
-											$productEmpty = "Hết hàng!";
-										}
-										require_once('./apps/views/client/product.php');
-									}
-									else{
-										header('location: http://localhost/m-store');
-									}
-								}
+			$fisrtImage = $image;
+			array_values($fisrtImage);
+			$productEmpty =null;
+			if($product[10]==0){
+				$productEmpty = "Hết hàng!";
+			}
+				require_once('./apps/views/client/product.php');
+			}
+			else{
+				header('location: http://localhost/m-store');
+			}
+		}
 
 		//Lấy ra sản phẩm tương tự 
 		public static function GetSame(){
 			if(isset($_POST['id'])){
 				$cateId = $_POST['id'];
 				//lấy ra 4 sản phẩm mới nhất trong danh mục
-				$product = array_values(ProductModel::Get($cateId,4));
+				$product = array_values(ProductModel::Get($cateId,4,0));
 				$count = count($product);
 				for ($i=0; $i < $count; $i++) { 
 					array_values($product[$i]);
@@ -108,10 +126,14 @@ class ProductController{
 	if(ProductModel::CheckId($id)){
 				//Lấy ra thông tin sản phẩm
 		$product =  array_values(ProductModel::GetOne($id));
-			$image = ImageController::Show($id,1);	
+		$image = ImageController::Show($id,1);	
+		$color = ColorController::GetAll($id);
+		$size = SizeController::GetAll($id);
 			//Đổ ra views
-			array_push($product, $image);
-			return $product;
+		array_push($product, $image);
+		array_push($product, $color);
+		array_push($product, $size);
+		return $product;
 		}
 	}	
 	//Cập nhật số lượng sản phẩm

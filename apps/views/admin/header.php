@@ -37,6 +37,7 @@
 					<li><a href="admin/Category" class="menu-link">Danh mục</a></li>
 					<li><a href="admin/Cart" class="menu-link">Giỏ hàng</a></li>
 					<li><a href="admin/Contact" class="menu-link">Contact</a></li>
+					<li><a href="admin/Slider" class="menu-link">Slider</a></li>
 				</ul>
 				
 			</nav>

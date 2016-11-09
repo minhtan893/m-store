@@ -1,4 +1,8 @@
 <section class="container">
+	<section class="category-dir">
+		<a href="admin">Home/</a>
+		<span>Contact</span>
+	</section>
 	<section class="admin-content">
 		<form action= "admin/Contact/Update" class='admin-form' method='POST'>
 			<label>Tên công ty</label></br>

@@ -275,7 +275,7 @@ window.Category={
 					$('#cateName-error').text('Tên danh mục đã tồn tại, mời nhập lại!');
 				}else{
 					$('#cateName-error').text('');
-					Category.Save(cateName,cateId);
+						Category.Save(cateName,cateId);
 				}
 			}
 		});
@@ -295,17 +295,9 @@ window.Category={
 				if(rs['status']==false){
 					$('#cateName-error').text('Đã xảy ra lỗi, mời nhập lại!');
 				}else{
-					if(rs['status']==false){
-						if(rs['status']==true)
-					var url ="http://localhost/m-store/admin/Category/Id/";
-					url+= cateId;
-					window.location.href= url;
-					}
-					else{
-					var url ="http://localhost/m-store/admin/Category/Id/";
-					url+= rs['status'];
-					window.location.href= url;
-					}
+						var url ="http://localhost/m-store/admin/Category/Id/";
+						url+= rs['status'];
+						window.location.href= url;
 				}
 			}
 		});
@@ -476,7 +468,7 @@ window.Category={
 			SendPage(pageActive,url);
 			$('.pagination').on('click',function(){
 				var pageActive = $('.page-active').children('li').text();
-				$('tbody').empty();
+				$('.cate-content').empty();
 				SendPage(pageActive,url);
 			})//
 		}
@@ -493,14 +485,20 @@ window.Category={
 				},
 			success : function(rs){//Lấy về json sản phẩm
 				$.each(rs,function(index, item) {
-					var html = "<tr link="+item['id']+">";
-					html+="<td><a href='javascript:void(0)' class='product-name' proId="+item['id']+" >"+item['name']+"</a></td>";
-					html+="<td>"+item['num']+"</td>"
-					html+="<td>"+item['des']+"</td>"
-					html+="<td>"+item['price']+"</td>"
-					html+="<td><a href='javascript:void(0)' class='product-update-link' proId="+item['id']+">Sửa</a></td>";
-					html+="<td><a href='javascript:void(0)' class='product-del-link ' proId="+item['id']+">Xóa</a></td>";
-					$('tbody').append(html);
+					var html ="<li>";
+					html+="<img src='./apps/public/upload/thumb/";
+					html+=item[4]+"' class='admin-product-thumb'>";
+					html+="<section class='admin-product-info'>"
+					html+="<a href='admin/Product/Update/";
+					html+=item[0]
+					html+="' class='admin-product-name'>";
+					html+=item[1]+"</a>"
+					html+="<p class='admin-product-price'> ";
+					html+=item[3]+" &#36</p>"
+					html+="<p class='admin-product-num'>";
+					html+=item[2]+" chiếc</p>";
+					html+="<button class='product-del-link ' proId="+item['id']+">X</button></li>";
+					$('.cate-content').append(html);
 				});
 				
 			}
@@ -553,6 +551,9 @@ window.Category={
 window.Product={
 
 	AddProduct: function(data,cateName,cateId){
+		for(var instanceName in CKEDITOR.instances) {
+  			 console.log( CKEDITOR.instances[instanceName] );
+		}
 		$.ajax({
 				url : 'http://localhost/m-store/admin/Product/Check',
 				type : 'POST',
@@ -567,6 +568,8 @@ window.Product={
 					}
 					else{
 						$('.form-error').text('');
+						for ( instance in CKEDITOR.instances )
+       					 CKEDITOR.instances[instance].updateElement();
 						$.ajax({
 							url : 'http://localhost/m-store/admin/Product/Save',
 							type : 'POST',
@@ -593,9 +596,10 @@ window.Product={
 			});
 	},
 	///////////////////////////////////////////////////////////////
-	UpdateProduct: function(data,cateName,name){
+	UpdateProduct: function(data,cateName,name,cateId){
 		if(name==data.get('name')){
-			$.ajax({
+		$.ajax({
+									
 							url : 'http://localhost/m-store/admin/Product/Save',
 							type : 'POST',
 							dataType : 'json',
@@ -605,7 +609,7 @@ window.Product={
 							processData:false,
 							success : function(rs){
 								if(rs['status']==true){
-									var url = 'http://localhost/m-store/admin/Category/Name/'+cateName;
+									var url = 'http://localhost/m-store/admin/Category/Id/'+cateId;
 									window.location.href=url;
 								}
 								else{
@@ -615,8 +619,6 @@ window.Product={
 								}
 							}
 						});
-						
-	
 		}else{
 			$.ajax({
 				url : 'http://localhost/m-store/admin/Product/Check',
@@ -662,8 +664,242 @@ window.Product={
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////
-//Xử lý trang CATEGORY
+//Xử lý trang HOme
+window.Home = {
+	//lấy số trang sản phẩm trên 1 danh mục
+	ProductLimit : function(productLimit){
+		//Lấy tất cả danh mục
+		var page = productLimit;
+		var pageArray = LoadArray(page,0);
+		if(page<=1){
+			$('#next-page').css({
+				display: 'none'
+			});
+		}
+		else{
+			$('#next-page').css({
+				display: 'block'
+			});
+		}
+		ShowLink(pageArray);
+		ShowButton(page);
+		var startIndex = 0;
+				//Sự kiện khi link page thay doi
+				$('.linkPage').on('click',function(){
+					$(this).addClass('page-active');
+					$(this).siblings('a').removeClass('page-active');
+					var pageActive = $('.page-active').children('li').text();
+					if(pageActive == pageArray[2] && pageActive<page){
+						startIndex++;
+						pageArray = LoadArray(page,startIndex);
+						LoadNewLink(pageArray);
+					}
+					if(pageActive == pageArray[0] && pageActive>1){
+						startIndex--;
+						pageArray = LoadArray(page,startIndex);
+						LoadNewLink(pageArray);
+					}
+					
+				});
+				//Sự kiện khi button thay đổi
+				$('#next-page').on('click',function(){
+					var pageActive = $('.page-active').children('li').text();
+					if( pageActive < page ){
+						var newPageActive = Number(pageActive)+1;
+						$('a[link='+newPageActive+']').addClass('page-active');
+						$('a[link='+newPageActive+']').siblings('a').removeClass('page-active');
+						CheckButton(page);
+					}
+					if(newPageActive == pageArray[2] && newPageActive<page){
+						startIndex++;
+						pageArray = LoadArray(page,startIndex);
+						LoadNewLink(pageArray);
 
-	//Lưu Danh mục/////////////////////////
+					}
+				});
+				//Previous
+				$('#previous-page').on('click',function(){
+					var pageActive = $('.page-active').children('li').text();
+					if( pageActive >1 ){
+						var newPageActive = Number(pageActive)-1;
+						$('a[link='+newPageActive+']').addClass('page-active');
+						$('a[link='+newPageActive+']').siblings('a').removeClass('page-active');
+						CheckButton(page);
+					}
+					if(newPageActive == pageArray[0] && newPageActive>1){
+						startIndex--;
+						pageArray = LoadArray(page,startIndex);
+						LoadNewLink(pageArray);
+
+					}
+				});
+		///////////////////////////////////////////////////////////////////////////////
+		function LoadArray(page,startIndex){//Tạo mảng để lưu số phân trang trong 1 lần
+			if(page<3){
+				var arr = [];
+				for(var x = 0;x<page;x++){
+					arr[x] = x+1;
+				}
+				return arr;						
+			}else{
+				var arr = [];
+				var y=0;
+				for(var x = startIndex;x<startIndex+3;x++){
+					if(x<=page){
+						arr[y] = x+1;
+						y++;	
+					}
+				}
+				return arr;
+			}
+		}
+		//Tạo Pagination
+		function ShowLink(pageArray){
+			for(var x=0;x<pageArray.length;x++){
+				var y = x+1;
+				var a = '<a href="javascript:void(0)" class="linkPage" link="'+pageArray[x]+'"id="linkPage'+y+'"><li>'+pageArray[x]+'</li></a>';
+				$('.page-link').append(a);
+				$('#linkPage1').addClass('page-active');
+			}
+		}
+		
+		//Hiển thị button điều hướng
+		function ShowButton(page){
+			$('.page-link').on('click',function() {
+				CheckButton(page);
+			});
+		}
+		//Chuyển page bằng button
+		
+		//checkButton
+		function CheckButton(page){
+			var pageActive = $('.page-active').children('li').text();
+				//Hiện thị nút Previous
+				if(pageActive>1){
+					$('#previous-page').css({
+						display: 'block'
+					});
+				}
+				else{
+					$('#previous-page').css({
+						display: 'none'
+					});
+				}
+				//hiển thị nút Next
+				if(pageActive<page){
+					$('#next-page').css({
+						display: 'block'
+					});
+				}
+				else{
+					$('#next-page').css({
+						display: 'none'
+					});
+				}
+				
+			}
+		//Load Array Link Moi
+		function LoadNewArray(page,pageArray,startIndex){
+			var pageActive = $('.page-active').children('li').text();
+			if(pageActive == pageArray[2]){
+				startIndex++;
+				var array = LoadArray(page,startIndex);
+				return array;
+				//LoadNewLink(pageArray);
+			}
+		}
+		//Thay đổi link mới
+		function LoadNewLink(pageArray){
+			for(var x =0;x<pageArray.length;x++){
+				var y = x+1;
+				$('#linkPage'+y).children('li').text(pageArray[x]);
+				$('#linkPage'+y).attr({
+					link: pageArray[x]
+				});
+				$('#linkPage2').addClass('page-active');
+				$('#linkPage2').siblings('a').removeClass('page-active');
+			}
+		}
+	},
+
+	//Laays thông tin của tất cả sản phẩm trên 1 danh mục	
+		GetProduct : function(){
+			if(proPage!=0){
+			//Lấy dữ liệu trang 1 mặc định
+			var pageActive = $('.page-active').children('li').text();
+			var url = 'http://localhost/m-store/admin/Product/GetAllProduct';
+			SendPage(pageActive,url);
+			$('.pagination').on('click',function(){
+				var pageActive = $('.page-active').children('li').text();
+				$('.home-content').empty();
+				SendPage(pageActive,url);
+			})//
+		}
+		//gửi ajax lấy về sản phẩm
+		function SendPage(pageActive,url){
+			var arr = [];
+			$.ajax({
+				url : url,
+				type: 'post',
+				dataType : 'json',
+				data : {
+					productPage : pageActive
+				},
+			success : function(rs){//Lấy về json sản phẩm
+				$.each(rs,function(index, item) {
+					var html ="<li>";
+					html+="<img src='./apps/public/upload/thumb/";
+					html+=item[5]+"' class='admin-product-thumb'>";
+					html+="<section class='admin-product-info'>"
+					html+="<a href='admin/Product/Update/";
+					html+=item[0]
+					html+="' class='admin-product-name'>";
+					html+=item[4]+" "+item[1]+"</a>"
+					html+="<p class='admin-product-price'> ";
+					html+=item[3]+" &#36</p>"
+					html+="<p class='admin-product-num'>";
+					html+=item[2]+" chiếc</p>";
+					html+="<button class='product-del-link ' proId="+item['id']+">X</button></li>";
+					$('.home-content').append(html);
+				});
+				
+			}
+			}).always(function(){
+				ProductAction();
+			});
+		}
+
+		function ProductAction(){
+			
+			$('.product-del-link').on('click',function(){
+				var productId = $(this).attr('proId');
+				//Xác nhân xóa
+				if(confirm('Bạn có muốn xóa sản phẩm không ? ')){
+					//Gửi ajax xóa sản phẩm
+					$.ajax({
+						url : 'http://localhost/m-store/admin/Product/DelOne',
+						type : "post",
+						dataType : "json",
+						data : {
+							id : productId
+						},
+						success : function(rs){
+							if(rs['status']==true){
+								location.reload(); 
+							}
+							else{
+								alert('Đã xảy ra lỗi');
+							}
+						}
+					});
+				}
+			})
+			
+		}
+
+	}
+
+}
+//////////////////////////////////////////////////////////////////////////////////////////////
 	
 })

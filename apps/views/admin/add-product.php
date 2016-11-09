@@ -2,6 +2,10 @@
 <section class="container">
 <section class="product-option">
 	<form method="POST"  action="admin/Product/Save" enctype="multipart/form-data" class="product-form">
+		<label>Mô tả</label></br>
+		<textarea name="des"  id="des"  row="10"></textarea></br>
+		<label>Thông số kỹ thuật</label></br>
+		<textarea name="feature"  id="feature" row="10"></textarea></br>
 		<label>Tên Sản phẩm</label></br>
 		<input type="text" id="name" name ="name" placeholder="Tên sản phẩm" required autofocus="autofocus"></br>
 		<p class="form-error"><?php if(isset($_SESSION['form-error']) && $_SESSION['form-error']!=""){
@@ -31,10 +35,17 @@
 		<input type="file" id="<?=$img; ?>" name="<?=$img;?>" accept="image/*" required >
 		<?php }
 		?>
-		<label>Mô tả</label></br>
-		<textarea name="des"  id="des" cols="100" rows="10" required></textarea></br>
 		<label>Giá tiền</label></br>
 		<input type="number" id ="price" name="price" placeholder="Giá tiền" required></br>
+		<label>Màu sắc</label></br>
+		<section id="color-select">
+			<input type="text" name="color[]" required></br>
+		</section>
+		<button type="button" id="add-color">Thêm màu</button>
+		<label>Kích thước</label></br>
+		<input type="checkbox" name="size[]"  value='45mm' >45mm</br>
+		<input type="checkbox" name="size[]"  value='35mm' >35mm</br>
+		<input type="checkbox" name="size[]"  value='25mm' >25mm</br>
 		<label>Số Lượng</label></br>
 		<input type="number" id ="num" name="num" placeholder="Số Lượng" required></br>
 		<input type="hidden" id="cateName" name= "cateName">
@@ -43,14 +54,22 @@
 </section>
 </section>
 <script>
+	 CKEDITOR.replace('des');
+	CKEDITOR.replace('feature');
+	
 	$(document).ready(function(){
 		$('.product-form').submit(function(){
 			var cateId = $('#cateId option:selected').val();
 			var cateName = $('#cateId option:selected').text();
+			for ( instance in CKEDITOR.instances )
+   			 CKEDITOR.instances[instance].updateElement();
 			var data = new FormData(this);
 			Product.AddProduct(data,cateName,cateId);
 			return false;
 		});
-		
+		$('#add-color').on('click',function(){
+			var x = "<input type='text'  name='color[]' required></br>"
+			$('#color-select').append(x);
+		})
 	})
 </script>

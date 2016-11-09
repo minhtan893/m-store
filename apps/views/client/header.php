@@ -46,7 +46,7 @@
 							?>
 						</ul>
 					</li>
-					<li><a href="Contact/Index" class="menu-link">Contact</a></li>
+					<li><a href="Contact/Index" class="menu-link">Liên Hệ</a></li>
 				</ul>
 				
 			</nav>

@@ -4,6 +4,13 @@ class CartController{
 		public static function Index(){//Hiển thị danh mục giỏ hàng
 			$cart  = new CartModel(null,null,null,null,null,null,null,null,null);
 			$cartLimit = $cart->GetLimit();
+			//Lấy ra sô lượng sản phẩm đã bán đươc
+			$product = $cart->GetProductSell();
+			//duyệt để tính tống sô hàng
+			$productSell = 0;
+			foreach($product as $prod){ 
+				$productSell =$productSell+(int)$prod['num']; 
+			}
 			//Trả ra views số trang và tổng số đơn hàng
 			if($cartLimit % 8==0){
 				$cartPage = $cartLimit/8;

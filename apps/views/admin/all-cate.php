@@ -1,7 +1,10 @@
 <section class="container">
+	<section class="category-dir">
+		<a href="admin">Home/</a>
+		<span>Danh mục</span>
+	</section>
 	<section class="admin-content">
 		<section class="admin-cate">
-			<h2 class="sexTitle">Danh mục</h2>
 			<h5 class="index">Tổng số: <?=$cateLimit; ?></h5>
 			<input type="hidden" id="Page" value="<?=$catePage; ?>">	
 			<table class="admin-table">

@@ -1,5 +1,6 @@
 <?php 
 	class ImageController{
+
 		//luu anh
 		public static function Upload($productId){
 			//upload anh 
@@ -9,6 +10,7 @@
 			$thumbFileType = pathinfo($_FILES['thumb']['name'],PATHINFO_EXTENSION);
 			$_FILES['thumb']['name'] = $productId."-thumb.".$thumbFileType;
 			move_uploaded_file($_FILES['thumb']['tmp_name'],$folderThumb.$_FILES['thumb']['name']);
+
 			///lưu anh
 			for ($i=0; $i < 3; $i++) { 
 				$img = "img".$i;
@@ -25,6 +27,7 @@
 				$_FILES['img2']['name'],
 				$productId
 				);
+
 			if($image->Save($image)){
 				return true;
 			}
@@ -53,6 +56,7 @@
 					}
 				}
 			}
+
 			//Xóa DB
 			if(ImageModel::Del($productId)){
 				return true;
@@ -76,11 +80,9 @@
 			//lưu thumbnail
 			if($_FILES['thumb']['name']!=null){
 				$folderThumb = '../apps/public/upload/thumb/';
-			
-			$thumbFileType = pathinfo($_FILES['thumb']['name'],PATHINFO_EXTENSION);
-			$_FILES['thumb']['name'] = $productId."-thumb.".$thumbFileType;
-		
-			move_uploaded_file($_FILES['thumb']['tmp_name'],$folderThumb.$_FILES['thumb']['name']);	
+				$thumbFileType = pathinfo($_FILES['thumb']['name'],PATHINFO_EXTENSION);
+				$_FILES['thumb']['name'] = $productId."-thumb.".$thumbFileType;
+				move_uploaded_file($_FILES['thumb']['tmp_name'],$folderThumb.$_FILES['thumb']['name']);	
 			}
 			
 			///lưu anh
@@ -89,7 +91,7 @@
 				$img = "img".$i;
 				if($_FILES[$img]['name']!=null){
 					$fileType = pathinfo($_FILES[$img]['name'],PATHINFO_EXTENSION);
-						$_FILES[$img]['name'] = $productId."-img".$i.".".$fileType;
+					$_FILES[$img]['name'] = $productId."-img".$i.".".$fileType;
 					move_uploaded_file($_FILES[$img]['tmp_name'], $folderImg.$_FILES[$img]['name']);
 				}
 			}
@@ -101,7 +103,7 @@
 				$_FILES['img1']['name'],
 				$_FILES['img2']['name'],
 				$productId
-				);
+									);
 			if($image->Update($image)){
 				return true;
 			}
@@ -109,11 +111,18 @@
 				return false;
 			}
 		}
-		//
+		
 		//Lấy ra hình ảnh của từng sản phẩm
 		public static function Show($productId,$status){
 			//lấy ra thumb sản phẩm 
 			$image = ImageModel::Get($productId,$status);
+			return $image;
+		}
+
+		//Lấy ra thumb
+		public static function GetThumb($productId){
+			//lấy ra thumb sản phẩm 
+			$image = ImageModel::Get($productId,1);
 			return $image;
 		}
 	}

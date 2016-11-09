@@ -191,13 +191,15 @@ window.Cart = {
 	ShowCart : function(cart,i){
 		var html="";
 		html+="<tr>";
-		html+="<td>"+cart[9][2]+" "+cart[9][1]+"</td>";
+		html+="<td>"+cart[11][2]+" "+cart[11][1]+"</td>";
 		html+="<td>"+cart[4]+"</td>";
-		html+="<td>"+cart[5]+"</td>";
+		html+="<td>"+cart[8]+"</td>";
+		html+="<td>"+cart[9]+"</td>";
+		html+="<td>"+cart[5]+" &#36;</td>";
 		html+="<td>"+cart[3]+"</td>";
 		html+="<td>"+cart[6]+"</td>";
 		html+="<td>"+cart[7]+"</td>";
-		if(cart[8]==0){//Chưa giao
+		if(cart[10]==0){//Chưa giao
 			html+="<td><input type='radio' name='"+cart[0]+"' cartId='"+cart[0]+"' value='0' checked class='status"+i+"'>Chưa giao</td>";
 			html+="<td><input type='radio' name='"+cart[0]+"' cartId='"+cart[0]+"' value='1' class='status"+i+"'>Đã giao</td>";
 		}else{

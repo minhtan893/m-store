@@ -20,6 +20,10 @@ function Call($ctr, $act , $tmp = null){
 			case 'Product':
 					require_once("../apps/models/admin/ImageModel.php");
 					require_once("../apps/controllers/admin/ImageController.php");
+					require_once("../apps/models/admin/ColorModel.php");
+					require_once("../apps/controllers/admin/ColorController.php");
+					require_once("../apps/models/admin/SizeModel.php");
+					require_once("../apps/controllers/admin/SizeController.php");
 			switch ($act) {
 				case 'GetLimitByCate':
 					return  $class::$act($tmp);
@@ -39,6 +43,11 @@ function Call($ctr, $act , $tmp = null){
 				case 'GetCart':
 					 return $class::$act($tmp);
 					break;
+				case 'GetAllLimit':
+				return $class::$act();
+				break;
+				case 'GetAllProduct':
+				return $class::$act();
 				default :	
 				$tmp = $class::$act();
 				break;	
@@ -56,6 +65,9 @@ function Call($ctr, $act , $tmp = null){
 		case 'Cart':
 			$tmp = $class::$act();
 			break;
+		case 'Slider':
+			$tmp = $class::$act();
+			break;
 		case 'Search':
 					require_once("../apps/models/admin/CategoryModel.php");
 					require_once("../apps/models/admin/ImageModel.php");
@@ -63,6 +75,8 @@ function Call($ctr, $act , $tmp = null){
 					require_once("../apps/controllers/admin/CategoryController.php");
 					require_once("../apps/models/admin/ProductModel.php");
 					require_once("../apps/controllers/admin/ProductController.php");
+					require_once("../apps/models/admin/SizeModel.php");
+					require_once("../apps/controllers/admin/SizeController.php");
 			$tmp = $class::$act();
 			break;	
 		}
@@ -77,10 +91,13 @@ function Call($ctr, $act , $tmp = null){
 	"Home" => ["Index", "NotFound"],
 	"User"=>['SignOut'],
 	"Category"=>['Index',"GetCate","Add","CheckName","Save","Id","GetAll","Update","Del","Search","GetName"],
-	"Product"=>['GetLimitByCate',"GetProduct","Add","Check","Save","Update","DelOne","GetCart","Search","GetName"],
+	"Product"=>['GetLimitByCate',"GetProduct","Add","Check","Save","Update","DelOne","GetCart","Search","GetName","GetAllLimit","GetAllProduct"],
+	"Color"=>['Save','Update'],
+	"Size"=>['Save','Update'],
 	"Contact"=>['Index',"Update"],
 	"Cart"=>['Index',"GetCart","Update"],
-	"Search"=>['Query',"Result"]
+	"Search"=>['Query',"Result"],
+	"Slider"=>["Index","Update","Add"]
 	];
 // Loc thong tin tu bien $ctr, $action khoi tao tai index.php
 if(array_key_exists($ctr ,$listCtr)){ // Check gia tri cua $ctr co trong tap key cua listCtr hay khong

@@ -11,6 +11,7 @@
 	<script type="text/javascript" src="http://localhost/m-store/apps/public/js/slide.js"></script>
 	<script type="text/javascript" src="http://localhost/m-store/apps/public/js/jquery.zoom.min.js"></script>
 	<script type="text/javascript" src="http://localhost/m-store/apps/public/js/admin.js"></script>
+	<script type="text/javascript" src="http://localhost/m-store/apps/public/js/ckeditor/ckeditor.js"></script>
 	<script type="text/javascript" src="http://localhost/m-store/apps/public/js/cart.js"></script>
 </head>
 <body>

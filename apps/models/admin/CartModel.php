@@ -8,9 +8,11 @@ class CartModel{
 	public $customer;
 	public $address;
 	public $time;
+	public $color;
+	public $size;
 	public $status;
 
-	function __construct($id=null,$productId=null,$num=null,$price=null,$userID=null,$customer=null,$address=null,$time=null,$status=null){
+	function __construct($id=null,$productId=null,$num=null,$price=null,$userID=null,$customer=null,$address=null,$time=null,$color=null,$size=null,$status=null){
 		$this->id = $id;
 		$this->productId = $productId;
 		$this->num = $num;
@@ -19,6 +21,8 @@ class CartModel{
 		$this->customer = $customer;
 		$this->address = $address;
 		$this->time = $time;
+		$this->color = $color;
+		$this->size = $size;
 		$this->status = $status;
 	}
 
@@ -28,12 +32,20 @@ class CartModel{
 		$stmt = $db->prepare('select id from carts');
 		$stmt->execute();
 		return $stmt->rowCount();
+	}	
+
+	//Lấy ra tổng số sản phẩm đã bán
+	public function GetProductSell(){
+		$db = Db::GetDb();
+		$stmt = $db->prepare('select num from carts');
+		$stmt->execute();
+		return $stmt->fetchAll();
 	}
 
 		//Lấy ra danh mục theo trang
 	public function GetCate($startIndex){
 		$db = Db::GetDb();
-		$stmt= $db->prepare('select id,product_id,user_id,customer_name,num,price,address,time ,status from carts
+		$stmt= $db->prepare('select id,product_id,user_id,customer_name,num,price,address,time ,color,size,status from carts
 				order by id DESC
 				limit :startIndex,8');
 		$stmt->bindParam(':startIndex',$startIndex,PDO::PARAM_INT);

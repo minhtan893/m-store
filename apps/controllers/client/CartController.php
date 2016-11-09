@@ -14,21 +14,19 @@
 
 		//Lưu giỏ hàng
 		public static function Buy(){
-			if(isset($_POST['customer']) && isset($_POST['city']) && isset($_POST['district']) && isset($_POST['town']) && isset($_POST['home']) && isset($_POST['price'])){
+			if(isset($_POST['customer']) && isset($_POST['address']) && isset($_POST['price'])){
 				$userId = null;
 				$customer = $_POST['customer'];
-				$city = $_POST['city'];
-				$district = $_POST['district'];
-				$town = $_POST['town'];
-				$home = $_POST['home'];
-				$address = $home.'-'.$town."-".$district."-".$city;
+				$address = $_POST['address'];
 				$productId = $_POST['productId'];
 				$num = $_POST['num'];
 				$price= $num * $_POST['price'];
+				$color=  $_POST['color'];
+				$size= $_POST['size'];
 				if(isset($_SESSION['userId'])){
 					$userId = $_SESSION['userId'];
 				}
-				$cart = new CartModel(null,$customer,$address,$price,$num,$productId,$userId);
+				$cart = new CartModel(null,$customer,$address,$price,$num,$color,$size,$productId,$userId);
 				if($cart->Save($cart)){
 					//Cập nhật số lượng trong bảng product
 					ProductController::UpdateNum($num,$productId,1);//1 giảm
@@ -54,7 +52,7 @@
 			if(isset($_POST['userId']) && $_POST['page']){
 				$userId = $_POST['userId'];
 				$page = $_POST['page'];
-				$cart = new CartModel(null,null,null,null,null,null,$userId);
+				$cart = new CartModel(null,null,null,null,null,null,null,null,$userId);
 				//lấy ra danh sách đơn hàng
 				$cartList = $cart->GetCart($cart,$page);
 				$count = count($cartList);
@@ -72,7 +70,7 @@
 		//Số trang đơn hàng
 		public static function Page($userId){
 			//Lấy vè tổng số đơ hàng
-			$cart = new CartModel(null,null,null,null,null,null,$userId);
+			$cart = new CartModel(null,null,null,null,null,null,null,null,$userId);
 			$cartList = $cart->GetLimit($cart);
 			if($cartList>0){
 				if($cartList%8==0){
@@ -89,7 +87,7 @@
 			$id = $_POST['id'];
 			//Kiểm tra status
 			//Lấy ra status
-			$cart = new CartModel($id,null,null,null,null,null,null);
+			$cart = new CartModel($id,null,null,null,null,null,null,null,null);
 			$cartCheck = $cart->GetStatus($cart);
 			if($cartCheck['status']=='0'){//Chưa giao
 				//Cập nhật lại product

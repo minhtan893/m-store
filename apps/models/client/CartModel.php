@@ -5,15 +5,19 @@
 		public $address;
 		public $price;
 		public $num;
+		public $color;
+		public $size;
 		public $productId;
 		public $userId;
 
-		function __construct($id=null,$customer=null,$address=null,$price=null,$num=null,$productId=null,$userId=null){
+		function __construct($id=null,$customer=null,$address=null,$price=null,$num=null,$color=null,$size=null,$productId=null,$userId=null){
 			$this->id = $id;
 			$this->customer = $customer;
 			$this->address = $address;
 			$this->price = $price;
 			$this->num = $num;
+			$this->color = $color;
+			$this->size = $size;
 			$this->productId = $productId;
 			$this->userId = $userId;
 			$this->productId = $productId;
@@ -23,12 +27,14 @@
 		public function Save($CartModel){
 			$db =Db::GetDb();
 			$stmt = $db->prepare('insert into carts
-									(customer_name,address,price,num,product_id,user_id,time) 
-									values(:customer,:address,:price,:num,:productId,:userId,now())');
+									(customer_name,address,price,num,color,size,product_id,user_id,time) 
+									values(:customer,:address,:price,:num,:color,:size,:productId,:userId,now())');
 			$stmt->bindParam(':customer',$CartModel->customer,PDO::PARAM_STR);
 			$stmt->bindParam(':address',$CartModel->address,PDO::PARAM_STR);
 			$stmt->bindParam(':price',$CartModel->price,PDO::PARAM_INT);
 			$stmt->bindParam(':num',$CartModel->num,PDO::PARAM_INT);
+			$stmt->bindParam(':color',$CartModel->color,PDO::PARAM_STR);
+			$stmt->bindParam(':size',$CartModel->size,PDO::PARAM_STR);
 			$stmt->bindParam(':productId',$CartModel->productId,PDO::PARAM_INT);
 			$stmt->bindParam(':userId',$CartModel->userId,PDO::PARAM_INT);
 			if($stmt->execute()){
@@ -48,8 +54,8 @@
 		//Lấy ra  đơn hàng của 1 khách hàng
 		public function GetCart($CartModel,$page){
 			$db = Db::GetDb();
-			$stmt=$db->prepare('select id,customer_name ,product_id,num ,price,address,time ,status 
-				from carts where user_id =:userId');
+			$stmt=$db->prepare('select id,customer_name ,product_id,num ,price,address,time,color,size ,status 
+				from carts where user_id =:userId order by id DESC');
 			$stmt->bindParam(':userId',$CartModel->userId,PDO::PARAM_INT);
 			$stmt->execute();
 			return array_values($stmt->fetchAll());

@@ -4,18 +4,23 @@
 		//lấy ra sản phẩm trong danh mục theo số trang
 		public static function Get($cateId,$limit,$startIndex=null){
 			$db = Db::GetDb();
-			if($startIndex==null){
-				$stmt = $db->prepare('select id ,name, price from products  where cate_id =:cateId
-				order by id DESC limit 0,:limit');
-			}
-			else{
-				$stmt = $db->prepare('select id ,name, price from products  where cate_id =:cateId
+			$stmt = $db->prepare('select id ,name, price from products  where cate_id =:cateId
 				order by id DESC limit :startIndex,:limit');
-			$stmt->bindParam(':startIndex',$limit,PDO::PARAM_INT);
-
-			}
+			$stmt->bindParam(':startIndex',$startIndex,PDO::PARAM_INT);
 			$stmt->bindParam(':cateId',$cateId,PDO::PARAM_INT);
 			$stmt->bindParam(':limit',$limit,PDO::PARAM_INT);
+			$stmt->execute();
+			return $stmt->fetchAll();
+		}
+		//lấy ra sản phẩm theo số trang
+		public static function GetProduct($startIndex=null){
+			$db = Db::GetDb();
+			$stmt = $db->prepare('select p.id as id,p.name as p_name, p.price as price ,c.name as cateName
+			 from products as p 
+				inner join categories as c
+				on p.cate_id = c.id
+				order by id DESC limit :startIndex,16');
+			$stmt->bindParam(':startIndex',$startIndex,PDO::PARAM_INT);
 			$stmt->execute();
 			return $stmt->fetchAll();
 		}
@@ -37,7 +42,7 @@
 		//Hiển thị 1 sản phẩm
 		public static function GetOne($id){
 			$db = Db::GetDb();
-			$stmt = $db->prepare('select p.id as id, p.name as name, p.price as price, des as des,num  as num,	
+			$stmt = $db->prepare('select p.id as id, p.name as name, p.price as price, des as des,p.feature as feature ,num as num,	
 									c.name as cateName,p.cate_id as cateId
 								from products as p inner join categories as c
 									on p.cate_id = c.id 
@@ -124,6 +129,14 @@
 			else{
 				return null;
 			}
-	}
+		}
+
+	//Lấy ra số lượng sản phẩm
+	public static function GetLimit(){
+		$db = Db::GetDb();
+		$stmt = $db->prepare('select id from products');
+		$stmt->execute();
+		return $stmt->rowCount();
+	}	
 	}	
 ?>

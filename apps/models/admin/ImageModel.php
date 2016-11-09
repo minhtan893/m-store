@@ -69,6 +69,7 @@
 				return true;
 			}
 		}
+
 		//lấy ra dữ liệu của một sản phẩm
 		public static function GetImage($id){
 			$db = Db::GetDb();
@@ -78,6 +79,8 @@
 			$stmt->execute();
 			return $stmt->fetchAll();
 		}
+
+
 		//Update
 		public static function Update($ImageModel){
 			$db = Db::GetDb();
@@ -122,7 +125,7 @@
 			}
 				
 		}
-
+		//lấy ra ảnh
 		public static function Get($productId,$status){
 		$db = Db::GetDb();
 			if($status==1){//Chỉ lấy ra thumb

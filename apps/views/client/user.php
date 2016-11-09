@@ -1,6 +1,6 @@
 <section class="container">
 	<section class="user">
-		<h2>Các đơn hàng đã đặt</h2>
+		<p id="user-h2">Các đơn hàng đã đặt</p>
 		<input type="hidden" value="<?=$id; ?>" id="userId"><!--id user-->
 		<input type="hidden" value="<?=$page; ?>" id="page"><!--Số trang đơn hàng-->
 		<section class="cart-list">
