@@ -1,6 +1,6 @@
 <section class="container">
 	<section class="category-dir">
-		<a href="./">Home/</a>
+		<a href="m-store/">Home/</a>
 		<span>Liên hệ</span>
 	</section>	
 	<section class="contact">

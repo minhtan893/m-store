@@ -14,7 +14,7 @@
 				$email = $_POST['email']; 
 				$contact = new ContactModel($company,$address,$phone,$fb,$email);
 				if($contact->Save($contact)){
-					header('location: http://localhost/m-store/admin/Contact');
+					header("location: ./Index");
 				}
 			}
 		}

@@ -56,7 +56,7 @@ class CartController{
 				$arr = $_POST['arr'];
 				//Duyệt mảng cập nhật
 				for ($i=0; $i <count($arr) ; $i++) { 
-					$cart  = new CartModel($arr[$i][0],null,null,null,null,null,null,null,$arr[$i][1]);
+					$cart  = new CartModel($arr[$i][0],null,null,null,null,null,null,null,null,null,$arr[$i][1]);
 					$cart->Update($cart);
 				}
 				echo json_encode(['rs'=>true]);

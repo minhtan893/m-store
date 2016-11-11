@@ -1,6 +1,7 @@
 <?php 
 	session_start();
-	require_once('apps/commons/connection.php');
+	require_once('./apps/commons/environment.php');
+	require_once('./apps/commons/connection.php');
 	$act_tmp = null;
 	if(isset($_GET['ctr']) && isset($_GET['act'])){
 		$ctr = $_GET['ctr'];

@@ -3,7 +3,7 @@
 	<?php 
 		if($sliders!=null){
 			foreach ($sliders as $key ) { ?>
-				<li><a href="javascrip:void(0)"><img src="./apps/public/upload/slider/<?=$key['url']?>"></a></li>
+				<li><a href="javascrip:void(0)"><img src="m-store/apps/public/upload/slider/<?=$key['url']?>"></a></li>
 			<?php }
 		}
 	?>

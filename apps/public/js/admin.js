@@ -21,7 +21,6 @@ window.Menu = {
 //////////////////////////////////////////////////////////////////////////////////////////////
 //Xử lý trang CATEGORY
 window.Category={
-
 	//xử lý phân trang
 	CatePage : function(catePage){
 		//Lấy tất cả danh mục
@@ -183,7 +182,7 @@ window.Category={
 		if(catePage!=0){
 			//Lấy dữ liệu trang 1 mặc định
 			var pageActive = $('.page-active').children('li').text();
-			var url = 'http://localhost/m-store/admin/Category/GetCate';
+			var url = 'm-store/admin/Category/GetCate';
 			SendPage(pageActive,url);
 			$('.pagination').on('click',function(){
 				var pageActive = $('.page-active').children('li').text();
@@ -222,7 +221,7 @@ window.Category={
 			//Gọi link đến từng category
 			$('.admin-cate-name').on('click',function(){
 				var cateId = $(this).attr('cateId');
-				var url = 'http://localhost/m-store/admin/Category/Id/';
+				var url = 'm-store/admin/Category/Id/';
 				url +=cateId; 
 				window.location.href=url;
 			});
@@ -231,7 +230,7 @@ window.Category={
 				var con = confirm('Bạn có muốn xóa Danh mục không ?');
 				if(con==true){
 					var cateId = $(this).attr('cateId');
-					var url = 'http://localhost/m-store/admin/Category/Del';
+					var url = 'm-store/admin/Category/Del';
 					$.ajax({
 						url : url,
 						type : 'post',
@@ -250,7 +249,7 @@ window.Category={
 			//Sửa danh mục
 			$('.update').on('click',function(){
 				var cateId = $(this).attr('cateId');
-				var url = 'http://localhost/m-store/admin/Category/Update/'+cateId;
+				var url = 'm-store/admin/Category/Update/'+cateId;
 				window.location.href=url;
 			});
 
@@ -264,7 +263,7 @@ window.Category={
 	//Xử lý form upadte hoặc thêm mới danh mục
 	CateExits: function(cateName=null,cateId=null){
 		$.ajax({
-			url : 'http://localhost/m-store/admin/Category/CheckName',
+			url : 'm-store/admin/Category/CheckName',
 			type: 'post',
 			dataType : 'json',
 			data : {
@@ -284,7 +283,7 @@ window.Category={
 	//Lưu Danh mục/////////////////////////
 	Save: function(cateName,cateId){
 		$.ajax({
-			url : 'http://localhost/m-store/admin/Category/Save',
+			url : 'm-store/admin/Category/Save',
 			type: 'post',
 			dataType : 'json',
 			data : {
@@ -295,7 +294,7 @@ window.Category={
 				if(rs['status']==false){
 					$('#cateName-error').text('Đã xảy ra lỗi, mời nhập lại!');
 				}else{
-						var url ="http://localhost/m-store/admin/Category/Id/";
+						var url ="m-store/admin/Category/Id/";
 						url+= rs['status'];
 						window.location.href= url;
 				}
@@ -464,7 +463,7 @@ window.Category={
 			if(proPage!=0){
 			//Lấy dữ liệu trang 1 mặc định
 			var pageActive = $('.page-active').children('li').text();
-			var url = 'http://localhost/m-store/admin/Product/GetProduct';
+			var url = 'm-store/admin/Product/GetProduct';
 			SendPage(pageActive,url);
 			$('.pagination').on('click',function(){
 				var pageActive = $('.page-active').children('li').text();
@@ -486,10 +485,10 @@ window.Category={
 			success : function(rs){//Lấy về json sản phẩm
 				$.each(rs,function(index, item) {
 					var html ="<li>";
-					html+="<img src='./apps/public/upload/thumb/";
+					html+="<img src='m-store/apps/public/upload/thumb/";
 					html+=item[4]+"' class='admin-product-thumb'>";
 					html+="<section class='admin-product-info'>"
-					html+="<a href='admin/Product/Update/";
+					html+="<a href='m-store/admin/Product/Update/";
 					html+=item[0]
 					html+="' class='admin-product-name'>";
 					html+=item[1]+"</a>"
@@ -511,7 +510,7 @@ window.Category={
 			//
 			$('.product-update-link').on('click',function(){//Update sản phẩm	
 				var productId = $(this).attr('proId');
-				var url = 'http://localhost/m-store/admin/Product/Update/';
+				var url = 'm-store/admin/Product/Update/';
 				url+=productId; 
 				window.location.href=url;
 			});
@@ -522,7 +521,7 @@ window.Category={
 				if(confirm('Bạn có muốn xóa sản phẩm không ? ')){
 					//Gửi ajax xóa sản phẩm
 					$.ajax({
-						url : 'http://localhost/m-store/admin/Product/DelOne',
+						url : 'm-store/admin/Product/DelOne',
 						type : "post",
 						dataType : "json",
 						data : {
@@ -555,7 +554,7 @@ window.Product={
   			 console.log( CKEDITOR.instances[instanceName] );
 		}
 		$.ajax({
-				url : 'http://localhost/m-store/admin/Product/Check',
+				url : 'm-store/admin/Product/Check',
 				type : 'POST',
 				dataType : 'json',
 				data : data,
@@ -571,7 +570,7 @@ window.Product={
 						for ( instance in CKEDITOR.instances )
        					 CKEDITOR.instances[instance].updateElement();
 						$.ajax({
-							url : 'http://localhost/m-store/admin/Product/Save',
+							url : 'm-store/admin/Product/Save',
 							type : 'POST',
 							dataType : 'json',
 							data : data,
@@ -580,13 +579,13 @@ window.Product={
 							processData:false,
 							success : function(rs){
 								if(rs['status']==true){
-									var url = 'http://localhost/m-store/admin/Category/Id/'+cateId;
+									var url = 'm-store/admin/Category/Id/'+cateId;
 									window.location.href=url;
 								}
 								else{
 									alert('Đã xảy ra lỗi');
 									delay(800);
-									window.location.href ='http://localhost/m-store/admin/Product/Add'; 
+									window.location.href ='m-store/admin/Product/Add'; 
 								}
 							}
 						});
@@ -600,7 +599,7 @@ window.Product={
 		if(name==data.get('name')){
 		$.ajax({
 									
-							url : 'http://localhost/m-store/admin/Product/Save',
+							url : 'm-store/admin/Product/Save',
 							type : 'POST',
 							dataType : 'json',
 							data : data,
@@ -609,19 +608,19 @@ window.Product={
 							processData:false,
 							success : function(rs){
 								if(rs['status']==true){
-									var url = 'http://localhost/m-store/admin/Category/Id/'+cateId;
+									var url = 'm-store/admin/Category/Id/'+cateId;
 									window.location.href=url;
 								}
 								else{
 									alert('Đã xảy ra lỗi');
 									delay(800);
-									window.location.href ='http://localhost/m-store/admin/Product/Add'; 
+									window.location.href ='m-store/admin/Product/Add'; 
 								}
 							}
 						});
 		}else{
 			$.ajax({
-				url : 'http://localhost/m-store/admin/Product/Check',
+				url : 'm-store/admin/Product/Check',
 				type : 'POST',
 				dataType : 'json',
 				data : data,
@@ -635,7 +634,7 @@ window.Product={
 					else{
 						$('.form-error').text('');
 						$.ajax({
-							url : 'http://localhost/m-store/admin/Product/Save',
+							url : 'm-store/admin/Product/Save',
 							type : 'POST',
 							dataType : 'json',
 							data : data,
@@ -644,13 +643,13 @@ window.Product={
 							processData:false,
 							success : function(rs){
 								if(rs['status']==true){
-									var url = 'http://localhost/m-store/admin/Category/Name/'+cateName;
+									var url = 'm-store/admin/Category/Id/'+cateId;
 									window.location.href=url;
 								}
 								else{
 									alert('Đã xảy ra lỗi');
 									delay(800);
-									window.location.href ='http://localhost/m-store/admin/Product/Add'; 
+									window.location.href ='m-store/admin/Product/Add'; 
 								}
 							}
 						});
@@ -827,7 +826,7 @@ window.Home = {
 			if(proPage!=0){
 			//Lấy dữ liệu trang 1 mặc định
 			var pageActive = $('.page-active').children('li').text();
-			var url = 'http://localhost/m-store/admin/Product/GetAllProduct';
+			var url = 'm-store/admin/Product/GetAllProduct';
 			SendPage(pageActive,url);
 			$('.pagination').on('click',function(){
 				var pageActive = $('.page-active').children('li').text();
@@ -848,10 +847,10 @@ window.Home = {
 			success : function(rs){//Lấy về json sản phẩm
 				$.each(rs,function(index, item) {
 					var html ="<li>";
-					html+="<img src='./apps/public/upload/thumb/";
+					html+="<img src='m-store/apps/public/upload/thumb/";
 					html+=item[5]+"' class='admin-product-thumb'>";
 					html+="<section class='admin-product-info'>"
-					html+="<a href='admin/Product/Update/";
+					html+="<a href='m-store/admin/Product/Update/";
 					html+=item[0]
 					html+="' class='admin-product-name'>";
 					html+=item[4]+" "+item[1]+"</a>"

@@ -5,7 +5,7 @@ Home = {
 	Index : function(page){
 		//gửi ajax lấy về trang danh mục/ mỗi trang 4 danh mục
 		$.ajax({
-			url : 'http://localhost/m-store/Product/GetHomeProduct',
+			url : 'm-store/Product/GetHomeProduct',
 			type : 'post',
 			dataType : 'json',
 			data : {
@@ -24,9 +24,9 @@ Home = {
 			var html="";
 			html+="<section class='home-product'>";
 				html+="<article class='product-detail'>";
-				html+="<a href='Product/Id/"+product[0]+"' class=''><img class='img-product' src='apps/public/upload/thumb/";
+				html+="<a href='m-store/Product/Id/"+product[0]+"' class=''><img class='img-product' src='m-store/apps/public/upload/thumb/";
 				html+=product[4]+"'></a>";
-				html+="<a href='Product/Id/"+product[0]+"' class='product-name'>";
+				html+="<a href='m-store/Product/Id/"+product[0]+"' class='product-name'>";
 				html+=product[3]+" "+product[1];
 				html+="</a>";
 				html+="<p class='price'>&#36; ";
@@ -44,7 +44,7 @@ Home = {
 	OneCate : function(page,pageLimit,id){
 		//gửi ajax lấy về trang danh mục/ mỗi trang 4 danh mục
 		$.ajax({
-			url : 'http://localhost/m-store/Product/GetOneCate',
+			url : 'm-store/Product/GetOneCate',
 			type : 'post',
 			dataType : 'json',
 			data : {
@@ -64,13 +64,13 @@ Home = {
 			var html="";
 			html+="<section class='home-product'>";
 			html+="<article class='product-detail'>";
-			html+="<img class='img-product' src='apps/public/upload/thumb/";
+			html+="<img class='img-product' src='m-store/apps/public/upload/thumb/";
 			html+=product[3]+"'>";
-			html+="<a href='Product/Id/"+product[0]+"' class='product-name'>";
+			html+="<a href='m-store/Product/Id/"+product[0]+"' class='product-name'>";
 			html+=product[1]+"</a>";
 			html+="<p class='price'>&#36; ";
 			html+=product[2];
-			html+="</p><section class='cart'><a href='Product/Id/"+product[0]+"' class='add-cart'>mua</a></section>";
+			html+="</p><section class='cart'><a href='m-store/Product/Id/"+product[0]+"' class='add-cart'>mua</a></section>";
 			html+="</article>";
 			html+="</section>";
 			$('.one-category').append(html);	
@@ -83,7 +83,7 @@ Home = {
 	Product = {
 		SamProduct : function(cateId){
 			$.ajax({
-			url : 'http://localhost/m-store/Product/GetSame',
+			url : 'm-store/Product/GetSame',
 			type : 'post',
 			dataType : 'json',
 			data : {
@@ -102,15 +102,15 @@ Home = {
 			var html="";
 			html+="<li>";
 			html+="<article class='product-detail'>";
-			html+="<img class='img-product' src='apps/public/upload/thumb/";
+			html+="<img class='img-product' src='m-store/apps/public/upload/thumb/";
 			html+=product[3]+"'></a>";
-			html+="<a href='Product/Id/"+product[0]+"' class='product-name'>";
+			html+="<a href='m-store/Product/Id/"+product[0]+"' class='product-name'>";
 			html+=product[1];
 			html+="</a>";
 			html+="<p class='price'>&#36;";
 			html+=product[2];
 			html+="</p>";
-			html+="<section class='cart'><a href='Product/Id/"+product[0]+"' class='add-cart'> mua</a></section>";
+			html+="<section class='cart'><a href='m-store/Product/Id/"+product[0]+"' class='add-cart'> mua</a></section>";
 			html+="</article>";
 			html+="</li>";
 			$('.sidebar-content').append(html);
@@ -126,7 +126,7 @@ User={
 	GetCart : function(userId,page){
 		//gửi ajax để lấy đơn hàng
 		$.ajax({
-			url : 'http://localhost/m-store/Cart/GetCart',
+			url : 'm-store/Cart/GetCart',
 			type : 'post',
 			dataType : 'json',
 			data : {
@@ -153,7 +153,7 @@ User={
 	ShowCart : function(cartList){
 			var html="";
 			html+="<article class='cart-detail'>";
-			html+="<img class='cart-img' src='apps/public/upload/thumb/";
+			html+="<img class='cart-img' src='m-store/apps/public/upload/thumb/";
 			html+=cartList[10][16]+"'></a>";
 			html+="<section class='cart-info'>";
 			html+="<p class='cart-p'>Tên sản phẩm: "+cartList[10][12]+" "+cartList[10][2]+"</p><br/>";
@@ -182,7 +182,7 @@ User={
 		//Xóa đơn hàng
 		Del : function(id){
 			$.ajax({
-			url : 'http://localhost/m-store/Cart/Del',
+			url : 'm-store/Cart/Del',
 			type : 'post',
 			dataType : 'json',
 			data : {

@@ -96,7 +96,7 @@ class ProductController{
 				require_once('./apps/views/client/product.php');
 			}
 			else{
-				header('location: http://localhost/m-store');
+				header("location: m-store/");
 			}
 		}
 

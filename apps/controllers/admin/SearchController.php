@@ -21,18 +21,18 @@ class SearchController{
 				if($cateId!=null){//Nếu tìm thấy danh mục
 					//tạo biến session 
 					$_SESSION['cateId'] = $cateId;
-					header('location: http://localhost/m-store/admin/Search/Result');
+						header("location: ./Result");
 					}
 				else{//Nếu không tìm thấy danh mục-chuyển sang tìm kiếm ở sản phẩm
 					$productId = ProductController::Search(null,$arr[0]);
 					if($productId!=null){//Tìm kiếm sản phẩm
 						//nếu tìm thấy đúng sản phẩm
-						$_SESSION['productSearch'] = $productId;
-						header('location: http://localhost/m-store/admin/Search/Result');
+							$_SESSION['productSearch'] = $productId;
+							header("location: ./Result");
 					}else{
 						//Nếu không tìm thấy gì cả
 						$_SESSION['result-error'] = 'Không tìm thấy!';
-						header('location: http://localhost/m-store/admin/Search/Result');
+							header("location: ./Result");
 						}
 					}
 				}
@@ -57,7 +57,8 @@ class SearchController{
 						}
 					else{//Nếu không còn từ khóa
 						$_SESSION['cateId'] = $cateSearch[1];
-						header('location: http://localhost/m-store/admin/Search/Result');
+						echo 'fdf';
+							//header("location: ./Result");
 						}
 					}
 				}
@@ -94,6 +95,7 @@ class SearchController{
 			//tìm kiếm danh mục với từ khóa query	
 			return $arrTmp;
 		}
+
 		//Hàm tìm kiếm sản phẩm
 		public static function SearchProduct($cateId,$arr){
 			$query = implode(' ', $arr);
@@ -103,16 +105,17 @@ class SearchController{
 
 			if($product==null){
 				$_SESSION['result-error'] = 'Không tìm thấy!';
-				header('location: http://localhost/m-store/admin/Search/Result');
+							header("location: ./Result");
+				
 			}
 			else{	
 					if(!is_array($product[0])){//tìm thấy duy nhất 1 sản phẩm
 						$_SESSION['productIdSearch'] = $product[0];
-						header('location: http://localhost/m-store/admin/Search/Result');
+						header("location: ./Result");
 					}
 					else{//tìm thấy nhiều sản phẩm
 						$_SESSION['productSearch'] = $product;
-						header('location: http://localhost/m-store/admin/Search/Result');
+						header("location: ./Result");
 					}
 				}	
 			}

@@ -23,10 +23,10 @@ function Call($ctr, $act ,$act1=null){
 	require_once("./apps/controllers/client/SearchController.php");
 	$class = $ctr.'Controller';
 	if($act1!=null){
-		return $tmp = $class::$act($act1);
+		return $tmp=$class::$act($act1);
 	}
 	else{
-		return $tmp = $class::$act();		
+		return $tmp=$class::$act();		
 	}
 }
 

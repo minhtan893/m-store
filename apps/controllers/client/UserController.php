@@ -1,9 +1,9 @@
 <?php 
 	//Class Xử lý phần client User
-class UserController{
-
+class UserController {
+	
 	//Hàm Login//////////////////////////////////////////////////////////////////////////////
-	public static function Login(){
+	public  static function Login(){
 		$login_error = null;
 		if($_SERVER['REQUEST_METHOD'] == "GET"){
 			require_once('apps/views/client/user/login.php');
@@ -14,26 +14,26 @@ class UserController{
 			$user = new UserModel(null,null,$email,null,null);
 			$newUser = $user::CheckUser($user);//lấy ra email nếu tồn tại
 			if($newUser){
-				if(password_verify($tmp ,$newUser->password)){	
+				if(password_verify($tmp ,$newUser->password)){	//nếu đúng mật khảu
 					unset($_SESSION['login_error']);//Xóa biến login_error;
 					$_SESSION['userId'] = $newUser->id;
 					$_SESSION['userName'] = $newUser->username;
 					
 					if($newUser->level=='1'){//Chuyển sang trang admin
-						header('location: http://localhost/m-store/admin');
+						header("location: ../admin");
 					}
 					else{
-						header('location: http://localhost/m-store/');
+						header("location: ../");
 					}
 				}
-				else{
-					$_SESSION['login_error'] ='error';
-					header('location: http://localhost/m-store/User/Login');
+				else{///sai mật khẩu
+						$_SESSION['login_error'] ='error';
+					header("location: ../User/Login");
 				}
 			}
 			else{
 				$_SESSION['login_error'] ='error';
-				header('location: http://localhost/m-store/User/Login');
+				header("location: ../User/Login");
 			}
 		}
 	}
@@ -58,12 +58,12 @@ class UserController{
 				}
 				else{
 					$_SESSION['login_error'] ='error';
-					header('location: http://localhost/m-store/User/CartLogin/'.$productId);
+					header("location: ../Login/$productId");
 				}
 			}
 			else{
 				$_SESSION['login_error'] ='error';
-				header('location: http://localhost/m-store/User/CartLogin/'.$productId);
+				header("location: ../Login/$productId");
 			}
 		}
 	}
@@ -110,11 +110,11 @@ class UserController{
 	//Sign Out////////////////////////////////////////////////////////
 	public static function SignOut(){
 		session_destroy();
-		header('location: http://localhost/m-store/');
+		header("location: ../");
 	}
 
 	//TRang cá nhân
-	public static function Id($id){
+	public  function Id($id){
 		//Kiểm tra id có tồn tại không
 		if(isset($_SESSION['userId'])){
 			$userId = $_SESSION['userId'];
@@ -124,7 +124,7 @@ class UserController{
 	require_once('./apps/views/client/user.php');
 	}
 			else{
-		header('location: http://localhost/m-store/');
+		header("location: ../");
 		}
 	}	
 }

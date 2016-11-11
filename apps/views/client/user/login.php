@@ -1,5 +1,5 @@
 <section class="container">
-		<form action="User/Login" class='user-form' method="post">
+		<form action="m-store/User/Login" class='user-form' method="post">
 			<h1>Đăng Nhập</h1>
 				<?php 
 					if(isset($_SESSION['login_error'])){

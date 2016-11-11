@@ -1,7 +1,7 @@
 <section class="container">
 	<section class="category-dir">
-		<a href="./">Home/</a>
-		<span><a href="Category/Id/<?=$product[14]; ?>"><?=$product[12];?> </a></span>
+		<a href="m-store/">Home/</a>
+		<span><a href="m-store/Category/Id/<?=$product[14]; ?>"><?=$product[12];?> </a></span>
 		<span>/<?=$product[3];?></span>
 	</section>	
 	<input type="hidden" id='cateId' value='<?=$product[14]; ?>'>
@@ -9,14 +9,14 @@
 		<section id="product">
 			<section id="product-image">
 				<section id="zoom">
-					<img src="./apps/public/upload/<?=$fisrtImage[0][0]; ?>" alt="" id="zoomclass">
+					<img src="m-store/apps/public/upload/<?=$fisrtImage[0][0]; ?>" alt="" id="zoomclass">
 				</section>
 				<ul id="zoom-array">
 					<?php
 					foreach ($image as $key ) { ?>
 					<section class="product-img">
 						<li>
-						<img src="./apps/public/upload/<?=$key['url'	]; ?>" alt="">
+						<img src="m-store/apps/public/upload/<?=$key['url'	]; ?>" alt="">
 						</li>
 					</section>
 					<?php	}
@@ -57,11 +57,11 @@
 							<section class="pay-option">
 								<?php 
 									if(!isset($_SESSION['userId'])){ ?><!--Chưa đăng nhập-->
-										<a href="Cart/Login/<?=$product[0];?>" class="cart-action">Mua Ngay<p>(đăng nhập)</p></a>
-										<a href="Cart/CartNoRegister/<?=$product[0]; ?>" class="cart-action no-register">Đặt Mua Không Cần Đăng Ký</a>
+										<a href="m-store/Cart/Login/<?=$product[0];?>" class="cart-action">Mua Ngay<p>(đăng nhập)</p></a>
+										<a href="m-store/Cart/CartNoRegister/<?=$product[0]; ?>" class="cart-action no-register">Đặt Mua Không Cần Đăng Ký</a>
 								<?php	}
 								else{ ?>
-									<a href="Cart/Id/<?=$product[0]; ?>" class="cart-action">Mua Ngay</a><!--Đã đăng nhập-->
+									<a href="m-store/Cart/Id/<?=$product[0]; ?>" class="cart-action">Mua Ngay</a><!--Đã đăng nhập-->
 								 <?php }
 								?>
 							</section>

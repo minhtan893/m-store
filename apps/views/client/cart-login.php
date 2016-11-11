@@ -1,5 +1,5 @@
 <section class="container">
-		<form action="Cart/Login/<?=$productId; ?>" class='user-form' method="post">
+		<form action="m-store/Cart/Login/<?=$productId; ?>" class='user-form' method="post">
 			<h1>Đăng Nhập</h1>
 				<?php 
 					if(isset($_SESSION['login_error'])){

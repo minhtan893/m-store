@@ -224,9 +224,10 @@ window.Cart = {
 			arrTmp.push(status);
 			arr.push(arrTmp);
 		}
+		console.log(arr);
 		//Gửi ajax để cập nhật
 		$.ajax({
-			url : "http://localhost/m-store/admin/Cart/Update",
+			url : "m-store/admin/Cart/Update",
 			type : 'post',
 			dataType : 'json',
 			data : {
@@ -234,6 +235,7 @@ window.Cart = {
 			},
 			success : function(rs){
 				if(rs){
+					//console.log(rs);
 					location.reload();
 				}
 				else{

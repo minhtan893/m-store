@@ -84,14 +84,14 @@ class CategoryController{
 				$save = CategoryModel::Save($cateName,$cateId);
 				if($save!=false){
 					echo json_encode(['status'=>$save]);
-			}
-			else{
-				echo json_encode(['status'=>false]);
-			}
+				}
+				else{
+					echo json_encode(['status'=>false]);
+				}
 			}
 			else{
 				if(CategoryModel::Save($cateName,$cateId)){
-				echo json_encode(['status'=>true]);
+				echo json_encode(['status'=>$cateId]);
 			}
 			else{
 				echo json_encode(['status'=>false]);
@@ -128,7 +128,7 @@ class CategoryController{
 				require_once('../apps/views/admin/add-cate.php');
 			}
 			else{
-				header('location: http://location/m-store/admin');
+				header("location: ../../");
 			}
 
 		}

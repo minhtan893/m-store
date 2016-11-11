@@ -4,6 +4,6 @@
 </section>
 <script>
 	$(document).ready(function(){
-		setTimeout(window.location.href='./', 5000);
+		setTimeout(window.location.href='m-store/', 10000);
 	})
 </script>

@@ -178,7 +178,7 @@ class ProductController{
 				require_once('../apps/views/admin/update-product.php');
 			}
 			else{
-				header('location: http://localhost/m-store/admin');
+				header("location: ../../");
 			}
 		}
 	}

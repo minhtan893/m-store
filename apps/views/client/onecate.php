@@ -1,6 +1,6 @@
 <section class="container">
 	<section class='category-dir'>
-		<a href="./">Home/</a>
+		<a href="m-store/">Home/</a>
 		<a href="javascript:void(0)" class="cateName"><?=$check['name'];?></a>
 	</section>
 	<input type="hidden" value="<?=$pageLimit; ?>" id="pageLimit">

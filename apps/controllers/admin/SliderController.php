@@ -26,7 +26,7 @@
 					SliderModel::Update($_FILES[$img]['name'],$i);
 				}
 			}
-			header('location: http://localhost/m-store/admin/Slider');
+			header("location: ../Slider/Index");
 		}
 
 		//Thêm mới
@@ -42,7 +42,7 @@
 					SliderModel::Add($_FILES[$img]['name']);
 				}
 			}
-			header('location: http://localhost/m-store/admin/Slider');
+			header("location: ../");
 		}
 	}
 ?>

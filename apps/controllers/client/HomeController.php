@@ -1,12 +1,14 @@
 <?php 
 	
 	class HomeController{
-		public static function Index(){//Load trang chủ
+		public  function Index(){//Load trang chủ
+
+		
 			//lấy ra slider
 			$sliders = HomeModel::GetSlider();
 
 			//lấy ra 3 sản phẩm bán chạy nhất
-			$pageLimit = CaLL("Product","GetPageLimit");
+			$pageLimit = CaLL("Product","GetPageLimit",null);
 			require_once('apps/views/client/index.php');
 		}
 		

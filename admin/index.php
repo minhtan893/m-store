@@ -2,6 +2,7 @@
 session_start();
 if(isset($_SESSION['userId'])){//Kiểm tra level User
 	$userId = $_SESSION['userId'];
+	require_once('../apps/commons/environment.php');
 	require_once('../apps/commons/connection.php');
 	if(CheckLevel($userId)){
 		if(isset($_GET['ctr']) && isset($_GET['act'])){

@@ -1,15 +1,16 @@
 <?php 
 	class CartController{
+
 		public static function Id($productId=null){
 			//Lấy thông tin sản phẩm
 			$product = ProductController::Cart($productId);
-			require_once('./apps/views/client/cart.php');
+			require_once('apps/views/client/cart.php');
 		}
 		//Đăng nhập để mua hàng
 		public static function Login($productId){
 				if(UserController::CartLogin($productId)){
-					header('location: http://localhost/m-store/Cart/Id/'.$productId);
-			}		
+					header("location: ../Id/$productId");
+				}		
 		}
 
 		//Lưu giỏ hàng

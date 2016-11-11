@@ -4,7 +4,7 @@
 		<span>Contact</span>
 	</section>
 	<section class="admin-content">
-		<form action= "admin/Contact/Update" class='admin-form' method='POST'>
+		<form action= "m-store/admin/Contact/Update" class='admin-form' method='POST'>
 			<label>Tên công ty</label></br>
 			<input type="text" placeholder="Tên công ty" value="<?=$contact['company'];?>" autofocus required name="companyName" value=""></br>
 			<label>Địa chỉ</label></br>

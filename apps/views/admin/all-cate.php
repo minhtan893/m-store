@@ -12,7 +12,7 @@
 					<tr>
 						<th>Tên Danh Mục</th>
 						<th>Số Lượng Mẫu Mã</th>
-						<th colspan="5"><a href=""><a href="admin/Category/Add" class="admin-add-link">Thêm Danh Mục</a></a></th>
+						<th colspan="5"><a href=""><a href="m-store/admin/Category/Add" class="admin-add-link">Thêm Danh Mục</a></a></th>
 					</tr>
 				</thead>
 				<tbody>
