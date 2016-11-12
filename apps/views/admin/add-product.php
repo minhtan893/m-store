@@ -1,7 +1,7 @@
 
 <section class="container">
 <section class="product-option">
-	<form method="POST"  action="admin/Product/Save" enctype="multipart/form-data" class="product-form">
+	<form method="POST"  action="" enctype="multipart/form-data" class="product-form" id="add-product-form">
 		<label>Mô tả</label></br>
 		<textarea name="des"  id="des"  row="10"></textarea></br>
 		<label>Thông số kỹ thuật</label></br>
@@ -58,6 +58,8 @@
 	CKEDITOR.replace('feature');
 	
 	$(document).ready(function(){
+		var base=$('head base').attr('href')+"/admin/Product/Save";
+		$('#add-product-form').attr('action',base);
 		$('.product-form').submit(function(){
 			var cateId = $('#cateId option:selected').val();
 			var cateName = $('#cateId option:selected').text();

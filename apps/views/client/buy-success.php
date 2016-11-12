@@ -4,6 +4,7 @@
 </section>
 <script>
 	$(document).ready(function(){
-		setTimeout(window.location.href='m-store/', 10000);
+		var base = $('head base').attr('href');
+		setTimeout(window.location.href=base, 10000);
 	})
 </script>

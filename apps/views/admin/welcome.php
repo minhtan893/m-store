@@ -1,12 +1,12 @@
 <section class="container">
 	<section class="category-dir">
-				<a href="admin/Category">Sản phẩm</a>
+				<a href="" id="sp">Sản phẩm</a>
 	</section>	
 	<section class="admin-content">
 		<section class="admin-cate">
 			<input id = "proPage" type="hidden" value='<?=(int)($Page);?>'>
 			<h5>tổng số : <?=$productLimit; ?></h5>
-			<a href="admin/Product/Add" class="AddProduct">Thêm sản phẩm</a>
+			<a href="" class="AddProduct" id="add-product">Thêm sản phẩm</a>
 			<ul class="home-content">
 
 			</ul>
@@ -23,6 +23,9 @@
 </section>
 <script>
 	$(document).ready(function(){
+		var base = $('head base').attr('href');
+		$('#sp').attr('href',base+'/admin/Category');
+		$('#add-product').attr('href',base+'/admin/Product/Add');
 		var productLimit = $('#proPage').val();
 		Home.ProductLimit(productLimit);
 		Home.GetProduct();

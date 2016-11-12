@@ -8,7 +8,7 @@
 			<input id = "cateId" type="hidden" value='<?=$cate['id'];?>'>
 			<input id = "proPage" type="hidden" value='<?=(int)($productPage);?>'>
 			<h5>tổng số : <?=$productLimit; ?></h5>
-			<a href="admin/Product/Add" class="AddProduct">Thêm sản phẩm</a>
+			<a href="javascript:void(0)" class="AddProdsuct" id="add-product">Thêm sản phẩm</a>
 			<ul class="cate-content">
 
 			</ul>
@@ -25,6 +25,10 @@
 </section>
 <script>
 	$(document).ready(function(){
+		$('#add-product').on('click',function(){
+		var base = $('head base').attr('href');
+		window.location.href = base+"/admin/Product/Add";
+	})
 		var cateId = $('#cateId').val();
 		var productLimit = $('#proPage').val();
 		console.log(cateId);

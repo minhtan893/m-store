@@ -1,12 +1,12 @@
 
 <section class="container">
 	<section class="category-dir">
-		<a href="admin">Home/</a>
-		<span><a href="admin/Category/Id/<?=$product['cateId']; ?>"><?=$product["cateName"];?> </a></span>
+		<a href="<?=$url ?>admin">Home/</a>
+		<span><a href="<?=$url ?>/admin/Category/Id/<?=$product['cateId']; ?>"><?=$product["cateName"];?> </a></span>
 		<span>/<?=$product['name'];?></span>
 	</section>	
 	<section class="product-option">
-		<form method="POST"  action="admin/Product/Save" enctype="multipart/form-data" class="product-form">
+		<form method="POST"  action="<?=$url ?>/admin/Product/Save" enctype="multipart/form-data" class="product-form">
 			<label>Tên Sản phẩm</label></br>
 			<input type="text" id="name" name ="name" placeholder="Tên sản phẩm" required autofocus="autofocus" value="<?=$product['name']; ?>"></br>
 			<label >Chi tiết sản phẩm</label>
@@ -26,13 +26,13 @@
 				<?php 
 					foreach ($image as $key ) {
 						if($key['status_thumb']==1){ ?>
-							<img src="<?="http://localhost/m-store/apps/public/upload/thumb/".$key['url']; ?>" class="thumb-update"/>
+							<img src="<?="<?=$url ?>/apps/public/upload/thumb/".$key['url']; ?>" class="thumb-update"/>
 							<input type="file" name="thumb" accept="image/*"  placeholder="Chọn hình đại diện"></br>
 						<?php } 
 					
 					else{ ?>
 						<section class="image-product-wraper">
-							<img src="<?="http://localhost/m-store/apps/public/upload/".$key['url']; ?>" class="update-product-image"/>
+							<img src="<?="<?=$url ?>/apps/public/upload/".$key['url']; ?>" class="update-product-image"/>
 						</section>	
 					<?php }
 					}

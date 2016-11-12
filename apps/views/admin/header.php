@@ -6,12 +6,12 @@
 			<section class="user-action">
 				<?php 
 				if(isset($_SESSION['userName'])) { ?>
-					<a href="m-store/User/Name" class="user-action-link"><?php echo $_SESSION['userName'];?></a>
-					<a href="m-store/User/SignOut" class="user-action-link">Đăng Xuất</a>			
+					<a href="<?=$url ?>/User/Name" class="user-action-link"><?php echo $_SESSION['userName'];?></a>
+					<a href="<?=$url ?>/User/SignOut" class="user-action-link">Đăng Xuất</a>			
 				<?php }
 				else{ ?>
-				<a href="User/Login" class="user-action-link">Đăng nhập</a>
-				<a href="User/Register" class="user-action-link">Đăng ký</a>
+				<a href="<?=$url ?>User/Login" class="user-action-link">Đăng nhập</a>
+				<a href="<?=$url ?>User/Register" class="user-action-link">Đăng ký</a>
 				<?php }
 				?>
 			</section>
@@ -33,19 +33,19 @@
 			<nav>
 				<button id="responsive-menu">Menu</button>
 				<ul id="menu">
-					<li><a href="m-store/admin" class="active-menu menu-link">Home</a></li>
-					<li><a href="m-store/admin/Category" class="menu-link">Danh mục</a></li>
-					<li><a href="m-store/admin/Cart" class="menu-link">Giỏ hàng</a></li>
-					<li><a href="m-store/admin/Contact" class="menu-link">Contact</a></li>
-					<li><a href="m-store/admin/Slider" class="menu-link">Slider</a></li>
+					<li><a href="<?=$url ?>/admin" class="active-menu menu-link">Home</a></li>
+					<li><a href="<?=$url?>/admin/Category" class="menu-link">Danh mục</a></li>
+					<li><a href="<?=$url ?>/admin/Cart" class="menu-link">Giỏ hàng</a></li>
+					<li><a href="<?=$url ?>/admin/Contact" class="menu-link">Contact</a></li>
+					<li><a href="<?=$url ?>/admin/Slider" class="menu-link">Slider</a></li>
 				</ul>
 				
 			</nav>
 			<!--end-nav-->
 			<section id="search-bar">
-				<form action="m-store/admin/Search/Query" method="post">
+				<form action="<?=$url ?>/admin/Search/Query" method="post">
 					<input type="text" placeholder="Search" id="search-bar-text" name="query"/>
-					<button id="search-bar-button" type="submit"><img src="m-store/apps/public/images/search.png" alt=""></button>
+					<button id="search-bar-button" type="submit"><img src="<?=$url ?>/apps/public/images/search.png" alt=""></button>
 				</form>
 			</section>
 			<section class="container">

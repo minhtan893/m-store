@@ -3,9 +3,10 @@
 Home = {
 	//Hiển thị danh sách danh mục và sản phẩm nổi bật trên trang chủ
 	Index : function(page){
+		var base = $('head base').attr('href');
 		//gửi ajax lấy về trang danh mục/ mỗi trang 4 danh mục
 		$.ajax({
-			url : 'm-store/Product/GetHomeProduct',
+			url : base+"/Product/GetHomeProduct",
 			type : 'post',
 			dataType : 'json',
 			data : {
@@ -21,12 +22,13 @@ Home = {
 	},
 		//Đổ dữ liệu ra html danh mục
 		ShowProduct : function(product){
+			var base = $('head base').attr('href');
 			var html="";
 			html+="<section class='home-product'>";
 				html+="<article class='product-detail'>";
-				html+="<a href='m-store/Product/Id/"+product[0]+"' class=''><img class='img-product' src='m-store/apps/public/upload/thumb/";
+				html+="<a href='"+base+"/Product/Id/"+product[0]+"' class=''><img class='img-product' src='"+base+"/apps/public/upload/thumb/";
 				html+=product[4]+"'></a>";
-				html+="<a href='m-store/Product/Id/"+product[0]+"' class='product-name'>";
+				html+="<a href='"+base+"/Product/Id/"+product[0]+"' class='product-name'>";
 				html+=product[3]+" "+product[1];
 				html+="</a>";
 				html+="<p class='price'>&#36; ";
@@ -42,9 +44,10 @@ Home = {
 	Category = {
 	//Dữ liệu trên 1 danh mục
 	OneCate : function(page,pageLimit,id){
+		var base = $('head base').attr('href');
 		//gửi ajax lấy về trang danh mục/ mỗi trang 4 danh mục
 		$.ajax({
-			url : 'm-store/Product/GetOneCate',
+			url : base+'/Product/GetOneCate',
 			type : 'post',
 			dataType : 'json',
 			data : {
@@ -54,23 +57,23 @@ Home = {
 			success : function(product){
 					var count = product.length;
 					for(i=0;i<count;i++){
-						Category.ShowProduct(product[i]);
+						Category.ShowProduct(product[i],base);
 					}	
 				}
 			});
 	},
 		//Đổ dữ liệu ra html danh mục
-		ShowProduct : function(product){
+		ShowProduct : function(product,base){
 			var html="";
 			html+="<section class='home-product'>";
 			html+="<article class='product-detail'>";
-			html+="<img class='img-product' src='m-store/apps/public/upload/thumb/";
-			html+=product[3]+"'>";
-			html+="<a href='m-store/Product/Id/"+product[0]+"' class='product-name'>";
+			html+="<a href='"+base+"/Product/Id/"+product[0]+"' ><img class='img-product' src='"+base+"/apps/public/upload/thumb/";
+			html+=product[3]+"'></a>";
+			html+="<a href='"+base+"/Product/Id/"+product[0]+"' class='product-name'>";
 			html+=product[1]+"</a>";
 			html+="<p class='price'>&#36; ";
 			html+=product[2];
-			html+="</p><section class='cart'><a href='m-store/Product/Id/"+product[0]+"' class='add-cart'>mua</a></section>";
+			html+="</p><section class='cart'><a href='"+base+"/Product/Id/"+product[0]+"' class='add-cart'>mua</a></section>";
 			html+="</article>";
 			html+="</section>";
 			$('.one-category').append(html);	
@@ -82,8 +85,9 @@ Home = {
 //Xử lý Product
 	Product = {
 		SamProduct : function(cateId){
+			var base = $('head base').attr('href');
 			$.ajax({
-			url : 'm-store/Product/GetSame',
+			url : base+'/Product/GetSame',
 			type : 'post',
 			dataType : 'json',
 			data : {
@@ -93,24 +97,24 @@ Home = {
 					var count = product.length;
 					console.log(product);
 					for(i=0;i<count;i++){
-						Product.ShowProduct(product[i]);
+						Product.ShowProduct(product[i],base);
 					}	
 				}
 			});
 		},
-		ShowProduct : function(product){
+		ShowProduct : function(product,base){
 			var html="";
 			html+="<li>";
 			html+="<article class='product-detail'>";
-			html+="<img class='img-product' src='m-store/apps/public/upload/thumb/";
+			html+="<a href='"+base+"/Product/Id/"+product[0]+"' ><img class='img-product' src='"+base+"/apps/public/upload/thumb/";
 			html+=product[3]+"'></a>";
-			html+="<a href='m-store/Product/Id/"+product[0]+"' class='product-name'>";
+			html+="<a href='"+base+"/Product/Id/"+product[0]+"' class='product-name'>";
 			html+=product[1];
 			html+="</a>";
 			html+="<p class='price'>&#36;";
 			html+=product[2];
 			html+="</p>";
-			html+="<section class='cart'><a href='m-store/Product/Id/"+product[0]+"' class='add-cart'> mua</a></section>";
+			html+="<section class='cart'><a href='"+base+"/Product/Id/"+product[0]+"' class='add-cart'> mua</a></section>";
 			html+="</article>";
 			html+="</li>";
 			$('.sidebar-content').append(html);
@@ -124,9 +128,10 @@ Home = {
 User={
 	//Hiển thị đơn hàng đã đặt
 	GetCart : function(userId,page){
+		var base = $('head base').attr('href');
 		//gửi ajax để lấy đơn hàng
 		$.ajax({
-			url : 'm-store/Cart/GetCart',
+			url : base+'/Cart/GetCart',
 			type : 'post',
 			dataType : 'json',
 			data : {
@@ -136,24 +141,24 @@ User={
 			success : function(cartList){
 					var count = cartList.length;
 					for(i=0;i<count;i++){
-						User.ShowCart(cartList[i]);
+						User.ShowCart(cartList[i],base);
 					}
 				}
 			}).always(function(){
 				$('.del').on('click',function(){
 			if(confirm('Bạn có muốn xóa đơn hàng không ?')){
 				var id = $(this).attr('cartId');
-				User.Del(id);
+				User.Del(id,base);
 			}
 		})
 			});
 	},
 
 	//Show Đơn hangf
-	ShowCart : function(cartList){
+	ShowCart : function(cartList,base){
 			var html="";
 			html+="<article class='cart-detail'>";
-			html+="<img class='cart-img' src='m-store/apps/public/upload/thumb/";
+			html+="<img class='cart-img' src='"+base+"/apps/public/upload/thumb/";
 			html+=cartList[10][16]+"'></a>";
 			html+="<section class='cart-info'>";
 			html+="<p class='cart-p'>Tên sản phẩm: "+cartList[10][12]+" "+cartList[10][2]+"</p><br/>";
@@ -180,9 +185,10 @@ User={
 		},
 
 		//Xóa đơn hàng
-		Del : function(id){
+		Del : function(id,base){
+			var base  = $('head base').attr('href');
 			$.ajax({
-			url : 'm-store/Cart/Del',
+			url : base+'/Cart/Del',
 			type : 'post',
 			dataType : 'json',
 			data : {

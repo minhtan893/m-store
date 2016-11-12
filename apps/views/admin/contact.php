@@ -4,7 +4,7 @@
 		<span>Contact</span>
 	</section>
 	<section class="admin-content">
-		<form action= "m-store/admin/Contact/Update" class='admin-form' method='POST'>
+		<form action= "" class='admin-form' method='POST' id="contact">
 			<label>Tên công ty</label></br>
 			<input type="text" placeholder="Tên công ty" value="<?=$contact['company'];?>" autofocus required name="companyName" value=""></br>
 			<label>Địa chỉ</label></br>
@@ -20,3 +20,12 @@
 		</form>
 	</section>
 </section>
+
+<script>
+	$(document).ready(function(){
+			$('#contact').on('click',function(){
+		var base = $('head base').attr('href');
+		window.location.href = base+"admin/Contact/Update";
+	})
+	})
+</script>

@@ -5,7 +5,7 @@
 			if($sliders!=null){
 				foreach ($sliders as $key ) { ?>
 				<section class="img-slider-show">
-					<img src="m-store/apps/public/upload/slider/<?=$key['url'] ?>" >
+					<img src="<?=$url ?>/apps/public/upload/slider/<?=$key['url'] ?>" >
 				</section>
 
 				<?php }
@@ -13,9 +13,9 @@
 		?>
 		<section class="slider-upload">
 			<form action="<?php if($sliders==null){
-					echo"m-store/admin/Slider/Add";
+					echo"<?=$url ?>/admin/Slider/Add";
 				}else{
-					echo "m-store/admin/Slider/Update";
+					echo "<?=$url ?>/admin/Slider/Update";
 					} ?>" method="POST" enctype="multipart/form-data">
 				<?php 
 					for ($i=0; $i < 3; $i++) { ?> 

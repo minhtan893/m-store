@@ -1,5 +1,5 @@
 <section class="container">
-		<form action="m-store/Cart/Login/<?=$productId; ?>" class='user-form' method="post">
+		<form action="" class='user-form' method="post">
 			<h1>Đăng Nhập</h1>
 				<?php 
 					if(isset($_SESSION['login_error'])){
@@ -13,3 +13,9 @@
 			<button type="submit" >ĐĂNG NHẬP</button>
 		</form>
 </section>
+<script>
+	$(document).ready(function(){
+		var base = $('head base').attr('href');
+		$('.user-form').attr('action', base+'/Cart/Login/<?=$productId ?>')
+	})
+</script>

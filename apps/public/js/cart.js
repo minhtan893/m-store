@@ -158,19 +158,20 @@ window.Cart = {
 	//////////////////////////////////////////////////////
 
 	GetCart : function(cartPage){
+		var base = $('head base').attr('href');
 		if(cartPage!=0){
 			//Lấy dữ liệu trang 1 mặc định
 			var pageActive = $('.page-active').children('li').text();
-			var url = 'http://localhost/m-store/admin/Cart/GetCart';
+			var url = base+'/admin/Cart/GetCart';
 			SendPage(pageActive,url);
 			$('.pagination').on('click',function(){
 				var pageActive = $('.page-active').children('li').text();
 				$('tbody').empty();
-				SendPage(pageActive,url);
+				SendPage(pageActive,url,base);
 			})//
 		}
 		//gửi ajax
-		function SendPage(pageActive,url){
+		function SendPage(pageActive,url,base){
 			$.ajax({
 				url : url,
 				type: 'post',
@@ -180,7 +181,7 @@ window.Cart = {
 				},
 				success : function(rs){
 					for (var i = 0; i < rs.length; i++) {
-						Cart.ShowCart(rs[i],i);
+						Cart.ShowCart(rs[i],i,base);
 					}
 					$('tbody').append("<input type='hidden' value='"+rs.length+"' id='limit'>");
 				}
@@ -188,7 +189,7 @@ window.Cart = {
 		}
 	},
 
-	ShowCart : function(cart,i){
+	ShowCart : function(cart,i,base){
 		var html="";
 		html+="<tr>";
 		html+="<td>"+cart[11][2]+" "+cart[11][1]+"</td>";
@@ -224,10 +225,11 @@ window.Cart = {
 			arrTmp.push(status);
 			arr.push(arrTmp);
 		}
-		console.log(arr);
+		var base = $('head base').attr('href');
+
 		//Gửi ajax để cập nhật
 		$.ajax({
-			url : "m-store/admin/Cart/Update",
+			url : base+"/admin/Cart/Update",
 			type : 'post',
 			dataType : 'json',
 			data : {

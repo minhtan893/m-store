@@ -177,7 +177,12 @@
 									where p.id = :id');
 			$stmt->bindParam(':id',$productId,PDO::PARAM_INT);
 			$stmt->execute();
-			return $stmt->fetch();
+			if($stmt->rowCount()>0){
+				return $stmt->fetch();
+			}else{
+				$arr  =[];
+				return $arr;
+			}
 		}
 
 		//search

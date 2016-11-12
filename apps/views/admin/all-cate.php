@@ -12,7 +12,7 @@
 					<tr>
 						<th>Tên Danh Mục</th>
 						<th>Số Lượng Mẫu Mã</th>
-						<th colspan="5"><a href=""><a href="m-store/admin/Category/Add" class="admin-add-link">Thêm Danh Mục</a></a></th>
+						<th colspan="5"><a href=""><a href="javascript:void(0)" class="admin-add-link" id="add-cate">Thêm Danh Mục</a></a></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -32,6 +32,10 @@
 
 <script>
 $(document).ready(function(){
+	$('#add-cate').on('click',function(){
+		var base = $('head base').attr('href');
+		window.location.href = base+"/admin/Category/Add";
+	})
 	var catePage = $('#Page').val();
 	Category.CatePage(catePage);
 	Category.GetCate(catePage);

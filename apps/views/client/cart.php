@@ -2,7 +2,7 @@
 		<section id="cart-info">
 				<article class="product-detail">  
 					<a href="" class="img-product">
-					<img src="m-store/apps/public/upload/thumb/<?=$product[16]['url']; ?>" alt="">
+					<img src="" >
 					</a>
 					<p class="product-name"><?=$product[12]." ".$product[2]; ?></p>
 					<p class="price"><?=$product[4]; ?><span> $</span></p>
@@ -10,7 +10,7 @@
 		</section>
 
 		<section id="cart-form">
-			<form action="m-store/Cart/Buy" class='user-form' method="POST">
+			<form action="" class='user-form' method="POST">
 			<input type="hidden" value="<?=$product[4]; ?>" id="price" name="price">
 			<input type="hidden" value="<?=$productId; ?>" name="productId">
 				<h1>Khách hàng</h1>
@@ -45,4 +45,11 @@
 			</form>	
 		</section>	
 	</section>
-	
+	<script>
+	$(document).ready(function(){
+		var base = $('head base').attr('href');
+		$('.img-product img').attr('src', base+'/apps/public/upload/thumb/<?=$product[16]['url']; ?>')
+
+		$('.user-form').attr('action', base+'/Cart/Buy');
+	})
+</script>
