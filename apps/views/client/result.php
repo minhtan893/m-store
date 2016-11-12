@@ -15,9 +15,7 @@
 				var base = $('head base').attr('href');
 				$('.result-img<?=$i ?>').attr('src', base+'/apps/public/upload/thumb/<?=$product[$i][1][6]['url'] ?>');
 				$('#result-link<?=$i ?>').attr('href', base+'/Product/Id/<?=$product[$i][1][0]?>');
-	})
-				
-
+			})
 			</script>
 			<?php } 
 		}
@@ -31,12 +29,11 @@
 			</ul>			
 		</section>
 		<script>
-		$(document).ready(function(){
-		var base = $('head base').attr('href');
+			$(document).ready(function(){
+			var base = $('head base').attr('href');
 				$('#2 img').attr('src', base+'/apps/public/upload/thumb/<?=$product[6]['url'] ?>');
 				$('#2 a').attr('href', base+'/Product/Id/<?=$product[0] ?>');
-	})
-	
+			})
 		</script>
 		<?php }
 		if(isset($_SESSION['cateId'])){ ?>
@@ -47,15 +44,11 @@
 			</ul>
 			<script>
 			$(document).ready(function(){
-		var base = $('head base').attr('href');
-
-		$('#3').attr('href', base+'/Category/Id/<?=$_SESSION['cateId'] ?>');
-		
-		
-	})
-				
+				var base = $('head base').attr('href');
+				$('#3').attr('href', base+'/Category/Id/<?=$_SESSION['cateId'] ?>');
+			})
 			</script>
-	<?php	}
+		<?php	}
 			if(isset($_SESSION['result-error'])){ ?>
 			<ul class="result-ul">
 				<li>

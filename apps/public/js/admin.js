@@ -859,16 +859,16 @@ window.Home = {
 				$.each(rs,function(index, item) {
 					var html ="<li>";
 					html+="<img src='"+base+"/apps/public/upload/thumb/";
-					html+=item[5]+"' class='admin-product-thumb'>";
+					html+=item[10]+"' class='admin-product-thumb'>";
 					html+="<section class='admin-product-info'>"
 					html+="<a href='"+base+"/admin/Product/Update/";
 					html+=item[0]
 					html+="' class='admin-product-name'>";
-					html+=item[4]+" "+item[1]+"</a>"
+					html+=item[2]+" "+item[8]+"</a>"
 					html+="<p class='admin-product-price'> ";
-					html+=item[3]+" &#36</p>"
+					html+=item[4]+" &#36</p>"
 					html+="<p class='admin-product-num'>";
-					html+=item[2]+" chiếc</p>";
+					html+=item[6]+" chiếc</p>";
 					html+="<button class='product-del-link ' proId="+item['id']+">X</button></li>";
 					$('.home-content').append(html);
 				});
