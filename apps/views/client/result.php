@@ -6,14 +6,14 @@
 			for ($i=0; $i < $count; $i++) { ?> 
 			<ul class="result-ul" id="i1<?=$i ?>">
 				<li>
-					<img src="" class="result-img<?=$i ?>" >
+					<img src="" class="result-img" id="result-img<?=$i ?>">
 					<a href="" class='result-link' id="result-link<?=$i ?>"><?=$product[$i][1][4]." ".$product[$i][1][2] ?></a>
 				</li>
 			</ul>
 			<script>
 			$(document).ready(function(){
 				var base = $('head base').attr('href');
-				$('.result-img<?=$i ?>').attr('src', base+'/apps/public/upload/thumb/<?=$product[$i][1][6]['url'] ?>');
+				$('#result-img<?=$i ?>').attr('src', base+'/apps/public/upload/thumb/<?=$product[$i][1][6]['url'] ?>');
 				$('#result-link<?=$i ?>').attr('href', base+'/Product/Id/<?=$product[$i][1][0]?>');
 			})
 			</script>

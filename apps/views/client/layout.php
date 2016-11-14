@@ -12,6 +12,7 @@
 	<script src="<?=$url ?>/apps/public/js/responsiveslides.min.js"></script>
 	<script type="text/javascript" src="<?=$url ?>/apps/public/js/main.js"></script>
 	<script type="text/javascript" src="<?=$url ?>/apps/public/js/client.js"></script>
+	<script type="text/javascript" src="<?=$url ?>/apps/public/js/jquery.priceformat.min.js"></script>
 </head>
 <body>
 	<?php 

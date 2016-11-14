@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2016 at 06:31 AM
+-- Generation Time: Nov 14, 2016 at 03:01 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -45,7 +45,8 @@ CREATE TABLE `carts` (
 --
 
 INSERT INTO `carts` (`id`, `product_id`, `user_id`, `address`, `customer_name`, `time`, `num`, `status`, `price`, `color`, `size`) VALUES
-(18, 31, 9, 'klas', 'nlcsz', '2016-11-12', 1, '0', '3200', 'white', '45mm');
+(22, 63, NULL, 'SÃ i GÃ²n', 'Nguyá»…n vÄƒn A', '2016-11-14', 1, '0', '6700', 'yellow', '45mm'),
+(23, 67, 13, 'ha noi', 'user', '2016-11-14', 1, '0', '33000', 'Brown', '35mm');
 
 -- --------------------------------------------------------
 
@@ -63,12 +64,10 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`) VALUES
-(23, 'rolex'),
-(24, 'omega'),
-(26, 'iwc'),
-(28, 'breitling'),
-(37, 'bremont'),
-(39, 'zenith');
+(40, 'rolex'),
+(41, 'tag-heuer'),
+(42, 'panerai'),
+(43, 'zenith');
 
 -- --------------------------------------------------------
 
@@ -87,22 +86,39 @@ CREATE TABLE `colors` (
 --
 
 INSERT INTO `colors` (`id`, `color`, `product_id`) VALUES
-(31, 'grey', 25),
-(32, 'grey', 26),
-(33, 'white', 27),
-(34, 'white', 28),
-(35, 'white', 29),
-(36, 'black', 30),
-(37, 'white', 31),
-(40, 'white', 34),
-(41, 'black', 34),
-(44, 'black', 36),
-(45, 'navy', 36),
-(46, 'black', 37),
-(52, 'white', 40),
-(53, 'grey', 40),
-(54, 'white', 41),
-(75, 'black', 46);
+(81, 'Grey', 49),
+(82, 'black', 49),
+(83, 'black', 50),
+(86, 'black', 52),
+(87, 'black space', 52),
+(88, 'black', 53),
+(89, 'blue', 53),
+(90, 'white', 54),
+(91, 'grey', 54),
+(92, 'black', 55),
+(93, 'grey', 55),
+(94, 'Brown', 56),
+(95, 'Brown', 57),
+(96, 'black', 57),
+(97, 'white', 58),
+(98, 'black', 59),
+(99, 'blue', 59),
+(100, 'blue', 60),
+(101, 'blue', 61),
+(102, 'black', 62),
+(103, 'blue', 62),
+(104, 'yellow', 62),
+(105, 'yellow', 63),
+(106, 'Brown', 64),
+(107, 'white', 65),
+(108, 'black', 65),
+(109, 'black', 66),
+(110, 'blue', 66),
+(111, 'grey', 66),
+(112, 'Brown', 67),
+(113, 'gold', 67),
+(114, 'black', 68),
+(115, 'blue', 68);
 
 -- --------------------------------------------------------
 
@@ -123,7 +139,7 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`company`, `address`, `phone`, `facebook`, `email`) VALUES
-('M-store kfildk ', 'HÃ  Ná»™i', '+84 123 456', 'facfdebook.com/m-store', 'm-fd@mstore.com');
+('M-store', 'HÃ  Ná»™i', '+84 123 456', 'facfdebook.com/m-store', 'm-fd@mstore.com');
 
 -- --------------------------------------------------------
 
@@ -143,58 +159,82 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `url`, `status_thumb`, `product_id`) VALUES
-(93, '25-thumb.png', 1, 25),
-(94, '25-img0.jpg', 0, 25),
-(95, '25-img1.jpg', 0, 25),
-(96, '25-img2.jpg', 0, 25),
-(97, '26-thumb.jpg', 1, 26),
-(98, '26-img0.jpg', 0, 26),
-(99, '26-img1.jpg', 0, 26),
-(100, '26-img2.jpg', 0, 26),
-(101, '27-thumb.jpg', 1, 27),
-(102, '27-img0.jpg', 0, 27),
-(103, '27-img1.jpg', 0, 27),
-(104, '27-img2.jpg', 0, 27),
-(105, '28-thumb.jpg', 1, 28),
-(106, '28-img0.jpg', 0, 28),
-(107, '28-img1.jpg', 0, 28),
-(108, '28-img2.jpg', 0, 28),
-(109, '29-thumb.jpg', 1, 29),
-(110, '29-img0.jpg', 0, 29),
-(111, '29-img1.jpg', 0, 29),
-(112, '29-img2.jpg', 0, 29),
-(113, '30-thumb.jpg', 1, 30),
-(114, '30-img0.jpg', 0, 30),
-(115, '30-img1.jpg', 0, 30),
-(116, '30-img2.jpg', 0, 30),
-(117, '31-thumb.jpg', 1, 31),
-(118, '31-img0.jpg', 0, 31),
-(119, '31-img1.jpg', 0, 31),
-(120, '31-img2.jpg', 0, 31),
-(129, '34-thumb.jpg', 1, 34),
-(130, '34-img0.jpg', 0, 34),
-(131, '34-img1.jpg', 0, 34),
-(132, '34-img2.jpg', 0, 34),
-(137, '36-thumb.jpg', 1, 36),
-(138, '36-img0.jpg', 0, 36),
-(139, '36-img1.jpg', 0, 36),
-(140, '36-img2.jpg', 0, 36),
-(141, '37-thumb.jpg', 1, 37),
-(142, '37-img0.jpg', 0, 37),
-(143, '37-img1.jpg', 0, 37),
-(144, '37-img2.jpg', 0, 37),
-(153, '40-thumb.jpg', 1, 40),
-(154, '40-img0.jpg', 0, 40),
-(155, '40-img1.jpg', 0, 40),
-(156, '40-img2.jpg', 0, 40),
-(157, '41-thumb.jpg', 1, 41),
-(158, '41-img0.jpg', 0, 41),
-(159, '41-img1.jpg', 0, 41),
-(160, '41-img2.jpg', 0, 41),
-(177, '46-thumb.png', 1, 46),
-(178, '46-img0.png', 0, 46),
-(179, '46-img1.jpg', 0, 46),
-(180, '46-img2.jpg', 0, 46);
+(189, '49-thumb.jpg', 1, 49),
+(190, '49-img0.jpg', 0, 49),
+(191, '49-img1.jpg', 0, 49),
+(192, '49-img2.jpg', 0, 49),
+(193, '50-thumb.jpg', 1, 50),
+(194, '50-img0.jpg', 0, 50),
+(195, '50-img1.jpg', 0, 50),
+(196, '50-img2.jpg', 0, 50),
+(201, '52-thumb.jpg', 1, 52),
+(202, '52-img0.jpg', 0, 52),
+(203, '52-img1.jpg', 0, 52),
+(204, '52-img2.jpg', 0, 52),
+(205, '53-thumb.jpg', 1, 53),
+(206, '53-img0.jpg', 0, 53),
+(207, '53-img1.jpg', 0, 53),
+(208, '53-img2.jpg', 0, 53),
+(209, '54-thumb.jpg', 1, 54),
+(210, '54-img0.jpg', 0, 54),
+(211, '54-img1.jpg', 0, 54),
+(212, '54-img2.jpg', 0, 54),
+(213, '55-thumb.jpg', 1, 55),
+(214, '55-img0.jpg', 0, 55),
+(215, '55-img1.jpg', 0, 55),
+(216, '55-img2.jpg', 0, 55),
+(217, '56-thumb.jpg', 1, 56),
+(218, '56-img0.jpg', 0, 56),
+(219, '56-img1.jpg', 0, 56),
+(220, '56-img2.jpg', 0, 56),
+(221, '57-thumb.jpg', 1, 57),
+(222, '57-img0.jpg', 0, 57),
+(223, '57-img1.jpg', 0, 57),
+(224, '57-img2.jpg', 0, 57),
+(225, '58-thumb.jpg', 1, 58),
+(226, '58-img0.jpg', 0, 58),
+(227, '58-img1.jpg', 0, 58),
+(228, '58-img2.jpg', 0, 58),
+(229, '59-thumb.jpg', 1, 59),
+(230, '59-img0.jpg', 0, 59),
+(231, '59-img1.jpg', 0, 59),
+(232, '59-img2.jpg', 0, 59),
+(233, '60-thumb.jpg', 1, 60),
+(234, '60-img0.jpg', 0, 60),
+(235, '60-img1.jpg', 0, 60),
+(236, '60-img2.jpg', 0, 60),
+(237, '61-thumb.jpg', 1, 61),
+(238, '61-img0.jpg', 0, 61),
+(239, '61-img1.jpg', 0, 61),
+(240, '61-img2.jpg', 0, 61),
+(241, '62-thumb.jpg', 1, 62),
+(242, '62-img0.jpg', 0, 62),
+(243, '62-img1.jpg', 0, 62),
+(244, '62-img2.jpg', 0, 62),
+(245, '63-thumb.jpg', 1, 63),
+(246, '63-img0.jpg', 0, 63),
+(247, '63-img1.jpg', 0, 63),
+(248, '63-img2.jpg', 0, 63),
+(249, '64-thumb.jpg', 1, 64),
+(250, '64-img0.jpg', 0, 64),
+(251, '64-img1.jpg', 0, 64),
+(252, '64-img2.jpg', 0, 64),
+(253, '65-thumb.jpg', 1, 65),
+(254, '65-img0.jpg', 0, 65),
+(255, '65-img1.jpg', 0, 65),
+(256, '65-img2.jpg', 0, 65),
+(257, '66-thumb.jpg', 1, 66),
+(258, '66-img0.jpg', 0, 66),
+(259, '66-img1.jpg', 0, 66),
+(260, '66-img2.jpg', 0, 66),
+(261, '67-thumb.jpg', 1, 67),
+(262, '67-img0.jpg', 0, 67),
+(263, '67-img1.jpg', 0, 67),
+(264, '67-img2.jpg', 0, 67),
+(265, '68-thumb.jpg', 1, 68),
+(266, '68-img0.jpg', 0, 68),
+(267, '68-img1.jpg', 0, 68),
+(268, '68-img2.jpg', 0, 68);
 
 -- --------------------------------------------------------
 
@@ -218,19 +258,25 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `num`, `price`, `cate_id`, `des`, `rate`, `feature`) VALUES
-(25, 'submariner', 12, '7000', 23, '<p><strong>H&atilde;ng sáº£n xuáº¥t</strong>&nbsp;: Rolex</p>\r\n\r\n<p><strong>Xuáº¥t xá»©</strong>&nbsp;: Thá»¥y Sá»¹</p>\r\n\r\n<p><strong>Báº£o h&agrave;nh</strong>&nbsp;: 10 nÄƒm</p>\r\n\r\n<p><strong>Loáº¡i Ä‘á»“ng há»“</strong>&nbsp;:&nbsp;Äá»“ng há»“ nam</p>\r\n\r\n<p><strong>Loáº¡i k&iacute;nh</strong>&nbsp;: Sapphire</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u vá»</strong>&nbsp;: Máº¡ v&agrave;ng PVD</p>\r\n\r\n<p><strong>Chá»©c nÄƒng Ä‘áº·c biá»‡t:&nbsp;</strong>moonphase</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u d&acirc;y</strong>&nbsp;: Da</p>\r\n\r\n<p><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;: 41 mm</p>\r\n\r\n<p><strong>Äá»™ d&agrave;y vá»</strong>&nbsp;: 10 mm</p>\r\n\r\n<p><strong>Size d&acirc;y</strong>&nbsp;: 20 mm</p>\r\n\r\n<p><strong>Má»©c Ä‘á»™ chá»‹u nÆ°á»›c</strong>&nbsp;: 5 ATM</p>\r\n\r\n<p><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng</strong>&nbsp;: CÆ¡ tá»± Ä‘á»™ng</p>\r\n\r\n<p><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng</strong>: 0123456789</p>\r\n\r\n<p><strong>Giao h&agrave;ng táº­n nÆ¡i, thanh to&aacute;n trá»±c tiáº¿p khi nháº­n h&agrave;ng</strong></p>\r\n\r\n<p><strong>Miá»…n ph&iacute; váº­n chuyá»ƒn</strong></p>\r\n', NULL, '<table border="1" cellpadding="1" cellspacing="1" style="width:500px">\r\n	<tbody>\r\n		<tr>\r\n			<td>ThÆ°Æ¡ng hiá»‡u</td>\r\n			<td>Rolex</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Cháº¥t liá»‡u d&acirc;y</td>\r\n			<td>Titan</td>\r\n		</tr>\r\n		<tr>\r\n			<td>NÄƒng lÆ°á»£ng</td>\r\n			<td>CÆ¡</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n'),
-(26, 'Daytona everrose', 10, '12000', 23, '<p><strong>H&atilde;ng sáº£n xuáº¥t</strong>&nbsp;:&nbsp;Rolex</p>\r\n\r\n<p><strong>Xuáº¥t xá»©</strong>&nbsp;: Thá»¥y Sá»¹</p>\r\n\r\n<p><strong>Báº£o h&agrave;nh:&nbsp;10 nÄƒm</strong></p>\r\n\r\n<p><strong>Loáº¡i Ä‘á»“ng há»“</strong>&nbsp;:&nbsp;Äá»“ng há»“ nam</p>\r\n\r\n<p><strong>Loáº¡i k&iacute;nh</strong>&nbsp;: Sapphire</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u vá»</strong>&nbsp;: Th&eacute;p kh&ocirc;ng gá»‰</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u d&acirc;y</strong>&nbsp;: Kim loáº¡i</p>\r\n\r\n<p><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;: 40,5 mm</p>\r\n\r\n<p><strong>Äá»™ d&agrave;y vá»</strong>&nbsp;: 10,4 mm</p>\r\n\r\n<p><strong>Size d&acirc;y</strong>&nbsp;: 22 mm</p>\r\n\r\n<p><strong>Má»©c Ä‘á»™ chá»‹u nÆ°á»›c</strong>&nbsp;: 5 ATM</p>\r\n\r\n<p><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng</strong>&nbsp;: CÆ¡ tá»± Ä‘á»™ng</p>\r\n\r\n<p><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng</strong>: 098.668.1189</p>\r\n\r\n<p><strong>Giao h&agrave;ng táº­n nÆ¡i, thanh to&aacute;n trá»±c tiáº¿p khi nháº­n h&agrave;ng</strong></p>\r\n\r\n<p><strong>Miá»…n ph&iacute; váº­n chuyá»ƒn</strong></p>\r\n', NULL, '<table border="1" cellpadding="1" cellspacing="1" style="width:500px">\r\n	<tbody>\r\n		<tr>\r\n			<td>ThÆ°Æ¡ng hiá»‡u</td>\r\n			<td>Rolex</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Cháº¥t liá»‡u d&acirc;y</td>\r\n			<td>Kim loáº¡i</td>\r\n		</tr>\r\n		<tr>\r\n			<td>NÄƒng lÆ°á»£ng</td>\r\n			<td>CÆ¡</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n'),
-(27, 'Oyster Perpetual Lady', 5, '15000', 23, '<p><strong>H&atilde;ng sáº£n xuáº¥t</strong>&nbsp;:&nbsp;Rolex</p>\r\n\r\n<p><strong>Xuáº¥t xá»©</strong>&nbsp;: Thá»¥y Sá»¹</p>\r\n\r\n<p><strong>Báº£o h&agrave;nh:&nbsp;10 nÄƒm</strong></p>\r\n\r\n<p><strong>Loáº¡i Ä‘á»“ng há»“</strong>&nbsp;:&nbsp;Äá»“ng há»“ nam</p>\r\n\r\n<p><strong>Loáº¡i k&iacute;nh</strong>&nbsp;: Sapphire</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u vá»</strong>&nbsp;: Th&eacute;p kh&ocirc;ng gá»‰</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u d&acirc;y</strong>&nbsp;: KIm loáº¡i</p>\r\n\r\n<p><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;: 40,5 mm</p>\r\n\r\n<p><strong>Äá»™ d&agrave;y vá»</strong>&nbsp;: 10,4 mm</p>\r\n\r\n<p><strong>Size d&acirc;y</strong>&nbsp;: 22 mm</p>\r\n\r\n<p><strong>Má»©c Ä‘á»™ chá»‹u nÆ°á»›c</strong>&nbsp;: 5 ATM</p>\r\n\r\n<p><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng</strong>&nbsp;: CÆ¡ tá»± Ä‘á»™ng</p>\r\n\r\n<p><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng</strong>: 0123456789</p>\r\n\r\n<p><strong>Giao h&agrave;ng táº­n nÆ¡i, thanh to&aacute;n trá»±c tiáº¿p khi nháº­n h&agrave;ng</strong></p>\r\n\r\n<p><strong>Miá»…n ph&iacute; váº­n chuyá»ƒn</strong></p>\r\n', NULL, '<table border="1" cellpadding="1" cellspacing="1" style="width:500px">\r\n	<tbody>\r\n		<tr>\r\n			<td>ThÆ°Æ¡ng hiá»‡u</td>\r\n			<td>Rolex</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Cháº¥t liá»‡u d&acirc;y</td>\r\n			<td>Kim loáº¡i</td>\r\n		</tr>\r\n		<tr>\r\n			<td>NÄƒng lÆ°á»£ng</td>\r\n			<td>CÆ¡</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n'),
-(28, 'Explorer II', 8, '20000', 23, '<p><strong>H&atilde;ng sáº£n xuáº¥t</strong>&nbsp;:&nbsp;Rolex</p>\r\n\r\n<p><strong>Xuáº¥t xá»©</strong>&nbsp;: Thá»¥y Sá»¹</p>\r\n\r\n<p><strong>Báº£o h&agrave;nh:&nbsp;10 nÄƒm</strong></p>\r\n\r\n<p><strong>Loáº¡i Ä‘á»“ng há»“</strong>&nbsp;:&nbsp;Äá»“ng há»“ nam</p>\r\n\r\n<p><strong>Loáº¡i k&iacute;nh</strong>&nbsp;: Sapphire</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u vá»</strong>&nbsp;: Th&eacute;p kh&ocirc;ng gá»‰</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u d&acirc;y</strong>&nbsp;: KIm loáº¡i</p>\r\n\r\n<p><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;: 40,5 mm</p>\r\n\r\n<p><strong>Äá»™ d&agrave;y vá»</strong>&nbsp;: 10,4 mm</p>\r\n\r\n<p><strong>Size d&acirc;y</strong>&nbsp;: 22 mm</p>\r\n\r\n<p><strong>Má»©c Ä‘á»™ chá»‹u nÆ°á»›c</strong>&nbsp;: 5 ATM</p>\r\n\r\n<p><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng</strong>&nbsp;: CÆ¡ tá»± Ä‘á»™ng</p>\r\n\r\n<p><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng</strong>: 0123456789</p>\r\n\r\n<p><strong>Giao h&agrave;ng táº­n nÆ¡i, thanh to&aacute;n trá»±c tiáº¿p khi nháº­n h&agrave;ng</strong></p>\r\n\r\n<p><strong>Miá»…n ph&iacute; váº­n chuyá»ƒn</strong></p>\r\n', NULL, '<p>&nbsp;</p>\r\n\r\n<table border="1" cellpadding="0" cellspacing="1" style="width:500px">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p>ThÆ°Æ¡ng hiá»‡u</p>\r\n			</td>\r\n			<td>\r\n			<p>Rolex</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>Cháº¥t liá»‡u d&acirc;y</p>\r\n			</td>\r\n			<td>\r\n			<p>Kim loáº¡i</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>NÄƒng lÆ°á»£ng</p>\r\n			</td>\r\n			<td>\r\n			<p>CÆ¡</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<table border="1" cellpadding="0" cellspacing="1" style="width:500px">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p>ThÆ°Æ¡ng hiá»‡u</p>\r\n			</td>\r\n			<td>\r\n			<p>Rolex</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>Cháº¥t liá»‡u d&acirc;y</p>\r\n			</td>\r\n			<td>\r\n			<p>Kim loáº¡i</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>NÄƒng lÆ°á»£ng</p>\r\n			</td>\r\n			<td>\r\n			<p>CÆ¡</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n'),
-(29, 'Sea Dweller', 5, '32000', 23, '<p><strong>H&atilde;ng sáº£n xuáº¥t</strong>&nbsp;:&nbsp;Rolex</p>\r\n\r\n<p><strong>Xuáº¥t xá»©</strong>&nbsp;: Thá»¥y Sá»¹</p>\r\n\r\n<p><strong>Báº£o h&agrave;nh:&nbsp;10 nÄƒm</strong></p>\r\n\r\n<p><strong>Loáº¡i Ä‘á»“ng há»“</strong>&nbsp;:&nbsp;Äá»“ng há»“ nam</p>\r\n\r\n<p><strong>Loáº¡i k&iacute;nh</strong>&nbsp;: Sapphire</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u vá»</strong>&nbsp;: Th&eacute;p kh&ocirc;ng gá»‰</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u d&acirc;y</strong>&nbsp;: KIm loáº¡i</p>\r\n\r\n<p><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;: 40,5 mm</p>\r\n\r\n<p><strong>Äá»™ d&agrave;y vá»</strong>&nbsp;: 10,4 mm</p>\r\n\r\n<p><strong>Size d&acirc;y</strong>&nbsp;: 22 mm</p>\r\n\r\n<p><strong>Má»©c Ä‘á»™ chá»‹u nÆ°á»›c</strong>&nbsp;: 5 ATM</p>\r\n\r\n<p><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng</strong>&nbsp;: CÆ¡ tá»± Ä‘á»™ng</p>\r\n\r\n<p><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng</strong>: 0123456789</p>\r\n\r\n<p><strong>Giao h&agrave;ng táº­n nÆ¡i, thanh to&aacute;n trá»±c tiáº¿p khi nháº­n h&agrave;ng</strong></p>\r\n\r\n<p><strong>Miá»…n ph&iacute; váº­n chuyá»ƒn</strong></p>\r\n', NULL, '<table border="1" cellpadding="0" cellspacing="1" style="width:500px">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p>ThÆ°Æ¡ng hiá»‡u</p>\r\n			</td>\r\n			<td>\r\n			<p>Rolex</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>Cháº¥t liá»‡u d&acirc;y</p>\r\n			</td>\r\n			<td>\r\n			<p>Kim loáº¡i</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>NÄƒng lÆ°á»£ng</p>\r\n			</td>\r\n			<td>\r\n			<p>CÆ¡</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
-(30, ' Speedmaster Racing Date Automatic', 18, '1650', 24, '<p>Merk</p>\r\n\r\n<p>Omega</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Type</p>\r\n\r\n<p>Speedmaster Racing Date Automatic</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Referentie</p>\r\n\r\n<p>38135326</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Staat</p>\r\n\r\n<p>Zeer goed</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Geslacht</p>\r\n\r\n<p>Heren</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Jaar</p>\r\n\r\n<p>1997</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Documentatie</p>\r\n\r\n<p>Ja</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Doos</p>\r\n\r\n<p>Ja</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Kaliber / werk</p>\r\n\r\n<p>Omega Cal. 1152</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Opwinden</p>\r\n\r\n<p>Automatisch</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Materiaal horlogekast</p>\r\n\r\n<p>Staal</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Materiaal sluiting</p>\r\n\r\n<p>Staal</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Materiaal band</p>\r\n\r\n<p>Leder</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Materiaal Lunette</p>\r\n\r\n<p>Staal</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Sluiting</p>\r\n\r\n<p>Doornsluiting</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Wijzerplaat</p>\r\n\r\n<p>Zwart</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Getallen wijzerplaat</p>\r\n\r\n<p>Arabisch</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Verlichte cijfers</p>\r\n\r\n<p>Ja</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Lichtwijzer</p>\r\n\r\n<p>Ja</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Waterproof</p>\r\n\r\n<p>50 m</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Glas</p>\r\n\r\n<p>Saffierglas</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Kleur band</p>\r\n\r\n<p>Zwart</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Diameter breedte (mm)</p>\r\n\r\n<p>39,00</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Diameter hoogte (mm)</p>\r\n\r\n<p>44,50</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Dikte (mm)</p>\r\n\r\n<p>13,50</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Originele staat / Originele delen</p>\r\n\r\n<p>Ja</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Chronograaf</p>\r\n\r\n<p>Ja</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Tachymeter</p>\r\n\r\n<p>Ja</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Datum</p>\r\n\r\n<p>Ja</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Snelschakel</p>\r\n\r\n<p>Ja</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Kleine seconde</p>\r\n\r\n<p>Ja</p>\r\n', NULL, '<table border="1" cellpadding="0" cellspacing="1" style="width:500px">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p>ThÆ°Æ¡ng hiá»‡u</p>\r\n			</td>\r\n			<td>\r\n			<p>Omega</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>Cháº¥t liá»‡u d&acirc;y</p>\r\n			</td>\r\n			<td>\r\n			<p>Kim loáº¡i</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>NÄƒng lÆ°á»£ng</p>\r\n			</td>\r\n			<td>\r\n			<p>CÆ¡</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
-(31, ' Speedmaster Professional', 21, '3200', 24, '<p><strong>H&atilde;ng sáº£n xuáº¥t</strong>&nbsp;:&nbsp;Omega</p>\r\n\r\n<p><strong>Xuáº¥t xá»©</strong>&nbsp;: Thá»¥y Sá»¹</p>\r\n\r\n<p><strong>Báº£o h&agrave;nh:&nbsp;10 nÄƒm</strong></p>\r\n\r\n<p><strong>Loáº¡i Ä‘á»“ng há»“</strong>&nbsp;:&nbsp;Äá»“ng há»“ nam</p>\r\n\r\n<p><strong>Loáº¡i k&iacute;nh</strong>&nbsp;: Sapphire</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u vá»</strong>&nbsp;: Th&eacute;p kh&ocirc;ng gá»‰</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u d&acirc;y</strong>&nbsp;: KIm loáº¡i</p>\r\n\r\n<p><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;: 40,5 mm</p>\r\n\r\n<p><strong>Äá»™ d&agrave;y vá»</strong>&nbsp;: 10,4 mm</p>\r\n\r\n<p><strong>Size d&acirc;y</strong>&nbsp;: 22 mm</p>\r\n\r\n<p><strong>Má»©c Ä‘á»™ chá»‹u nÆ°á»›c</strong>&nbsp;: 5 ATM</p>\r\n\r\n<p><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng</strong>&nbsp;: CÆ¡ tá»± Ä‘á»™ng</p>\r\n\r\n<p><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng</strong>: 0123456789</p>\r\n\r\n<p><strong>Giao h&agrave;ng táº­n nÆ¡i, thanh to&aacute;n trá»±c tiáº¿p khi nháº­n h&agrave;ng</strong></p>\r\n\r\n<p><strong>Miá»…n ph&iacute; váº­n chuyá»ƒn</strong></p>\r\n', NULL, '<table border="1" cellpadding="0" cellspacing="1" style="width:500px">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p>ThÆ°Æ¡ng hiá»‡u</p>\r\n			</td>\r\n			<td>\r\n			<p>Omega</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>Cháº¥t liá»‡u d&acirc;y</p>\r\n			</td>\r\n			<td>\r\n			<p>Kim loáº¡i</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>NÄƒng lÆ°á»£ng</p>\r\n			</td>\r\n			<td>\r\n			<p>CÆ¡</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n'),
-(34, 'Seamaster 300M Quartz Midsize', 30, '3300', 24, '<p><strong>H&atilde;ng sáº£n xuáº¥t</strong>&nbsp;:&nbsp;Omega</p>\r\n\r\n<p><strong>Xuáº¥t xá»©</strong>&nbsp;: Thá»¥y Sá»¹</p>\r\n\r\n<p><strong>Báº£o h&agrave;nh:&nbsp;10 nÄƒm</strong></p>\r\n\r\n<p><strong>Loáº¡i Ä‘á»“ng há»“</strong>&nbsp;:&nbsp;Äá»“ng há»“ nam</p>\r\n\r\n<p><strong>Loáº¡i k&iacute;nh</strong>&nbsp;: Sapphire</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u vá»</strong>&nbsp;: Th&eacute;p kh&ocirc;ng gá»‰</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u d&acirc;y</strong>&nbsp;: KIm loáº¡i</p>\r\n\r\n<p><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;: 40,5 mm</p>\r\n\r\n<p><strong>Äá»™ d&agrave;y vá»</strong>&nbsp;: 10,4 mm</p>\r\n\r\n<p><strong>Size d&acirc;y</strong>&nbsp;: 22 mm</p>\r\n\r\n<p><strong>Má»©c Ä‘á»™ chá»‹u nÆ°á»›c</strong>&nbsp;: 5 ATM</p>\r\n\r\n<p><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng</strong>&nbsp;: CÆ¡ tá»± Ä‘á»™ng</p>\r\n\r\n<p><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng</strong>: 0123456789</p>\r\n\r\n<p><strong>Giao h&agrave;ng táº­n nÆ¡i, thanh to&aacute;n trá»±c tiáº¿p khi nháº­n h&agrave;ng</strong></p>\r\n\r\n<p><strong>Miá»…n ph&iacute; váº­n chuyá»ƒn</strong></p>\r\n', NULL, '<table border="1" cellpadding="0" cellspacing="1" style="width:500px">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p>ThÆ°Æ¡ng hiá»‡u</p>\r\n			</td>\r\n			<td>\r\n			<p>Omega</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>Cháº¥t liá»‡u d&acirc;y</p>\r\n			</td>\r\n			<td>\r\n			<p>Kim loáº¡i</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>NÄƒng lÆ°á»£ng</p>\r\n			</td>\r\n			<td>\r\n			<p>CÆ¡</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n'),
-(36, 'Aquatimer Automatic', 12, '3975', 26, '<p><strong>H&atilde;ng sáº£n xuáº¥t</strong>&nbsp;:&nbsp; IWC</p>\r\n\r\n<p><strong>Xuáº¥t xá»©</strong>&nbsp;: Thá»¥y Sá»¹</p>\r\n\r\n<p><strong>Báº£o h&agrave;nh:&nbsp;10 nÄƒm</strong></p>\r\n\r\n<p><strong>Loáº¡i Ä‘á»“ng há»“</strong>&nbsp;:&nbsp;Äá»“ng há»“ nam</p>\r\n\r\n<p><strong>Loáº¡i k&iacute;nh</strong>&nbsp;: Sapphire</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u vá»</strong>&nbsp;: Th&eacute;p kh&ocirc;ng gá»‰</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u d&acirc;y</strong>&nbsp;: KIm loáº¡i</p>\r\n\r\n<p><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;: 40,5 mm</p>\r\n\r\n<p><strong>Äá»™ d&agrave;y vá»</strong>&nbsp;: 10,4 mm</p>\r\n\r\n<p><strong>Size d&acirc;y</strong>&nbsp;: 22 mm</p>\r\n\r\n<p><strong>Má»©c Ä‘á»™ chá»‹u nÆ°á»›c</strong>&nbsp;: 5 ATM</p>\r\n\r\n<p><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng</strong>&nbsp;: CÆ¡ tá»± Ä‘á»™ng</p>\r\n\r\n<p><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng</strong>: 0123456789</p>\r\n\r\n<p><strong>Giao h&agrave;ng táº­n nÆ¡i, thanh to&aacute;n trá»±c tiáº¿p khi nháº­n h&agrave;ng</strong></p>\r\n\r\n<p><strong>Miá»…n ph&iacute; váº­n chuyá»ƒn</strong></p>\r\n', NULL, '<table border="1" cellpadding="0" cellspacing="1" style="width:647px">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p>ThÆ°Æ¡ng hiá»‡u</p>\r\n			</td>\r\n			<td style="width:348px">\r\n			<p>Iwc</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>Cháº¥t liá»‡u d&acirc;y</p>\r\n			</td>\r\n			<td style="width:348px">\r\n			<p>Kim loáº¡i</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>NÄƒng lÆ°á»£ng</p>\r\n			</td>\r\n			<td style="width:348px">\r\n			<p>CÆ¡</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
-(37, 'Portugieser', 7, '7650', 26, '<p><strong>H&atilde;ng sáº£n xuáº¥t</strong>&nbsp;:&nbsp; IWC</p>\r\n\r\n<p><strong>Xuáº¥t xá»©</strong>&nbsp;: Thá»¥y Sá»¹</p>\r\n\r\n<p><strong>Báº£o h&agrave;nh:&nbsp;10 nÄƒm</strong></p>\r\n\r\n<p><strong>Loáº¡i Ä‘á»“ng há»“</strong>&nbsp;:&nbsp;Äá»“ng há»“ nam</p>\r\n\r\n<p><strong>Loáº¡i k&iacute;nh</strong>&nbsp;: Sapphire</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u vá»</strong>&nbsp;: Th&eacute;p kh&ocirc;ng gá»‰</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u d&acirc;y</strong>&nbsp;: KIm loáº¡i</p>\r\n\r\n<p><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;: 40,5 mm</p>\r\n\r\n<p><strong>Äá»™ d&agrave;y vá»</strong>&nbsp;: 10,4 mm</p>\r\n\r\n<p><strong>Size d&acirc;y</strong>&nbsp;: 22 mm</p>\r\n\r\n<p><strong>Má»©c Ä‘á»™ chá»‹u nÆ°á»›c</strong>&nbsp;: 5 ATM</p>\r\n\r\n<p><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng</strong>&nbsp;: CÆ¡ tá»± Ä‘á»™ng</p>\r\n\r\n<p><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng</strong>: 0123456789</p>\r\n\r\n<p><strong>Giao h&agrave;ng táº­n nÆ¡i, thanh to&aacute;n trá»±c tiáº¿p khi nháº­n h&agrave;ng</strong></p>\r\n\r\n<p><strong>Miá»…n ph&iacute; váº­n chuyá»ƒn</strong></p>\r\n', NULL, '<table border="1" cellpadding="0" cellspacing="1" style="width:647px">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p>ThÆ°Æ¡ng hiá»‡u</p>\r\n			</td>\r\n			<td style="width:348px">\r\n			<p>Iwc</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>Cháº¥t liá»‡u d&acirc;y</p>\r\n			</td>\r\n			<td style="width:348px">\r\n			<p>Kim loáº¡i</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>NÄƒng lÆ°á»£ng</p>\r\n			</td>\r\n			<td style="width:348px">\r\n			<p>CÆ¡</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n'),
-(40, ' Emergency Mission', 24, '5700', 28, '<p><strong>H&atilde;ng sáº£n xuáº¥t</strong>&nbsp;:&nbsp; Breitling</p>\r\n\r\n<p><strong>Xuáº¥t xá»©</strong>&nbsp;: Thá»¥y Sá»¹</p>\r\n\r\n<p><strong>Báº£o h&agrave;nh:&nbsp;10 nÄƒm</strong></p>\r\n\r\n<p><strong>Loáº¡i Ä‘á»“ng há»“</strong>&nbsp;:&nbsp;Äá»“ng há»“ nam</p>\r\n\r\n<p><strong>Loáº¡i k&iacute;nh</strong>&nbsp;: Sapphire</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u vá»</strong>&nbsp;: Th&eacute;p kh&ocirc;ng gá»‰</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u d&acirc;y</strong>&nbsp;: KIm loáº¡i</p>\r\n\r\n<p><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;: 40,5 mm</p>\r\n\r\n<p><strong>Äá»™ d&agrave;y vá»</strong>&nbsp;: 10,4 mm</p>\r\n\r\n<p><strong>Size d&acirc;y</strong>&nbsp;: 22 mm</p>\r\n\r\n<p><strong>Má»©c Ä‘á»™ chá»‹u nÆ°á»›c</strong>&nbsp;: 5 ATM</p>\r\n\r\n<p><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng</strong>&nbsp;: CÆ¡ tá»± Ä‘á»™ng</p>\r\n\r\n<p><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng</strong>: 0123456789</p>\r\n\r\n<p><strong>Giao h&agrave;ng táº­n nÆ¡i, thanh to&aacute;n trá»±c tiáº¿p khi nháº­n h&agrave;ng</strong></p>\r\n\r\n<p><strong>Miá»…n ph&iacute; váº­n chuyá»ƒn</strong></p>\r\n', NULL, '<table border="1" cellpadding="0" cellspacing="1" style="width:647px">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p>ThÆ°Æ¡ng hiá»‡u</p>\r\n			</td>\r\n			<td style="width:348px">\r\n			<p>Iwc</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>Cháº¥t liá»‡u d&acirc;y</p>\r\n			</td>\r\n			<td style="width:348px">\r\n			<p>Kim loáº¡i</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>NÄƒng lÆ°á»£ng</p>\r\n			</td>\r\n			<td style="width:348px">\r\n			<p>CÆ¡</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n<table border="1" cellpadding="0" cellspacing="1" style="width:647px">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p>ThÆ°Æ¡ng hiá»‡u</p>\r\n			</td>\r\n			<td style="width:348px">\r\n			<p>Iwc</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>Cháº¥t liá»‡u d&acirc;y</p>\r\n			</td>\r\n			<td style="width:348px">\r\n			<p>Kim loáº¡i</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>NÄƒng lÆ°á»£ng</p>\r\n			</td>\r\n			<td style="width:348px">\r\n			<p>CÆ¡</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n'),
-(41, ' Avenger Skyland', 12, '6500', 28, '<p><strong>H&atilde;ng sáº£n xuáº¥t</strong>&nbsp;:&nbsp; Breitling</p>\r\n\r\n<p><strong>Xuáº¥t xá»©</strong>&nbsp;: Thá»¥y Sá»¹</p>\r\n\r\n<p><strong>Báº£o h&agrave;nh:&nbsp;10 nÄƒm</strong></p>\r\n\r\n<p><strong>Loáº¡i Ä‘á»“ng há»“</strong>&nbsp;:&nbsp;Äá»“ng há»“ nam</p>\r\n\r\n<p><strong>Loáº¡i k&iacute;nh</strong>&nbsp;: Sapphire</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u vá»</strong>&nbsp;: Th&eacute;p kh&ocirc;ng gá»‰</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u d&acirc;y</strong>&nbsp;: KIm loáº¡i</p>\r\n\r\n<p><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;: 40,5 mm</p>\r\n\r\n<p><strong>Äá»™ d&agrave;y vá»</strong>&nbsp;: 10,4 mm</p>\r\n\r\n<p><strong>Size d&acirc;y</strong>&nbsp;: 22 mm</p>\r\n\r\n<p><strong>Má»©c Ä‘á»™ chá»‹u nÆ°á»›c</strong>&nbsp;: 5 ATM</p>\r\n\r\n<p><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng</strong>&nbsp;: CÆ¡ tá»± Ä‘á»™ng</p>\r\n\r\n<p><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng</strong>: 0123456789</p>\r\n\r\n<p><strong>Giao h&agrave;ng táº­n nÆ¡i, thanh to&aacute;n trá»±c tiáº¿p khi nháº­n h&agrave;ng</strong></p>\r\n\r\n<p><strong>Miá»…n ph&iacute; váº­n chuyá»ƒn</strong></p>\r\n', NULL, '<table border="1" cellpadding="0" cellspacing="1" style="width:647px">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<p>ThÆ°Æ¡ng hiá»‡u</p>\r\n			</td>\r\n			<td style="width:348px">\r\n			<p>Iwc</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>Cháº¥t liá»‡u d&acirc;y</p>\r\n			</td>\r\n			<td style="width:348px">\r\n			<p>Kim loáº¡i</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<p>NÄƒng lÆ°á»£ng</p>\r\n			</td>\r\n			<td style="width:348px">\r\n			<p>CÆ¡</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n'),
-(46, 'Pilot ', 3, '20000', 39, '', NULL, '');
+(49, 'Carrera Calibre 16', 8, '4600', 41, '<p><strong>H&atilde;ng sáº£n xuáº¥t: Tag Heuer</strong></p>\r\n\r\n<p><strong>Loáº¡i Ä‘á»“ng há»“:&nbsp;Äá»“ng há»“ nam</strong></p>\r\n\r\n<p><strong>Cháº¥t liá»‡u d&acirc;y:</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u máº·t:&nbsp;</strong>sapphia glass</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u vá» :</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</p>\r\n\r\n<p><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;:27 mm</p>\r\n\r\n<p><strong>Chá»‘ng nÆ°á»›c:&nbsp;</strong>3 bar</p>\r\n\r\n<p><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng:</strong>&nbsp;Quartz</p>\r\n\r\n<p><strong>Báº£o h&agrave;nh: 10 nÄƒm</strong></p>\r\n\r\n<p><strong>Xuáº¥t xá»©:&nbsp;</strong>Thá»¥y Sá»¹</p>\r\n\r\n<p><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng:&nbsp;</strong>0123456789</p>\r\n\r\n<p><strong>Thanh to&aacute;n:&nbsp;</strong>Trá»±c tiáº¿p khi nháº­n sáº£n pháº©m</p>\r\n', NULL, '<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<table border="1" cellpadding="0" cellspacing="1" style="width:617px">\r\n	<tbody>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<p>ThÆ°Æ¡ng hiá»‡u</p>\r\n			</td>\r\n			<td style="width:311px">\r\n			<p>Tag Heuer</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<p>Cháº¥t liá»‡u d&acirc;y</p>\r\n			</td>\r\n			<td style="width:311px">\r\n			<p>Th&eacute;p kh&ocirc;ng gá»‰</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<p>NÄƒng lÆ°á»£ng</p>\r\n			</td>\r\n			<td style="width:311px">\r\n			<p>CÆ¡</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n'),
+(50, 'Carrera Goodwood ', 6, '5000', 41, '<p><strong>H&atilde;ng sáº£n xuáº¥t: Tag Heuer</strong></p>\r\n\r\n<p><strong>Loáº¡i Ä‘á»“ng há»“:&nbsp;Äá»“ng há»“ nam</strong></p>\r\n\r\n<p><strong>Cháº¥t liá»‡u d&acirc;y:</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u máº·t:&nbsp;</strong>sapphia glass</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u vá» :</strong>&nbsp;Da</p>\r\n\r\n<p><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;:45 mm</p>\r\n\r\n<p><strong>Chá»‘ng nÆ°á»›c:&nbsp;</strong>3 bar</p>\r\n\r\n<p><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng:</strong>&nbsp;Quartz</p>\r\n\r\n<p><strong>Báº£o h&agrave;nh: 10 nÄƒm</strong></p>\r\n\r\n<p><strong>Xuáº¥t xá»©:&nbsp;</strong>Thá»¥y Sá»¹</p>\r\n\r\n<p><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng:&nbsp;</strong>0123456789</p>\r\n\r\n<p><strong>Thanh to&aacute;n:&nbsp;</strong>Trá»±c tiáº¿p khi nháº­n sáº£n pháº©m</p>\r\n', NULL, '<p>&nbsp;</p>\r\n\r\n<table border="1" cellpadding="0" cellspacing="1" style="width:617px">\r\n	<tbody>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<p>ThÆ°Æ¡ng hiá»‡u</p>\r\n			</td>\r\n			<td style="width:311px">\r\n			<p>Tag Heuer</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<p>Cháº¥t liá»‡u d&acirc;y</p>\r\n			</td>\r\n			<td style="width:311px">\r\n			<p>Da</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<p>NÄƒng lÆ°á»£ng</p>\r\n			</td>\r\n			<td style="width:311px">\r\n			<p>CÆ¡</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n'),
+(52, ' Carrera Spain', 8, '5340', 41, '<p><strong>H&atilde;ng sáº£n xuáº¥t: Tag Heuer</strong></p>\r\n\r\n<p><strong>Loáº¡i Ä‘á»“ng há»“:&nbsp;Äá»“ng há»“ nam</strong></p>\r\n\r\n<p><strong>Cháº¥t liá»‡u d&acirc;y:</strong>&nbsp;Da</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u máº·t:&nbsp;</strong>sapphia glass</p>\r\n\r\n<p><strong>Cháº¥t liá»‡u vá» :</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</p>\r\n\r\n<p><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;:45 mm</p>\r\n\r\n<p><strong>Chá»‘ng nÆ°á»›c:&nbsp;</strong>3 bar</p>\r\n\r\n<p><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng:</strong>&nbsp;Quartz</p>\r\n\r\n<p><strong>Báº£o h&agrave;nh: 10 nÄƒm</strong></p>\r\n\r\n<p><strong>Xuáº¥t xá»©:&nbsp;</strong>Thá»¥y Sá»¹</p>\r\n\r\n<p><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng:&nbsp;</strong>0123456789</p>\r\n\r\n<p><strong>Thanh to&aacute;n:&nbsp;</strong>Trá»±c tiáº¿p khi nháº­n sáº£n pháº©m</p>\r\n', NULL, '<p>&nbsp;</p>\r\n\r\n<table border="1" cellpadding="0" cellspacing="1" style="width:617px">\r\n	<tbody>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<p>ThÆ°Æ¡ng hiá»‡u</p>\r\n			</td>\r\n			<td style="width:311px">\r\n			<p>Tag Heuer</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<p>Cháº¥t liá»‡u d&acirc;y</p>\r\n			</td>\r\n			<td style="width:311px">\r\n			<p>Da</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<p>NÄƒng lÆ°á»£ng</p>\r\n			</td>\r\n			<td style="width:311px">\r\n			<p>CÆ¡</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
+(53, 'Monaco 2001 ', 14, '7200', 41, '<h2><strong>H&atilde;ng sáº£n xuáº¥t: Tag Heuer</strong></h2>\r\n\r\n<h2><strong>Loáº¡i Ä‘á»“ng há»“:&nbsp;Äá»“ng há»“ nam</strong></h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u d&acirc;y:</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u máº·t:&nbsp;</strong>sapphia glass</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u vá» :</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;:45 mm</h2>\r\n\r\n<h2><strong>Chá»‘ng nÆ°á»›c:&nbsp;</strong>3 bar</h2>\r\n\r\n<h2><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng:</strong>&nbsp;Quartz</h2>\r\n\r\n<h2><strong>Báº£o h&agrave;nh: 10 nÄƒm</strong></h2>\r\n\r\n<h2><strong>Xuáº¥t xá»©:&nbsp;</strong>Thá»¥y Sá»¹</h2>\r\n\r\n<h2><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng:&nbsp;</strong>0123456789</h2>\r\n\r\n<h2><strong>Thanh to&aacute;n:&nbsp;</strong>Trá»±c tiáº¿p khi nháº­n sáº£n pháº©m</h2>\r\n', NULL, '<p>&nbsp;</p>\r\n\r\n<table border="1" cellpadding="0" cellspacing="1" style="width:617px">\r\n	<tbody>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<p>ThÆ°Æ¡ng hiá»‡u</p>\r\n			</td>\r\n			<td style="width:311px">\r\n			<p>Tag Heuer</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<p>Cháº¥t liá»‡u d&acirc;y</p>\r\n			</td>\r\n			<td style="width:311px">\r\n			<p>Da</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<p>NÄƒng lÆ°á»£ng</p>\r\n			</td>\r\n			<td style="width:311px">\r\n			<p>CÆ¡</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
+(54, 'Aquaracer', 11, '2100', 41, '<h2><strong>H&atilde;ng sáº£n xuáº¥t: Tag Heuer</strong></h2>\r\n\r\n<h2><strong>Loáº¡i Ä‘á»“ng há»“:&nbsp;Äá»“ng há»“ nam</strong></h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u d&acirc;y:</strong>&nbsp;Da</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u máº·t:&nbsp;</strong>sapphia glass</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u vá» :</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;:45 mm</h2>\r\n\r\n<h2><strong>Chá»‘ng nÆ°á»›c:&nbsp;</strong>3 bar</h2>\r\n\r\n<h2><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng:</strong>&nbsp;Quartz</h2>\r\n\r\n<h2><strong>Báº£o h&agrave;nh: 10 nÄƒm</strong></h2>\r\n\r\n<h2><strong>Xuáº¥t xá»©:&nbsp;</strong>Thá»¥y Sá»¹</h2>\r\n\r\n<h2><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng:&nbsp;</strong>0123456789</h2>\r\n\r\n<h2><strong>Thanh to&aacute;n:&nbsp;</strong>Trá»±c tiáº¿p khi nháº­n sáº£n pháº©m</h2>\r\n', NULL, '<p>&nbsp;</p>\r\n\r\n<table border="1" cellpadding="0" cellspacing="1" style="width:617px">\r\n	<tbody>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<p>ThÆ°Æ¡ng hiá»‡u</p>\r\n			</td>\r\n			<td style="width:311px">\r\n			<p>Tag Heuer</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<p>Cháº¥t liá»‡u d&acirc;y</p>\r\n			</td>\r\n			<td style="width:311px">Da</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<p>NÄƒng lÆ°á»£ng</p>\r\n			</td>\r\n			<td style="width:311px">\r\n			<p>CÆ¡</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
+(55, 'Mercedes Benz SLR', 14, '3200', 41, '<h2><strong>H&atilde;ng sáº£n xuáº¥t: Tag Heuer</strong></h2>\r\n\r\n<h2><strong>Loáº¡i Ä‘á»“ng há»“:&nbsp;Äá»“ng há»“ nam</strong></h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u d&acirc;y:</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u máº·t:&nbsp;</strong>sapphia glass</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u vá» :</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;:45 mm</h2>\r\n\r\n<h2><strong>Chá»‘ng nÆ°á»›c:&nbsp;</strong>3 bar</h2>\r\n\r\n<h2><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng:</strong>&nbsp;Quartz</h2>\r\n\r\n<h2><strong>Báº£o h&agrave;nh: 10 nÄƒm</strong></h2>\r\n\r\n<h2><strong>Xuáº¥t xá»©:&nbsp;</strong>Thá»¥y Sá»¹</h2>\r\n\r\n<h2><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng:&nbsp;</strong>0123456789</h2>\r\n\r\n<h2><strong>Thanh to&aacute;n:&nbsp;</strong>Trá»±c tiáº¿p khi nháº­n sáº£n pháº©m</h2>\r\n', NULL, '<h2>&nbsp;</h2>\r\n\r\n<table border="1" cellpadding="0" cellspacing="1" style="width:617px">\r\n	<tbody>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>ThÆ°Æ¡ng hiá»‡u</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>Tag Heuer</h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>Cháº¥t liá»‡u d&acirc;y</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>Th&eacute;p kh&ocirc;ng gá»‰</h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>NÄƒng lÆ°á»£ng</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>CÆ¡</h2>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
+(56, 'Radiomir 1940 ', 11, '14200', 42, '<h2><strong>H&atilde;ng sáº£n xuáº¥t: Panerai</strong></h2>\r\n\r\n<h2><strong>Loáº¡i Ä‘á»“ng há»“:&nbsp;Äá»“ng há»“ nam</strong></h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u d&acirc;y:</strong>&nbsp;Da</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u máº·t:&nbsp;</strong>sapphia glass</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u vá» :</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;:45 mm</h2>\r\n\r\n<h2><strong>Chá»‘ng nÆ°á»›c:&nbsp;</strong>3 bar</h2>\r\n\r\n<h2><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng:</strong>&nbsp;Quartz</h2>\r\n\r\n<h2><strong>Báº£o h&agrave;nh: 10 nÄƒm</strong></h2>\r\n\r\n<h2><strong>Xuáº¥t xá»©:&nbsp;</strong>Thá»¥y Sá»¹</h2>\r\n\r\n<h2><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng:&nbsp;</strong>0123456789</h2>\r\n\r\n<h2><strong>Thanh to&aacute;n:&nbsp;</strong>Trá»±c tiáº¿p khi nháº­n sáº£n pháº©m</h2>\r\n', NULL, '<table border="1" cellpadding="0" cellspacing="1" style="width:617px">\r\n	<tbody>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>ThÆ°Æ¡ng hiá»‡u</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>Tag Heuer</h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>Cháº¥t liá»‡u d&acirc;y</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>Th&eacute;p kh&ocirc;ng gá»‰</h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>NÄƒng lÆ°á»£ng</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>Da</h2>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
+(57, 'Luminor Daylight', 8, '9020', 42, '<h2><strong>H&atilde;ng sáº£n xuáº¥t: Panerai</strong></h2>\r\n\r\n<h2><strong>Loáº¡i Ä‘á»“ng há»“:&nbsp;Äá»“ng há»“ nam</strong></h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u d&acirc;y:</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u máº·t:&nbsp;</strong>sapphia glass</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u vá» :</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;:45 mm</h2>\r\n\r\n<h2><strong>Chá»‘ng nÆ°á»›c:&nbsp;</strong>3 bar</h2>\r\n\r\n<h2><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng:</strong>&nbsp;Quartz</h2>\r\n\r\n<h2><strong>Báº£o h&agrave;nh: 10 nÄƒm</strong></h2>\r\n\r\n<h2><strong>Xuáº¥t xá»©:&nbsp;</strong>Thá»¥y Sá»¹</h2>\r\n\r\n<h2><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng:&nbsp;</strong>0123456789</h2>\r\n\r\n<h2><strong>Thanh to&aacute;n:&nbsp;</strong>Trá»±c tiáº¿p khi nháº­n sáº£n pháº©m</h2>\r\n', NULL, '<table border="1" cellpadding="0" cellspacing="1" style="width:617px">\r\n	<tbody>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>ThÆ°Æ¡ng hiá»‡u</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>Tag Heuer</h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>Cháº¥t liá»‡u d&acirc;y</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>Th&eacute;p kh&ocirc;ng gá»‰</h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>NÄƒng lÆ°á»£ng</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>Da</h2>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
+(58, 'Rainbow Chronograph', 12, '4700', 43, '<h2><strong>H&atilde;ng sáº£n xuáº¥t: Zenith</strong></h2>\r\n\r\n<h2><strong>Loáº¡i Ä‘á»“ng há»“:&nbsp;Äá»“ng há»“ nam</strong></h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u d&acirc;y:</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u máº·t:&nbsp;</strong>sapphia glass</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u vá» :</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;:45 mm</h2>\r\n\r\n<h2><strong>Chá»‘ng nÆ°á»›c:&nbsp;</strong>3 bar</h2>\r\n\r\n<h2><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng:</strong>&nbsp;Quartz</h2>\r\n\r\n<h2><strong>Báº£o h&agrave;nh: 10 nÄƒm</strong></h2>\r\n\r\n<h2><strong>Xuáº¥t xá»©:&nbsp;</strong>Thá»¥y Sá»¹</h2>\r\n\r\n<h2><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng:&nbsp;</strong>0123456789</h2>\r\n\r\n<h2><strong>Thanh to&aacute;n:&nbsp;</strong>Trá»±c tiáº¿p khi nháº­n sáº£n pháº©m</h2>\r\n', NULL, '<h2>&nbsp;</h2>\r\n\r\n<table border="1" cellpadding="0" cellspacing="1" style="width:617px">\r\n	<tbody>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>ThÆ°Æ¡ng hiá»‡u</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2><strong>Zenith</strong></h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>Cháº¥t liá»‡u d&acirc;y</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>Th&eacute;p kh&ocirc;ng gá»‰</h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>NÄƒng lÆ°á»£ng</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>CÆ¡</h2>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
+(59, 'Rainbow Chronograph El Primero', 10, '3600', 43, '<h2><strong>H&atilde;ng sáº£n xuáº¥t: Zenith</strong></h2>\r\n\r\n<h2><strong>Loáº¡i Ä‘á»“ng há»“:&nbsp;Äá»“ng há»“ nam</strong></h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u d&acirc;y:</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u máº·t:&nbsp;</strong>sapphia glass</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u vá» :</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;:45 mm</h2>\r\n\r\n<h2><strong>Chá»‘ng nÆ°á»›c:&nbsp;</strong>3 bar</h2>\r\n\r\n<h2><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng:</strong>&nbsp;Quartz</h2>\r\n\r\n<h2><strong>Báº£o h&agrave;nh: 10 nÄƒm</strong></h2>\r\n\r\n<h2><strong>Xuáº¥t xá»©:&nbsp;</strong>Thá»¥y Sá»¹</h2>\r\n\r\n<h2><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng:&nbsp;</strong>0123456789</h2>\r\n\r\n<h2><strong>Thanh to&aacute;n:&nbsp;</strong>Trá»±c tiáº¿p khi nháº­n sáº£n pháº©m</h2>\r\n', NULL, '<h2>&nbsp;</h2>\r\n\r\n<table border="1" cellpadding="0" cellspacing="1" style="width:617px">\r\n	<tbody>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>ThÆ°Æ¡ng hiá»‡u</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2><strong>Zenith</strong></h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>Cháº¥t liá»‡u d&acirc;y</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>Th&eacute;p kh&ocirc;ng gá»‰</h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>NÄƒng lÆ°á»£ng</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>CÆ¡</h2>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
+(60, 'Rainbow Chronograph El Primero Gold/Steel', 9, '3200', 43, '<h2><strong>H&atilde;ng sáº£n xuáº¥t: Zenith</strong></h2>\r\n\r\n<h2><strong>Loáº¡i Ä‘á»“ng há»“:&nbsp;Äá»“ng há»“ nam</strong></h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u d&acirc;y:</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u máº·t:&nbsp;</strong>sapphia glass</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u vá» :</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;:45 mm</h2>\r\n\r\n<h2><strong>Chá»‘ng nÆ°á»›c:&nbsp;</strong>3 bar</h2>\r\n\r\n<h2><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng:</strong>&nbsp;Quartz</h2>\r\n\r\n<h2><strong>Báº£o h&agrave;nh: 10 nÄƒm</strong></h2>\r\n\r\n<h2><strong>Xuáº¥t xá»©:&nbsp;</strong>Thá»¥y Sá»¹</h2>\r\n\r\n<h2><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng:&nbsp;</strong>0123456789</h2>\r\n\r\n<h2><strong>Thanh to&aacute;n:&nbsp;</strong>Trá»±c tiáº¿p khi nháº­n sáº£n pháº©m</h2>\r\n', NULL, '<h2>&nbsp;</h2>\r\n\r\n<table border="1" cellpadding="0" cellspacing="1" style="width:617px">\r\n	<tbody>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>ThÆ°Æ¡ng hiá»‡u</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2><strong>Zenith</strong></h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>Cháº¥t liá»‡u d&acirc;y</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>Th&eacute;p kh&ocirc;ng gá»‰</h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>NÄƒng lÆ°á»£ng</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>CÆ¡</h2>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
+(61, 'El Primero Class', 12, '2100', 43, '<h2><strong>H&atilde;ng sáº£n xuáº¥t: Zenith</strong></h2>\r\n\r\n<h2><strong>Loáº¡i Ä‘á»“ng há»“:&nbsp;Äá»“ng há»“ nam</strong></h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u d&acirc;y:</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u máº·t:&nbsp;</strong>sapphia glass</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u vá» :</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;:45 mm</h2>\r\n\r\n<h2><strong>Chá»‘ng nÆ°á»›c:&nbsp;</strong>3 bar</h2>\r\n\r\n<h2><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng:</strong>&nbsp;Quartz</h2>\r\n\r\n<h2><strong>Báº£o h&agrave;nh: 10 nÄƒm</strong></h2>\r\n\r\n<h2><strong>Xuáº¥t xá»©:&nbsp;</strong>Thá»¥y Sá»¹</h2>\r\n\r\n<h2><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng:&nbsp;</strong>0123456789</h2>\r\n\r\n<h2><strong>Thanh to&aacute;n:&nbsp;</strong>Trá»±c tiáº¿p khi nháº­n sáº£n pháº©m</h2>\r\n', NULL, '<h2>&nbsp;</h2>\r\n\r\n<table border="1" cellpadding="0" cellspacing="1" style="width:617px">\r\n	<tbody>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>ThÆ°Æ¡ng hiá»‡u</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2><strong>Zenith</strong></h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>Cháº¥t liá»‡u d&acirc;y</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>Th&eacute;p kh&ocirc;ng gá»‰</h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>NÄƒng lÆ°á»£ng</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>CÆ¡</h2>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
+(62, ' Automatic Yellow ', 12, '370', 43, '', NULL, ''),
+(63, 'Chronomaster XXT ', 3, '6700', 43, '<h2><strong>H&atilde;ng sáº£n xuáº¥t: Zenith</strong></h2>\r\n\r\n<h2><strong>Loáº¡i Ä‘á»“ng há»“:&nbsp;Äá»“ng há»“ nam</strong></h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u d&acirc;y:</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u máº·t:&nbsp;</strong>sapphia glass</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u vá» :</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;:45 mm</h2>\r\n\r\n<h2><strong>Chá»‘ng nÆ°á»›c:&nbsp;</strong>3 bar</h2>\r\n\r\n<h2><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng:</strong>&nbsp;Quartz</h2>\r\n\r\n<h2><strong>Báº£o h&agrave;nh: 10 nÄƒm</strong></h2>\r\n\r\n<h2><strong>Xuáº¥t xá»©:&nbsp;</strong>Thá»¥y Sá»¹</h2>\r\n\r\n<h2><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng:&nbsp;</strong>0123456789</h2>\r\n\r\n<h2><strong>Thanh to&aacute;n:&nbsp;</strong>Trá»±c tiáº¿p khi nháº­n sáº£n pháº©m</h2>\r\n', NULL, '<table border="1" cellpadding="0" cellspacing="1" style="width:617px">\r\n	<tbody>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>ThÆ°Æ¡ng hiá»‡u</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2><strong>Zenith</strong></h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>Cháº¥t liá»‡u d&acirc;y</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>Th&eacute;p kh&ocirc;ng gá»‰</h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>NÄƒng lÆ°á»£ng</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>CÆ¡</h2>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
+(64, ' Pilot Montre', 11, '5900', 43, '<h2><strong>H&atilde;ng sáº£n xuáº¥t: Zenith</strong></h2>\r\n\r\n<h2><strong>Loáº¡i Ä‘á»“ng há»“:&nbsp;Äá»“ng há»“ nam</strong></h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u d&acirc;y:</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u máº·t:&nbsp;</strong>sapphia glass</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u vá» :</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;:45 mm</h2>\r\n\r\n<h2><strong>Chá»‘ng nÆ°á»›c:&nbsp;</strong>3 bar</h2>\r\n\r\n<h2><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng:</strong>&nbsp;Quartz</h2>\r\n\r\n<h2><strong>Báº£o h&agrave;nh: 10 nÄƒm</strong></h2>\r\n\r\n<h2><strong>Xuáº¥t xá»©:&nbsp;</strong>Thá»¥y Sá»¹</h2>\r\n\r\n<h2><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng:&nbsp;</strong>0123456789</h2>\r\n\r\n<h2><strong>Thanh to&aacute;n:&nbsp;</strong>Trá»±c tiáº¿p khi nháº­n sáº£n pháº©m</h2>\r\n', NULL, '<table border="1" cellpadding="0" cellspacing="1" style="width:617px">\r\n	<tbody>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>ThÆ°Æ¡ng hiá»‡u</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2><strong>Zenith</strong></h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>Cháº¥t liá»‡u d&acirc;y</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>Th&eacute;p kh&ocirc;ng gá»‰</h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>NÄƒng lÆ°á»£ng</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>CÆ¡</h2>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
+(65, 'Datejust II', 12, '14000', 40, '<h2><strong>H&atilde;ng sáº£n xuáº¥t: Rolex</strong></h2>\r\n\r\n<h2><strong>Loáº¡i Ä‘á»“ng há»“:&nbsp;Äá»“ng há»“ nam</strong></h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u d&acirc;y:</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u máº·t:&nbsp;</strong>sapphia glass</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u vá» :</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;:45 mm</h2>\r\n\r\n<h2><strong>Chá»‘ng nÆ°á»›c:&nbsp;</strong>3 bar</h2>\r\n\r\n<h2><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng:</strong>&nbsp;Quartz</h2>\r\n\r\n<h2><strong>Báº£o h&agrave;nh: 10 nÄƒm</strong></h2>\r\n\r\n<h2><strong>Xuáº¥t xá»©:&nbsp;</strong>Thá»¥y Sá»¹</h2>\r\n\r\n<h2><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng:&nbsp;</strong>0123456789</h2>\r\n\r\n<h2><strong>Thanh to&aacute;n:&nbsp;</strong>Trá»±c tiáº¿p khi nháº­n sáº£n pháº©m</h2>\r\n', NULL, '<h2>&nbsp;</h2>\r\n\r\n<table border="1" cellpadding="0" cellspacing="1" style="width:617px">\r\n	<tbody>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>ThÆ°Æ¡ng hiá»‡u</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2><strong>Rolex</strong></h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>Cháº¥t liá»‡u d&acirc;y</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>Th&eacute;p kh&ocirc;ng gá»‰</h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>NÄƒng lÆ°á»£ng</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>CÆ¡</h2>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
+(66, 'Submariner ', 11, '7200', 40, '<h2><strong>H&atilde;ng sáº£n xuáº¥t: Rolex</strong></h2>\r\n\r\n<h2><strong>Loáº¡i Ä‘á»“ng há»“:&nbsp;Äá»“ng há»“ nam</strong></h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u d&acirc;y:</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u máº·t:&nbsp;</strong>sapphia glass</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u vá» :</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;:45 mm</h2>\r\n\r\n<h2><strong>Chá»‘ng nÆ°á»›c:&nbsp;</strong>3 bar</h2>\r\n\r\n<h2><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng:</strong>&nbsp;Quartz</h2>\r\n\r\n<h2><strong>Báº£o h&agrave;nh: 10 nÄƒm</strong></h2>\r\n\r\n<h2><strong>Xuáº¥t xá»©:&nbsp;</strong>Thá»¥y Sá»¹</h2>\r\n\r\n<h2><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng:&nbsp;</strong>0123456789</h2>\r\n\r\n<h2><strong>Thanh to&aacute;n:&nbsp;</strong>Trá»±c tiáº¿p khi nháº­n sáº£n pháº©m</h2>\r\n', NULL, '<table border="1" cellpadding="0" cellspacing="1" style="width:617px">\r\n	<tbody>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>ThÆ°Æ¡ng hiá»‡u</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2><strong>Rolex</strong></h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>Cháº¥t liá»‡u d&acirc;y</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>Th&eacute;p kh&ocirc;ng gá»‰</h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>NÄƒng lÆ°á»£ng</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>CÆ¡</h2>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
+(67, 'Daytona Everose Gold', 11, '33000', 40, '<h2><strong>H&atilde;ng sáº£n xuáº¥t: Rolex</strong></h2>\r\n\r\n<h2><strong>Loáº¡i Ä‘á»“ng há»“:&nbsp;Äá»“ng há»“ nam</strong></h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u d&acirc;y:</strong>&nbsp;Da</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u máº·t:&nbsp;</strong>sapphia glass</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u vá» :</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;:45 mm</h2>\r\n\r\n<h2><strong>Chá»‘ng nÆ°á»›c:&nbsp;</strong>3 bar</h2>\r\n\r\n<h2><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng:</strong>&nbsp;Quartz</h2>\r\n\r\n<h2><strong>Báº£o h&agrave;nh: 10 nÄƒm</strong></h2>\r\n\r\n<h2><strong>Xuáº¥t xá»©:&nbsp;</strong>Thá»¥y Sá»¹</h2>\r\n\r\n<h2><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng:&nbsp;</strong>0123456789</h2>\r\n\r\n<h2><strong>Thanh to&aacute;n:&nbsp;</strong>Trá»±c tiáº¿p khi nháº­n sáº£n pháº©m</h2>\r\n', NULL, '<table border="1" cellpadding="0" cellspacing="1" style="width:617px">\r\n	<tbody>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>ThÆ°Æ¡ng hiá»‡u</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2><strong>Rolex</strong></h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>Cháº¥t liá»‡u d&acirc;y</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>Da</h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>NÄƒng lÆ°á»£ng</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>CÆ¡</h2>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n'),
+(68, 'Sea-Dweller Deepsea', 13, '14000', 40, '<h2><strong>H&atilde;ng sáº£n xuáº¥t: Rolex</strong></h2>\r\n\r\n<h2><strong>Loáº¡i Ä‘á»“ng há»“:&nbsp;Äá»“ng há»“ nam</strong></h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u d&acirc;y:</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u máº·t:&nbsp;</strong>sapphia glass</h2>\r\n\r\n<h2><strong>Cháº¥t liá»‡u vá» :</strong>&nbsp;Th&eacute;p kh&ocirc;ng gá»‰&nbsp;</h2>\r\n\r\n<h2><strong>ÄÆ°á»ng k&iacute;nh vá»</strong>&nbsp;:45 mm</h2>\r\n\r\n<h2><strong>Chá»‘ng nÆ°á»›c:&nbsp;</strong>3 bar</h2>\r\n\r\n<h2><strong>NÄƒng lÆ°á»£ng sá»­ dá»¥ng:</strong>&nbsp;Quartz</h2>\r\n\r\n<h2><strong>Báº£o h&agrave;nh: 10 nÄƒm</strong></h2>\r\n\r\n<h2><strong>Xuáº¥t xá»©:&nbsp;</strong>Thá»¥y Sá»¹</h2>\r\n\r\n<h2><strong>TÆ° váº¥n v&agrave; Ä‘áº·t h&agrave;ng:&nbsp;</strong>0123456789</h2>\r\n\r\n<h2><strong>Thanh to&aacute;n:&nbsp;</strong>Trá»±c tiáº¿p khi nháº­n sáº£n pháº©m</h2>\r\n', NULL, '<table border="1" cellpadding="0" cellspacing="1" style="width:617px">\r\n	<tbody>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>ThÆ°Æ¡ng hiá»‡u</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2><strong>Rolex</strong></h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>Cháº¥t liá»‡u d&acirc;y</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>Th&eacute;p kh&ocirc;ng gá»‰</h2>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td style="width:304px">\r\n			<h2>NÄƒng lÆ°á»£ng</h2>\r\n			</td>\r\n			<td style="width:311px">\r\n			<h2>CÆ¡</h2>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n');
 
 -- --------------------------------------------------------
 
@@ -249,27 +295,41 @@ CREATE TABLE `size` (
 --
 
 INSERT INTO `size` (`id`, `size`, `product_id`) VALUES
-(31, '45mm', 25),
-(32, '35mm', 25),
-(33, '45mm', 26),
-(34, '45mm', 27),
-(35, '45mm', 28),
-(36, '35mm', 28),
-(37, '45mm', 29),
-(38, '35mm', 29),
-(39, '45mm', 30),
-(40, '45mm', 31),
-(44, '45mm', 34),
-(45, '35mm', 34),
-(48, '35mm', 36),
-(49, '25mm', 36),
-(50, '45mm', 37),
-(51, '35mm', 37),
-(55, '45mm', 40),
-(56, '45mm', 41),
-(57, '35mm', 41),
-(67, '45mm', 46),
-(68, '35mm', 46);
+(72, '45mm', 49),
+(73, '35mm', 49),
+(74, '45mm', 50),
+(77, '45mm', 52),
+(78, '35mm', 52),
+(79, '35mm', 53),
+(80, '25mm', 53),
+(81, '35mm', 54),
+(82, '25mm', 54),
+(83, '45mm', 55),
+(84, '35mm', 55),
+(85, '45mm', 56),
+(86, '35mm', 56),
+(87, '35mm', 57),
+(88, '25mm', 57),
+(89, '45mm', 58),
+(90, '35mm', 58),
+(91, '45mm', 59),
+(92, '45mm', 60),
+(93, '35mm', 60),
+(94, '35mm', 61),
+(95, '25mm', 61),
+(96, '45mm', 62),
+(97, '35mm', 62),
+(98, '45mm', 63),
+(99, '35mm', 63),
+(100, '45mm', 64),
+(101, '45mm', 65),
+(102, '35mm', 65),
+(103, '45mm', 66),
+(104, '35mm', 66),
+(105, '45mm', 67),
+(106, '35mm', 67),
+(107, '45mm', 68),
+(108, '35mm', 68);
 
 -- --------------------------------------------------------
 
@@ -310,17 +370,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `level`) VALUES
-(1, 'erererew', 'user1@user.com', '25125454121', 0),
 (2, 'admin', 'admin@admin.com', '$2y$10$xtCXYOb5qA6a9S35GTxIYu4LGdBKoeHDXEYoQa15.575IVnXUuHia', 1),
-(3, 'dlmsl', 'dsjdsk@lkds.cpm', '$2y$10$iwGeuDAS7zg0hU8Qn9qs5uQDUn5sia.EHSxqROKv/Ae2GCUeSAZ4m', 0),
-(4, 'askdjnk s,', 'admddsadsdsadin@admin.com', '$2y$10$2Jue4YmgK0261AMoAa6DdOy3wcsEn1sZgTosHHQQHwUkuN0PLVR9y', 0),
-(5, 'lslksflsdk', 'mslmlds@kdd.com', '$2y$10$sA0kXT9JmGMnDw/jflXD1u2tmI4u6JieYBZO5zfMYxxcv0Y1ePyeW', 0),
-(6, 'Ã¡lkfm', 'fsd@fjd.com', '$2y$10$kmoWDvfQProC2fSwhKPzY.VlyFV.s.3ZPXUkSLSWy0A9.JB493vmi', 0),
-(7, 'sÃ¡dsa', 'da@dnf.com', '$2y$10$wVIzebra8DV0QSCFLQ7f2u2uHgw2vp1TVC68LdTXjszkBU5SDbNLC', 0),
-(8, 'abc', 'abc@abc.com', '$2y$10$AjOyHqGYdzhXiD4eEdJHkuR2YSlSPpK1bJvKR3RrquxMOXa39TCd2', 0),
-(9, 'dkmaslk', 'u1@u1.com', '$2y$10$hKTLFwrUV/rmolUtaXAm2OkmN6252L2owjJNJNubMq2U7pnzaaMDC', 0),
-(10, 'dlkmla', 'lmal@edn.com', '$2y$10$3GR6vIkH/QUz2sGf6itBseJeR.f1OO4kVHwsJtx8AHVR6cuxGudXi', 0),
-(11, 'mslkdmsl', 'abc@ac.com', '$2y$10$lZianR/8lVahWnQIf6FxJud8XG1abS7B3OmVfM7MZlt0jFGwJu5Iu', 0);
+(13, 'user 1', 'user@user.com', '$2y$10$kKQuC60AGySloDSMgLGyMun.DIQMnt5Yri87UM9MMNEyAYM9BjGs2', 0);
 
 --
 -- Indexes for dumped tables
@@ -382,32 +433,32 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT for table `colors`
 --
 ALTER TABLE `colors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=181;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=269;
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 --
 -- AUTO_INCREMENT for table `size`
 --
 ALTER TABLE `size`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 --
 -- AUTO_INCREMENT for table `slider`
 --
@@ -417,7 +468,7 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

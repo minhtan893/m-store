@@ -1,6 +1,6 @@
 <section class="container">
 	<section class="category-dir">
-		<a href="m-store/">Home/</a>
+		<a href="">Home/</a>
 		<span>Liên hệ</span>
 	</section>	
 	<section class="contact">
@@ -12,3 +12,9 @@
 	</section>
 		
 </section>
+<script>
+	$(document).ready(function(){
+		var base = $('head base').attr('href');	
+			$('.category-dir a').attr('href',base+"/");
+	})
+</script>

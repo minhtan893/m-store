@@ -1,6 +1,6 @@
 <section class="container">
 	<section class="category-dir">
-		<a href="admin">Home/</a>
+		<a href="">Home/</a>
 		<span>Đơn hàng</span>
 	</section>
 	<section class="admin-content">
@@ -43,6 +43,8 @@
 
 <script>
 $(document).ready(function(){
+	var base = $('head base').attr('href');	
+	$('.category-dir a').attr('href',base+"/admin/");
 	var cartPage = $('#Page').val();
 	Cart.CartPage(cartPage);
 	Cart.GetCart(cartPage);

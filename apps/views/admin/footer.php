@@ -2,7 +2,7 @@
 	<section class="container">
 		
 		<section id="copy">
-			<p>@2015. losblancos</p>
+			<p>@2016. losblancos</p>
 		</section>
 	</section>
 </footer>

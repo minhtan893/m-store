@@ -1,4 +1,11 @@
 <?php 
+
+	/*
+	
+	author : nguyen minh tan
+	email : nguyenminhtan893@gmail.com
+	
+	*/ 
 session_start();
 if(isset($_SESSION['userId'])){//Kiểm tra level User
 	$userId = $_SESSION['userId'];

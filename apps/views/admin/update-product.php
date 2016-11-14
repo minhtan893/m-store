@@ -1,8 +1,8 @@
 
 <section class="container">
 	<section class="category-dir">
-		<a href="<?=$url ?>admin">Home/</a>
-		<span><a href="<?=$url ?>/admin/Category/Id/<?=$product['cateId']; ?>"><?=$product["cateName"];?> </a></span>
+		<a href="" id="home">Home/</a>
+		<span><a href="" id="cate"><?=$product["cateName"];?> </a></span>
 		<span>/<?=$product['name'];?></span>
 	</section>	
 	<section class="product-option">
@@ -27,7 +27,7 @@
 			$i=0;
 			foreach ($image as $key ) {
 				if($key['status_thumb']==1){ ?>
-				<img src="<?="/apps/public/upload/thumb/".$key['url']; ?>" class="thumb-update"/>
+				<img src="" class="thumb-update"/>
 				<input type="file" name="thumb" accept="image/*"  placeholder="Chọn hình đại diện"></br>
 				<script>
 					$(document).ready(function(){
@@ -40,7 +40,7 @@
 				else{ ?>
 				<?php $i++; ?>
 				<section class="image-product-wraper">
-					<img src="<?="<?=$url ?>/apps/public/upload/".$key['url']; ?>" class="update-product-image"
+					<img src="" class="update-product-image"
 					 id = "img<?=$i ?>"/>
 				</section>	
 				<script>
@@ -89,6 +89,9 @@
 	CKEDITOR.replace('des');
 	CKEDITOR.replace('feature');
 	$(document).ready(function(){
+		var base = $('head base').attr('href');
+		$('#home').attr('href',base+'/admin/');
+		$('#cate').attr('href',base+'/admin/Category/Id/<?=$product['cateId']; ?>');
 		var name = $('#name').val();
 		$('.product-form').submit(function(){
 			var cateId = $('#cateId option:selected').val();

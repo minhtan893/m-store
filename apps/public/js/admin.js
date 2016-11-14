@@ -193,7 +193,9 @@ window.Category={
 			})//
 		}
 		//gửi ajax
-		function SendPage(pageActive,url,base){
+		function SendPage(pageActive,url){
+		var base = $('head base').attr('href');
+
 			var arr = [];
 			$.ajax({
 				url : url,
@@ -219,7 +221,7 @@ window.Category={
 			});
 		}
 		//sử lý sự kiện khi bấm vào hành động trên danh mục
-		function CateAction(base){
+		function CateAction(){
 			var base = $('head base').attr('href');
 			//Gọi link đến từng category
 			$('.admin-cate-name').on('click',function(){
@@ -278,14 +280,16 @@ window.Category={
 					$('#cateName-error').text('Tên danh mục đã tồn tại, mời nhập lại!');
 				}else{
 					$('#cateName-error').text('');
-						Category.Save(cateName,cateId,base);
+						Category.Save(cateName,cateId);
 				}
 			}
 		});
 	},
 
 	//Lưu Danh mục/////////////////////////
-	Save: function(cateName,cateId,base){
+	Save: function(cateName,cateId){
+		var base = $('head base').attr('href');
+
 		$.ajax({
 			url : base+'/admin/Category/Save',
 			type: 'post',
@@ -508,12 +512,13 @@ window.Category={
 				
 			}
 			}).always(function(){
-				ProductAction(base);
+				ProductAction();
 			});
 		}
 		//sử lý sự kiện 
-		function ProductAction(base){
-			//
+		function ProductAction(){
+		var base = $('head base').attr('href');
+			
 			$('.product-update-link').on('click',function(){//Update sản phẩm	
 				var productId = $(this).attr('proId');
 				var url = base+'/admin/Product/Update/';
@@ -841,11 +846,12 @@ window.Home = {
 			$('.pagination').on('click',function(){
 				var pageActive = $('.page-active').children('li').text();
 				$('.home-content').empty();
-				SendPage(pageActive,url,base);
+				SendPage(pageActive,url);
 			})//
 		}
 		//gửi ajax lấy về sản phẩm
 		function SendPage(pageActive,url){
+
 			var base = $('head base').attr('href');
 			var arr = [];
 			$.ajax({
@@ -864,22 +870,23 @@ window.Home = {
 					html+="<a href='"+base+"/admin/Product/Update/";
 					html+=item[0]
 					html+="' class='admin-product-name'>";
-					html+=item[2]+" "+item[8]+"</a>"
+					html+=item[8]+" "+item[2]+"</a>"
 					html+="<p class='admin-product-price'> ";
 					html+=item[4]+" &#36</p>"
 					html+="<p class='admin-product-num'>";
 					html+=item[6]+" chiếc</p>";
-					html+="<button class='product-del-link ' proId="+item['id']+">X</button></li>";
+					html+="<button class='product-del-link ' proId="+item['0']+">X</button></li>";
 					$('.home-content').append(html);
 				});
 				
 			}
 			}).always(function(){
-				ProductAction(base);
+				ProductAction();
 			});
 		}
 
-		function ProductAction(base){
+		function ProductAction(){
+			var base = $('head base').attr('href');
 			
 			$('.product-del-link').on('click',function(){
 				var productId = $(this).attr('proId');

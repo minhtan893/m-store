@@ -22,7 +22,7 @@
 	<!--start-logo-->
 	<section id="logo">
 		<section class="container">
-			<h1><a href="m-store/">R Store</a></h1>
+			<h1><a href="<?=$url ?>">R Store</a></h1>
 		</section>
 	</section>
 	<!--end-logo-->

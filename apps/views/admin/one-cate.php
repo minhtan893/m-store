@@ -1,6 +1,6 @@
 <section class="container">
 	<section class="category-dir">
-				<a href="admin/Category">Danh mục/</a>
+				<a href="">Danh mục/</a>
 				<span><?=$_SESSION['Cate'];?></span>
 	</section>	
 	<section class="admin-content">
@@ -25,8 +25,9 @@
 </section>
 <script>
 	$(document).ready(function(){
-		$('#add-product').on('click',function(){
 		var base = $('head base').attr('href');
+		$('.category-dir a').attr('href', base+"/admin/Category");
+		$('#add-product').on('click',function(){
 		window.location.href = base+"/admin/Product/Add";
 	})
 		var cateId = $('#cateId').val();

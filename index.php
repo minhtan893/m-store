@@ -1,7 +1,15 @@
-<?php 
+<?php
+
+	/*
+	
+	author : nguyen minh tan
+	email : nguyenminhtan893@gmail.com
+	
+	*/ 
 	session_start();
 	require_once('./apps/commons/environment.php');
 	require_once('./apps/commons/connection.php');
+	$_SESSION['hUrl'] = $url;
 	$act_tmp = null;
 	if(isset($_GET['ctr']) && isset($_GET['act'])){
 		$ctr = $_GET['ctr'];

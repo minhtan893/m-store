@@ -24,7 +24,7 @@
 <script>
 	$(document).ready(function(){
 		var base = $('head base').attr('href');
-		$('#sp').attr('href',base+'/admin/Category');
+		$('#sp').attr('href',base+'/admin/');
 		$('#add-product').attr('href',base+'/admin/Product/Add');
 		var productLimit = $('#proPage').val();
 		Home.ProductLimit(productLimit);

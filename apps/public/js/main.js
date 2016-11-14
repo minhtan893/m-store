@@ -21,14 +21,29 @@ window.Menu = {
 		})
 	}
 };
+
+window.number = {
+	format :  function(c, d, t){
+		var n = this, 
+		c = isNaN(c = Math.abs(c)) ? 2 : c, 
+		d = d == undefined ? "." : d, 
+		t = t == undefined ? "," : t, 
+		s = n < 0 ? "-" : "", 
+		i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))), 
+		j = (j = i.length) > 3 ? j % 3 : 0;
+		return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+	}	
+}
 /////////////////////////////////////////////////////////////////////////////////////////////
 // Hàm xử lý Client User
 window.ClientUser = {
 	//Hàm tạo ạo ajax thêm mới thành viên
 	Save : function(username,email,password){
+		var base = $('head base').attr('href');
+
 		//Gửi ajax dữ liệu lên để save
 		$.ajax({
-			url : 'http://localhost/m-store/User/AddNew',
+			url : base+'/User/AddNew',
 			type : 'post',
 			dataType : 'json',
 			data : {
@@ -40,7 +55,7 @@ window.ClientUser = {
 				if(rs['status']){
 					alert('Bạn đã đăng ký thành công , mời đăng nhập để tiếp tục!');
 					//Chuyển về trang chủ
-					window.location.href = 'http://localhost/m-store/User/Login';
+					window.location.href = base+'/User/Login';
 				}
 				else{
 					alert('Đã xảy ra lỗi!');
@@ -63,11 +78,13 @@ window.ClientUser = {
 	},
 	//Hàm  Kiểm tra và submit form Register
 	Register : function(username,email,password,rePassword){
+		var base = $('head base').attr('href');
+
 	 	//Kiểm tra đã xác nhận đúng password không
 	 	if(ClientUser.CheckPassword(password,rePassword)){
 	 		//Kiểm tra email đã đúng định dạng chưa và đã tồn tại chưa
 	 		$.ajax({
-	 			url : 'http://localhost/m-store/User/EmailExist',
+	 			url : base+'/User/EmailExist',
 	 			type: 'post',
 	 			dataType : 'json',
 	 			data : {

@@ -4,6 +4,7 @@
 </section>
 <script>
 	$(document).ready(function(){
+		alert('Bạn đã đặt mua thành công!');
 		var base = $('head base').attr('href');
 		setTimeout(window.location.href=base, 10000);
 	})

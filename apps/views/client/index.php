@@ -1,9 +1,15 @@
+<?php
+	 $base = $_SESSION['hUrl'];
+ ?>
+
 <section id="slide">
 	<ul id="slide-display">
 	<?php 
 		if($sliders!=null){
+			$i=0;
 			foreach ($sliders as $key ) { ?>
-				<li><a href="javascrip:void(0)"><img src="m-store/apps/public/upload/slider/<?=$key['url']?>"></a></li>
+				<li><a href="javascrip:void(0)" class="img"><img src="<?=$base; ?>/apps/public/upload/slider/<?=$key['url']; ?>" ></a></li>
+				<?php $i++; ?>
 			<?php }
 		}
 	?>

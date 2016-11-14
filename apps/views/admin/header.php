@@ -22,7 +22,7 @@
 	<!--start-logo-->
 	<section id="logo">
 		<section class="container">
-			<h1><a href="#">M Store</a></h1>
+			<h1><a href="<?=$url ?>">M Store</a></h1>
 		</section>
 	</section>
 	<!--end-logo-->

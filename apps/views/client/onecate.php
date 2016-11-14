@@ -1,6 +1,6 @@
 <section class="container">
 	<section class='category-dir'>
-		<a href="m-store/">Home/</a>
+		<a href="" id="home">Home/</a>
 		<a href="javascript:void(0)" class="cateName"><?=$check['name'];?></a>
 	</section>
 	<input type="hidden" value="<?=$pageLimit; ?>" id="pageLimit">
@@ -15,6 +15,8 @@
 </section>
 <script  type="text/javascript" charset="utf-8" async defer>
 	$(document).ready(function(){
+		var base = $('head base').attr('href');
+	$('#home').attr('href',base+"/");
 		var pageLimit =$('#pageLimit').val();//Lấy số trang sản phẩm
 		var page =1;
 		var id = $('.cateId').val();

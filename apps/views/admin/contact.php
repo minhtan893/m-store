@@ -1,6 +1,6 @@
 <section class="container">
 	<section class="category-dir">
-		<a href="admin">Home/</a>
+		<a href="">Home/</a>
 		<span>Contact</span>
 	</section>
 	<section class="admin-content">
@@ -23,9 +23,8 @@
 
 <script>
 	$(document).ready(function(){
-			$('#contact').on('click',function(){
-		var base = $('head base').attr('href');
-		window.location.href = base+"admin/Contact/Update";
-	})
+		var base = $('head base').attr('href');	
+			$('.admin-form').attr('action',base+"/admin/Contact/Update");
+			$('.category-dir a').attr('href',base+"/admin/");
 	})
 </script>

@@ -1,7 +1,7 @@
 <section class="container">
 	<section class="category-dir">
-		<a href="m-store/">Home/</a>
-		<span><a href="m-store/Category/Id/<?=$product[14]; ?>"><?=$product[12];?> </a></span>
+		<a href="" id="home">Home/</a>
+		<span><a href="" id="cate"><?=$product[12];?> </a></span>
 		<span>/<?=$product[3];?></span>
 	</section>	
 	<input type="hidden" id='cateId' value='<?=$product[14]; ?>'>
@@ -9,16 +9,30 @@
 		<section id="product">
 			<section id="product-image">
 				<section id="zoom">
-					<img src="m-store/apps/public/upload/<?=$fisrtImage[0][0]; ?>" alt="" id="zoomclass">
+					<img src="" alt="" id="zoomclass">
 				</section>
+				<script>
+					$(document).ready(function(){
+						var base = $('head base').attr('href');
+						$('#zoomclass').attr('src', base+'/apps/public/upload/<?=$fisrtImage[0][0];?>');
+					})
+				</script>
 				<ul id="zoom-array">
 					<?php
+					$i=0;
 					foreach ($image as $key ) { ?>
 					<section class="product-img">
 						<li>
-						<img src="m-store/apps/public/upload/<?=$key['url'	]; ?>" alt="">
+						<img src="" id="img<?=$i; ?>">
 						</li>
 					</section>
+					<script>
+					$(document).ready(function(){
+						var base = $('head base').attr('href');
+						$('#img<?=$i ?>').attr('src', base+'/apps/public/upload/<?=$key['url'	]; ?>');
+					})
+				</script>
+				<?php $i++; ?>
 					<?php	}
 					?>
 					
@@ -57,11 +71,11 @@
 							<section class="pay-option">
 								<?php 
 									if(!isset($_SESSION['userId'])){ ?><!--Chưa đăng nhập-->
-										<a href="m-store/Cart/Login/<?=$product[0];?>" class="cart-action">Mua Ngay<p>(đăng nhập)</p></a>
-										<a href="m-store/Cart/CartNoRegister/<?=$product[0]; ?>" class="cart-action no-register">Đặt Mua Không Cần Đăng Ký</a>
+										<a href="" class="cart-action" id="buy">Mua Ngay<p>(đăng nhập)</p></a>
+										<a href="" class="cart-action no-register" id="no-register">Đặt Mua Không Cần Đăng Ký</a>
 								<?php	}
 								else{ ?>
-									<a href="m-store/Cart/Id/<?=$product[0]; ?>" class="cart-action">Mua Ngay</a><!--Đã đăng nhập-->
+									<a href="" id="lo-buy" class="cart-action">Mua Ngay</a><!--Đã đăng nhập-->
 								 <?php }
 								?>
 							</section>
@@ -95,6 +109,12 @@
 	</section>
 	<script>
 		$(document).ready(function(){
+	var base = $('head base').attr('href');
+	$('#home').attr('href',base+"/");
+	$('#buy').attr('href',base+"/Cart/Login/<?=$product[0];?>");
+	$('#no-register').attr('href',base+"/Cart/CartNoRegister/<?=$product[0]; ?>");
+	$('#lo-buy').attr('href',base+"/Cart/Id/<?=$product[0]; ?>");
+	$('#cate').attr('href',base+"/Category/Id/<?=$product[14]; ?>");
 			//Zoom Hinhf Anhr
 			$('#zoom').zoom();
 			$('.product-img').on('click',function(){

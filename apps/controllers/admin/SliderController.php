@@ -9,7 +9,7 @@
 
 		//update slider
 		public static function Update(){
-			echo 'fdf';die();
+			
 			///lưu anh
 			//lấy ra id  
 			$slider = array_values(SliderModel::GetAll());
@@ -22,14 +22,12 @@
 					$fileType = pathinfo($_FILES[$img]['name'],PATHINFO_EXTENSION);
 					$_FILES[$img]['name'] = "slider".$i.".".$fileType;
 					$old_file="../apps/public/upload/slider/".$slider[$i]['url'];
-					echo $folderImg;
-					echo $_FILES[$img]['name'];
 					unlink($old_file);
-					//move_uploaded_file($_FILES[$img]['tmp_name'], $folderImg.$_FILES[$img]['name']);
-					//SliderModel::Update($_FILES[$img]['name'],$i);
+					move_uploaded_file($_FILES[$img]['tmp_name'], $folderImg.$_FILES[$img]['name']);
+					SliderModel::Update($_FILES[$img]['name'],$i);
 				}
 			}
-			//header("location: ../Slider/Index");
+			header("location: ../Slider/Index");
 		}
 
 		//Thêm mới
@@ -45,7 +43,7 @@
 					SliderModel::Add($_FILES[$img]['name']);
 				}
 			}
-			//header("location: ../");
+			header("location: ../");
 		}
 	}
 ?>

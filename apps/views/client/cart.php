@@ -5,7 +5,7 @@
 					<img src="" >
 					</a>
 					<p class="product-name"><?=$product[12]." ".$product[2]; ?></p>
-					<p class="price"><?=$product[4]; ?><span> $</span></p>
+					<p class="price"><?php echo number_format($product[4],2); ?><span> $</span></p>
 				</article>
 		</section>
 
